@@ -1,0 +1,164 @@
+﻿@{
+  var formConfig = new FormConfig(ViewContext) {
+    FormId = "ContactUsForm",
+    FormTitle = "Contact Us",
+    BeforeSubmit = "ContactUsFormBeforeSubmit",
+    Callback = "ContactUsFormCallback"
+  };
+}
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model AcceptanceFinancial.Models.ContactUs
+<!-- page banner section desgin start -->
+      <section class="faq-main pg-banner contact-main pg-banner">
+        <div class="comman-block">
+          <div class="product-img">
+            <div class="row m-0 justify-content-end">
+                <div class="col-md-12 col-lg-7 p-0">
+                  <div class="product-img top-img">
+                    <div class="main-img page-img banner-img">
+                      <picture>
+                        <source srcset="images/page-banner-img.webp" type="image/webp"/>
+                        <img src="images/page-banner-img.jpeg" alt="product" class="img-fluid">
+                      </picture>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="details-content">
+              <div class="inner-container">
+                <div class="row">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="contact-detail">
+                      <h1>Contact Us</h1>
+                      <p>There is a real person behind every loan application, so we have a TriPoint team member ready to answer all your questions.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+
+      <section class="form-section blue-bg">
+        <div class="inner-container">
+          <div class="custom-form contact-form">
+            
+            <form id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="ContactUs" asp-action="Save" enctype="multipart/form-data" formhelper>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="custom-row">
+                    <input asp-for="Subject" type="text" class="form-control" placeholder=" ">
+                    <label class="form-label" asp-for="Subject">Subject</label>
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="custom-row">
+                    <input asp-for="Name" type="text" class="form-control" placeholder=" ">
+                    <label class="form-label" asp-for="Name">Name (First, Last)</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="custom-row">
+                      <div class="form-floating">
+                        <textarea asp-for="Message" type="text" class="form-control" placeholder="Message (Max 500 characters)"></textarea>
+                        <!--<label class="form-label" asp-for="Name"></label>-->
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 d-flex flex-column justify-content-between">
+                    <div class="custom-row">
+                      <input asp-for="Email" type="text" class="form-control" placeholder=" ">
+                      <label class="form-label" asp-for="Email">Email Address</label>
+                      <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="custom-row">
+                      <input asp-for="Phone" type="text" class="form-control" placeholder=" ">
+                      <label class="form-label" asp-for="Phone">Phone</label>
+                      <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end align-items-end submit-btn">
+                      <button id="submit-verify" type="submit" class="comman-btn yellow-btn btn-submit-form">Submit</button>
+                    </div>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+<script type="text/javascript" asp-add-nonce="true">
+
+  var CustomerFormCallback = function (response, statusText, xhr, $form) {};
+        var ContactUsFormBeforeSubmit = function (rr, $form, options) {
+              document.getElementById("submit-verify").disabled = true;
+              $(".btn-submit-form").css("filter","grayscale(100%)");
+              document.getElementById("submit-verify").innerHTML = "Verifying...";
+            
+          };
+          var ContactUsFormCallback = function (response, statusText, xhr, $form) {
+              document.getElementById("submit-verify").disabled = false;
+              $(".btn-submit-form").css("filter","grayscale(0)");
+              document.getElementById("submit-verify").innerHTML = "Submit";
+       };
+      
+window.addEventListener("load", function () {
+    $(document).ready(function(){
+       const $form = $('#ContactUsForm');
+       $form.attr('formhelper')
+       $form.attr('dataType', 'FormData');
+       $form.attr('CheckTheFormFieldsMessage', 'Check the form fields.');
+       $form.attr('redirectDelay', '0');
+       $form.attr('beforeSubmit', 'ContactUsFormBeforeSubmit');
+       $form.attr('callback', 'ContactUsFormCallback');
+       $form.attr('enableButtonAfterSuccess', 'False');
+       $form.attr('resetFormAfterSuccess', 'True');
+       $form.attr('toastrPositionClass', 'formhelper-toast-top-right');
+    });
+    $("input[name='Phone']").keyup(function() {
+              $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d+)$/, "($1)$2-$3"));
+          });
+});
+</script>
+<style asp-add-nonce="true">
+.custom-form .custom-row label {
+    color: black !important;
+}
+.contact-form .custom-row textarea {
+    padding: 19px 18px!important;
+}
+textarea.form-control {
+    height: 210px !important;
+}
+textarea.form-control::placeholder {
+    color: black !important;
+}
+    .text-danger {
+        --bs-text-opacity: 1;
+        color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+        height: 21px;
+        display: block;
+        color: #a3cd39 !important;
+    }
+    .custom-form .custom-row label {
+        line-height: 20px;
+        font-family: 'Open Sans';
+        color: #d7dcdd;
+        position: absolute;
+        left: 0;
+        top: 35%;
+        transform: translateY(-50%);
+        transition: .1s ease-out;
+        transform-origin: left top;
+        pointer-events: none;
+        margin: 0;
+        padding: 0 22px;
+    }
+</style>

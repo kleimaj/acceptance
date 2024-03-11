@@ -1,0 +1,318 @@
+﻿@{
+    var formConfig = new FormConfig(ViewContext) {
+        FormId = "CustomerForm",
+        FormTitle = "Check Your Rate",
+        BeforeSubmit = "CustomerFormBeforeSubmit",
+        Callback = "CustomerFormCallback"
+    };
+    var stateList = new List<SelectListItem> {
+        new() { Text = "State", Value = "State" },
+        new() { Text = "Alabama", Value = "AL" },
+        new() { Text = "Alaska", Value = "AK" },
+        new() { Text = "Arizona", Value = "AZ" },
+        new() { Text = "Arkansas", Value = "AR" },
+        new() { Text = "California", Value = "CA" },
+        new() { Text = "Colorado", Value = "CO" },
+        new() { Text = "Connecticut", Value = "CT" },
+        new() { Text = "District of Columbia", Value = "DC" },
+        new() { Text = "Delaware", Value = "DE" },
+        new() { Text = "Florida", Value = "FL" },
+        new() { Text = "Georgia", Value = "GA" },
+        new() { Text = "Hawaii", Value = "HI" },
+        new() { Text = "Idaho", Value = "ID" },
+        new() { Text = "Illinois", Value = "IL" },
+        new() { Text = "Indiana", Value = "IN" },
+        new() { Text = "Iowa", Value = "IA" },
+        new() { Text = "Kansas", Value = "KS" },
+        new() { Text = "Kentucky", Value = "KY" },
+        new() { Text = "Louisiana", Value = "LA" },
+        new() { Text = "Maine", Value = "ME" },
+        new() { Text = "Maryland", Value = "MD" },
+        new() { Text = "Massachusetts", Value = "MA" },
+        new() { Text = "Michigan", Value = "MI" },
+        new() { Text = "Minnesota", Value = "MN" },
+        new() { Text = "Mississippi", Value = "MS" },
+        new() { Text = "Missouri", Value = "MO" },
+        new() { Text = "Montana", Value = "MT" },
+        new() { Text = "Nebraska", Value = "NE" },
+        new() { Text = "Nevada", Value = "NV" },
+        new() { Text = "New Hampshire", Value = "NH" },
+        new() { Text = "New Jersey", Value = "NJ" },
+        new() { Text = "New Mexico", Value = "NM" },
+        new() { Text = "New York", Value = "NY" },
+        new() { Text = "North Carolina", Value = "NC" },
+        new() { Text = "North Dakota", Value = "ND" },
+        new() { Text = "Ohio", Value = "OH" },
+        new() { Text = "Oklahoma", Value = "OK" },
+        new() { Text = "Oregon", Value = "OR" },
+        new() { Text = "Pennsylvania", Value = "PA" },
+        new() { Text = "Rhode Island", Value = "RI" },
+        new() { Text = "South Carolina", Value = "SC" },
+        new() { Text = "South Dakota", Value = "SD" },
+        new() { Text = "Tennessee", Value = "TN" },
+        new() { Text = "Texas", Value = "TX" },
+        new() { Text = "Utah", Value = "UT" },
+        new() { Text = "Vermont", Value = "VT" },
+        new() { Text = "Virginia", Value = "VA" },
+        new() { Text = "Washington", Value = "WA" },
+        new() { Text = "West Virginia", Value = "WV" },
+        new() { Text = "Wisconsin", Value = "WI" },
+        new() { Text = "Wyoming", Value = "WY" }
+    };
+}
+@using AcceptanceFinancial.Models.Const
+@model AcceptanceFinancial.Models.Customer
+  <form id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="Apply" asp-action="Save" enctype="multipart/form-data" formhelper>
+                           <div class="custom-row mb-4">
+                               <input asp-for="Offer" type="text" class="form-control" placeholder=" ">
+                               <label class="form-label" asp-for="Offer">Offer Code</label>
+                               <span asp-validation-for="Offer" class="text-danger offer-err"></span>
+                           </div>
+                            <div class="progress fetchhide">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated fetchprogress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                            </div>
+                                   
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <div class="custom-row form-group">
+                                                  <input asp-for="FirstName" type="text" class="form-control" placeholder=" ">
+                                                  <label class="form-label" asp-for="FirstName">First Name</label>
+                                                  <span asp-validation-for="FirstName" class="text-danger"></span>
+                                              </div>
+                                           </div>
+                                       
+                                      <div class="col-md-6">
+                                          <div class="custom-row form-group">
+                                              <div class="form-group">
+                                                  <input asp-for="LastName" type="text" class="form-control" placeholder=" ">
+                                                  <label class="form-label" asp-for="LastName">Last Name</label>
+                                                  <span asp-validation-for="LastName" class="text-danger"></span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                 </div>
+                                @*<div class="row">
+                                       <div class="col-md-6">
+                                            <div class="custom-row form-group">
+                                                 <input asp-for="Address" type="text" class="form-control" placeholder=" ">
+                                                 <label class="form-label" asp-for="Address">Address</label>
+                                                 <span asp-validation-for="Address" class="text-danger"></span>
+                                             </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="custom-row form-group">
+                                                     <input asp-for="Address2" type="text" class="form-control" placeholder=" ">
+                                                     <label class="form-label" asp-for="Address2">Address 2</label>
+                                                     <span asp-validation-for="Address2" class="text-danger"></span>
+                                                 </div>
+                                       </div>
+                                   </div>
+       
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <div class="custom-row form-group">
+                                               <input asp-for="City" type="text" class="form-control" placeholder=" ">
+                                               <label class="form-label" asp-for="City">City</label>
+                                               <span asp-validation-for="City" class="text-danger"></span>
+                                           </div>
+                                       </div>
+                                       <div class="col-md-3">
+                                               <div class="custom-row form-group">
+                                                       <!--<label asp-for="State"></label>-->
+                                                   <select asp-for="State" asp-items="stateList" type="text" class="form-select form-control stateList" placeholder=" "></select>
+                                                   <span asp-validation-for="State" class="text-danger"></span>
+                                               </div>
+                                           </div>
+                                      
+                                       <div class="col-md-3">
+                                            <div class="custom-row form-group">
+                                                 <input asp-for="Zip" type="text" class="form-control" placeholder=" ">
+                                                 <label class="form-label" asp-for="Zip">Zip Code</label>
+                                                 <span asp-validation-for="Zip" class="text-danger"></span>
+                                             </div>
+                                       </div>
+                                   </div>*@
+       
+       
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                             <div class="custom-row form-group">
+                                                  <input asp-for="Cell" type="text" class="form-control" placeholder=" ">
+                                                  <label class="form-label" asp-for="Cell">Cell Phone</label>
+                                                  <span asp-validation-for="Cell" class="text-danger"></span>
+                                              </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                            <div class="custom-row form-group">
+                                                 <input asp-for="Phone" type="text" class="form-control" placeholder=" ">
+                                                 <label class="form-label" asp-for="Phone">Home Phone</label>
+                                                 <span asp-validation-for="Phone" class="text-danger"></span>
+                                             </div>
+                                       </div>
+       
+       
+                                   </div>
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                             <div class="custom-row form-group">
+                                                <input asp-for="Email" type="text" class="form-control" placeholder=" ">
+                                                <label class="form-label" asp-for="Email">Email Address</label>
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                       </div>
+                                       <div class="col-md-6">
+                                           <div class="custom-row">
+                                                 <div class="custom-row form-group">
+                                                    <input asp-for="LoanAmount" type="text" class="form-control" placeholder=" ">
+                                                    <label class="form-label" asp-for="LoanAmount">Loan Amount</label>
+                                                    <span asp-validation-for="LoanAmount" class="text-danger"></span>
+                                                  </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                    <div class="custom-row mb-2 center_div">
+                                        @await Html.PartialAsync("Partials/_CloudflareTurnstile") 
+                                    </div>
+                                   <p class="click-verify">By clicking ‘VERIFY’, you authorize — with respect to the telephone number provided above and any other telephone number associated or related to you that may be provided to us in the future — TRIPOINT LENDING LLC® can contact you by phone, text, email, mail, or by artificial or pre-recorded voice, even if you have listed yourself on any Do-Not-Call List. You also agree to Privacy Policy and Terms of Use, and further agree that any person or entity contacting you pursuant to your consent here may use an automatic telephone dialing system, even if the telephone number you provided above (or any telephone number associated with you) is connected to a mobile phone and even if you might be charged for the call. Your consent to receive automated calls or text messages is not required for any purchase or availability of goods/services from TRIPOINT LENDING LLC®. If you do not consent, you may call us at <a href="tel:(800) 307-1789">(800) 307-1789</a> to continue your inquiry.</p>
+       
+                                   <div class="verify-btn d-flex justify-content-center">
+                                            <button id="submit-verify" type="submit" class="comman-btn green-btn btn-submit-form">Verify</button>
+                                   </div>
+       
+                                   <span class="confidence">The safety of your information is of the utmost importance to us. Rest assured that all of the information you provide is kept in the strictest confidence.</span>
+       
+                               </form>
+
+
+
+<script type="text/javascript" asp-add-nonce="true">
+   
+    var CustomerFormCallback = function (response, statusText, xhr, $form) {};
+      var CustomerFormBeforeSubmit = function (rr, $form, options) {
+            document.getElementById("submit-verify").disabled = true;
+            $(".btn-submit-form").css("filter","grayscale(100%)");
+            document.getElementById("submit-verify").innerHTML = "Verifying...";
+          
+        };
+        var CustomerFormCallback = function (response, statusText, xhr, $form) {
+            document.getElementById("submit-verify").disabled = false;
+            $(".btn-submit-form").css("filter","grayscale(0)");
+            document.getElementById("submit-verify").innerHTML = "Verify";
+     };
+    
+window.addEventListener("load", function () {
+    $(document).ready(function(){
+       const $form = $('#CustomerForm');
+                                           
+       $form.attr('formhelper')
+       $form.attr('dataType', 'FormData');
+       $form.attr('CheckTheFormFieldsMessage', 'Check the form fields.');
+       $form.attr('redirectDelay', '0');
+       $form.attr('beforeSubmit', 'CustomerFormBeforeSubmit');
+       $form.attr('callback', 'CustomerFormCallback');
+       $form.attr('enableButtonAfterSuccess', 'False');
+       $form.attr('resetFormAfterSuccess', 'True');
+       $form.attr('toastrPositionClass', 'formhelper-toast-top-right');
+
+     
+      // $(".stateList").change(function(){ 
+      //          $(".stateList option[value='State']").remove();           
+               
+
+        //    });    
+        $("input[name='Phone']").keyup(function() {
+            $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d+)$/, "($1)$2-$3"));
+        });
+       $("input[name='Cell']").keyup(function() {
+                   $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d+)$/, "($1)$2-$3"));
+               });
+       
+         $("input[name='Offer']").keyup(function() {
+              if( $(this).val().length > 8) {
+                    $(".fetchhide").css("display","flex");
+                  $.ajax({
+                          url: "/home/GetPromotion?accessCode="+$(this).val()+"",
+                          type: 'GET',
+                          dataType: 'json', // added data type
+                          success: function(res) {
+                              
+                                 if(res != null) {
+                                     $(".offer-err").html("");
+                                    $("input[name='FirstName']").val(res.firstName);
+                                    $("input[name='LastName']").val(res.lastName);
+                                    //$("input[name='Address']").val(res.address);
+                                    //$("input[name='City']").val(res.city); 
+                                    //$('.stateList option')[res.stateCode].selected = true;    
+                                   // $('.stateList').val(res.stateCode);
+                                    //$("input[name='Zip']").val(res.zip);
+                                    $(".fetchhide").css("display","none");
+                              }
+                              else {
+                                     $(".fetchhide").css("display","none");
+                                     $(".offer-err").html("Offer Code not found");
+                              }
+                            },
+                         error: function (jqXHR, exception) {
+                                $(".offer-err").html("Offer Code not found");
+                              }
+                          
+                      });
+                  
+                 }
+           });
+    });
+});
+</script>
+
+<style asp-add-nonce="true">
+   
+    .fetchhide {
+       display: none;
+       margin-bottom: 12px;
+       
+    }
+    .fetchprogress {
+     width: 100%;
+    }
+    .progress-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        color: var(--bs-progress-bar-color);
+        text-align: center;
+        white-space: nowrap;
+        background-color: #572b85 !important;
+        transition: var(--bs-progress-bar-transition);
+    }
+.text-danger {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+    height: 30px;
+    display: block;
+}
+.great-news .custom-form .click-verify {
+    text-align: center;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 10px;
+}
+
+.custom-form .verify-btn {
+    padding: 55px 0 0;
+}
+.great-news .custom-form .confidence {
+    color: #5f2f90;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 54px auto 0;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+    .center_div{
+           margin: 0 36%;
+    }
+  
+</style>

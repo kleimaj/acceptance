@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CsvHelper" Version="30.0.1" />
+        <PackageReference Include="Destructurama.JsonNet" Version="2.0.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+        <PackageReference Include="FormHelper" Version="5.0.0" />
+        <PackageReference Include="Joonasw.AspNetCore.SecurityHeaders" Version="4.0.1" />
+        <PackageReference Include="JSNLog" Version="3.0.1" />
+        <PackageReference Include="Kralizek.Extensions.Configuration.AWSSecretsManager" Version="1.7.0" />
+        <PackageReference Include="Marten.AspNetCore" Version="6.0.5" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+        <PackageReference Include="RestSharp" Version="110.2.0" />
+        <PackageReference Include="Serilog" Version="3.0.1" />
+        <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+        <PackageReference Include="Serilog.Sinks.Email" Version="2.4.1-dev-00147" />
+        <PackageReference Include="Serilog.Sinks.Postgresql.Alternative" Version="3.5.0" />
+        <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.14.1" />
+        <PackageReference Include="WebMarkupMin.NUglify" Version="2.14.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_about-us.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_career.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_comman.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_contactUs.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_faq.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_fonts.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_footer.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_header.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_our-loan.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_terms.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_theme.scss" />
+      <_ContentIncludedByDefault Remove="wwwroot\scss\_webapp.scss" />
+    </ItemGroup>
+
+</Project>

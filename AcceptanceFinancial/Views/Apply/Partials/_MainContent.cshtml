@@ -1,0 +1,67 @@
+﻿<!-- great-news section start -->
+<section class="great-news">
+    <div class="custom-padding">
+        <div class="container">
+            <div class="news-details text-center">
+                <h1 class="title m-0 blue-text">
+                    Great News! <br>
+                    You’re One Step Closer To Getting Your Personal Loan
+                </h1>
+                <h3>For expedited service, call <a href="tel:8778005343">(877) 800-5343</a>. Or simply continue below. </h3>
+                <p>
+                    <b>Please note: The security of your personal information is very important to us.</b> <br>
+                    We employ high levels of encryption to keep your information safe and confidential. <br>
+                    <b>Verify your information by completing any empty fields then click VERIFY.</b>
+                </p>
+                <p class="mb-0">
+                    <b>This will <u>Not</u> affect your credit score</b>
+                </p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-12">
+                    <div class="custom-form">
+                        <h3 class="text-center">If you have an Offer Code, please enter it below.</h3>
+                        @await Html.PartialAsync("Partials/_ApplyForm")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- great-news section end -->
+
+<style asp-add-nonce="true">
+.news-details h3 {
+    margin-top: 22px;
+    margin-bottom: 22px;
+}
+   .custom-form .custom-row .form-control {
+       border: 1px solid #ccc;
+       border-radius: 5px;
+       height: 70px;
+       font-size: 20px;
+       line-height: 20px;
+       font-family: "Open Sans";
+       padding: 9px 22px;
+       font-weight: normal;
+   }
+   .custom-form h3 {
+       color: #5f2f90;
+       font-size: 26px;
+       line-height: 26px;
+       font-weight: 700;
+       margin: 58px 0 20px;
+   }
+    .great-news {
+     	 position: relative;
+      padding: 178px 0 0;
+     	 
+     }
+    @@media (max-width: 1499px) {
+    .great-news {
+      	 position: relative;
+      	 padding: 0;
+      }
+     }
+     
+</style>

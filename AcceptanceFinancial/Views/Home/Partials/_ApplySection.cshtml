@@ -1,0 +1,377 @@
+﻿@{
+    var formConfig = new FormConfig(ViewContext) {
+        FormId = "CustomerForm",
+        FormTitle = "Check Your Rate",
+        BeforeSubmit = "CustomerFormBeforeSubmit",
+        Callback = "CustomerFormCallback"
+    };
+    var loanAmtList = LoanAmountList.loanAmtList;
+}
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using AcceptanceFinancial.Models.Const
+
+@model AcceptanceFinancial.Models.ShortCustomer
+
+<div class="apply-section">
+    <div class="container">
+        <div class="apply-block">
+            <div class="row m-0 flex-column-reverse flex-md-row">
+                <div class="side-info col-md-6 d-flex align-items-center align-items-md-start flex-column p-0">
+                    <h2>Your loan search ends here</h2>
+                    <p>When you need a convenient borrowing solution to cover life’s expenses, it’s smart to know your options. 
+                       Acceptance Financial is here to help you find the best loan for your situation and needs.</p>
+                    <p><strong>You can apply for amounts from $5,000 up to $100,000 in just minutes.</strong> Review available offers with fixed interest rates and set repayment schedules, so you can decide which works for you.</p>
+                </div>
+                <div class="col-lg-6 col-md-6 p-0">
+                    <div class="easy-quote">
+                        <div class="custom-form">
+                            <div class="quote-title">
+                                <h2 class="mb-3">
+                                    Request your quote
+                                </h2>
+                                <p>
+                                    <b>If you received an offer code,</b> enter it below and select <nobr>“CHECK MY RATE.”</nobr>
+                                </p>
+                            </div>
+                            <form id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="Home" asp-action="SaveShort" enctype="multipart/form-data" formhelper>
+                                <div class="custom-row">
+                                    <input asp-for="Offer" type="text" class="form-control" placeholder=" ">
+                                    <label class="form-label" asp-for="Offer">Offer code</label>
+                                    <span asp-validation-for="Offer" class="text-danger offer-err"></span>
+                                </div>
+                                <div class="progress fetchhide">
+                                  <div class="progress-bar progress-bar-striped progress-bar-animated fetchprogress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                                </div>
+                                <div id="emailHelp" class="offer-msg text-left ms-3">
+                                    <b>No offer code?</b> Fill out the form below. All
+                                    fields required.
+                                </div>
+                                <div class="custom-row form-group">
+                                    <input asp-for="FirstName" type="text" class="form-control" placeholder=" ">
+                                    <label class="form-label" asp-for="FirstName">First Name</label>
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="custom-row form-group">
+                                    <div class="form-group">
+                                        <input asp-for="LastName" type="text" class="form-control" placeholder=" ">
+                                        <label class="form-label" asp-for="LastName">Last Name</label>
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="custom-row form-group">
+                                    <input asp-for="Email" type="text" class="form-control" placeholder=" ">
+                                    <label class="form-label" asp-for="Email">Email Address</label>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="custom-row form-group">
+                                    <input asp-for="Phone" type="text" class="form-control" placeholder=" ">
+                                    <label class="form-label" asp-for="Phone"></label>
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="custom-row form-group">
+                                    <select asp-for="LoanAmount" asp-items="loanAmtList" type="text" class="form-control form-select" placeholder=" "></select>
+                                    <span asp-validation-for="LoanAmount" class="text-danger"></span>
+                                </div>
+                             <div class="custom-row form-group">
+                                 <select id="LoanUse" name="LoanUse" class="form-control form-select" required="" asp-for="LoanUse">
+                                                                                     <option value="">Loan Use</option>
+                                                                                     <option value="Auto Loan">Auto Loan</option>
+                                                                                     <option value="Auto Refinance">Auto Refinance</option>
+                                                                                     <option value="Auto Repairs">Auto Repairs</option>
+                                                                                     <option value="Build Credit">Build Credit</option>
+                                                                                     <option value="Business/Start-up">Business/Start-up</option>
+                                                                                     <option value="Debt Consolidation">Debt Consolidation</option>
+                                                                                     <option value="Extra Cash/Cushion">Extra Cash/Cushion</option>
+                                                                                     <option value="Home Buying/Refi">Home Buying/Refi</option>
+                                                                                     <option value="Home Improvement">Home Improvement</option>
+                                                                                     <option value="Investment">Investment</option>
+                                                                                     <option value="Large Purchase">Large Purchase</option>
+                                                                                     <option value="Medical/Dental">Medical/Dental</option>
+                                                                                     <option value="Moving/Relocation">Moving/Relocation</option>
+                                                                                     <option value="Pay Bills/Pay Off Debt">Pay Bills/Pay Off Debt
+                                                                                     </option>
+                                                                                     <option value="Student Loan">Student Loan</option>
+                                                                                     <option value="Student Loan Refinance">Student Loan Refinance
+                                                                                     </option>
+                                                                                     <option value="Taxes">Taxes</option>
+                                                                                     <option value="Unexpected Expense">Unexpected Expense</option>
+                                                                                     <option value="Vacation/Travel">Vacation/Travel</option>
+                                                                                     <option value="Wedding">Wedding</option>
+                                                                                     <option value="Other">Other</option>
+                                                                                 </select>
+                                 <span asp-validation-for="LoanAmount" class="text-danger"></span>
+                             </div>
+                                <div class="custom-row mb-2">
+                                   @await Html.PartialAsync("Partials/_CloudflareTurnstile") 
+                                </div>
+                                
+                                <button id="submit-verify" type="submit" class="comman-btn yellow-btn btn-submit-form mb-4">Check My Rate</button>
+                                <p class="view-rate mb-0">
+                                    By clicking “CHECK MY RATE,” you authorize – with respect to the telephone number provided above and any other telephone number associated or related to you that may be provided to us in the future — Acceptance Financial® can contact you by phone, text, email, mail, or by artificial or pre-recorded voice, even if you have listed yourself on any Do-Not-Call List. You also agree to our Privacy Policy and Terms of Use, and further agree that any person or entity contacting you pursuant to your consent here may use an automatic telephone dialing system, even if the telephone number you provided above (or any telephone number associated with you) is connected to a mobile phone and even if you might be charged for the call. Your consent to receive automated calls or text messages is not required for any purchase or availability of goods/services from Acceptance Financial®. If you do not consent, you may call us at (800) 410-5845 to continue your inquiry.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="process-section">
+    <div class="container">
+        <h3 class="mb-5 text-center text-lg-start">Easy and secure <nobr class="text-white">3-STEP</nobr> process:</h3>
+        
+        <div class="d-flex flex-column flex-lg-row">
+            <div class="d-flex py-md-4 item align-items-center flex-column flex-md-row justify-content-center">
+                <picture>
+                    <source type="image/webp" srcset="images/step-1-icon.webp">
+                    <img src="images/step-1-icon.png" alt="logo" class="img-fluid"/>
+                </picture>
+                <p class="text-center text-md-start">Complete the short online application with no impact to your credit score.</p>
+            </div>
+            <div class="d-flex py-md-4 item align-items-center flex-column flex-md-row justify-content-center">
+                <picture>
+                    <source type="image/webp" srcset="images/step-2-icon.webp">
+                    <img src="images/step-2-icon.png" alt="logo" class="img-fluid"/>
+                </picture>
+                <p class="text-center text-md-start">Review your available loan options and choose the one that best fits your needs.</p>
+            </div>
+            <div class="d-flex py-md-4 item align-items-center flex-column flex-md-row justify-content-center">
+                <picture>
+                    <source type="image/webp" srcset="images/step-3-icon.webp">
+                    <img src="images/step-3-icon.png" alt="logo" class="img-fluid"/>
+                </picture>
+                <p class="text-center text-md-start">Accept your loan agreement and receive the funds.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="benefits-section d-flex flex-md-row align-items-md-center justify-content-md-center flex-column-reverse container">
+    <div class="benefits-text col-md-6 d-flex flex-column">
+        <h3 class="mb-4 mt-md-4">Enjoy the benefits of Acceptance</h3>
+        <div class="checks-box mb-5">
+            <div class="checks d-none d-md-table mx-auto d-md-flex flex-wrap">
+                <p>Quick, easy application</p>
+                <p>Low monthly payments</p>
+                <p>Instant approval decision</p>
+                <p >No collateral or upfront costs</p>
+                <p class="bottom">Competitive fixed rates</p>
+                <p class="bottom">Won’t affect your credit score</p>
+            </div>
+            <div class="checks d-md-none d-table mx-auto d-md-flex flex-wrap">
+                <p>Quick, easy application</p>
+                <p>Instant approval decision</p>
+                <p>Competitive fixed rates</p>
+                <p>Low monthly payments</p>
+                <p class="bottom">No collateral or upfront costs</p>
+                <p class="bottom">Won’t affect your credit score</p>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-md-row align-items-md-center align-items-center justify-content-md-between col-md-10">
+            <button type="submit" class="comman-btn yellow-btn">Check My Rate</button>
+            <div class="col-2"></div>
+            <p class="mt-4 mt-md-0">Will not impact your credit score</p>
+        </div>
+    </div>
+    <div class="benefits-image p-5">
+        <picture>
+            <source type="image/webp" srcset="images/home-benefits.webp">
+            <img src="images/home-benefits.png" alt="logo" class="img-fluid"/>
+        </picture>
+    </div>
+</div>
+<div class="loan-section m-5 mt-4 d-flex flex-column align-items-center">
+    <div class="carousel-card d-flex flex-column align-items-center p-md-5 m-4">
+        <h3 class="text-center">Turn your goal into a reality with a new loan</h3>
+        <p class="text-center">Acceptance Financial offers loans for:</p>
+         
+        <div class="items p-4">
+            <div class="item-card col-12">
+                <div class="item-image">
+                    <picture>
+                        <source type="image/webp" srcset="images/home-carousel-travel.webp">
+                        <img src="images/home-carousel-travel.png" alt="logo" class="img-fluid"/>
+                    </picture>
+                </div>
+                <div class="item-text">
+                    <h4>Travel</h4>
+                </div>
+            </div>
+            <div class="item-card col-12">
+                <div class="item-image">
+                    <picture>
+                        <source type="image/webp" srcset="images/home-carousel-medical.webp">
+                        <img src="images/home-carousel-medical.png" alt="logo" class="img-fluid"/>
+                    </picture>
+                </div>
+                <div class="item-text">
+                    <h4>Medical Care</h4>
+                </div>
+            </div>
+            <div class="item-card col-12">
+                <div class="item-image">
+                    <picture>
+                        <source type="image/webp" srcset="images/home-carousel-purchases.webp">
+                        <img src="images/home-carousel-purchases.png" alt="logo" class="img-fluid"/>
+                    </picture>
+                </div>
+                <div class="item-text">
+                    <h4>Major Purchases or Events</h4>
+                </div>
+            </div>
+                        <div class="item-card col-12">
+                            <div class="item-image">
+                                <picture>
+                                    <source type="image/webp" srcset="images/home-carousel-travel.webp">
+                                    <img src="images/home-carousel-travel.png" alt="logo" class="img-fluid"/>
+                                </picture>
+                            </div>
+                            <div class="item-text">
+                                <h4>Travel</h4>
+                            </div>
+                        </div>
+                        <div class="item-card col-12">
+                            <div class="item-image">
+                                <picture>
+                                    <source type="image/webp" srcset="images/home-carousel-medical.webp">
+                                    <img src="images/home-carousel-medical.png" alt="logo" class="img-fluid"/>
+                                </picture>
+                            </div>
+                            <div class="item-text">
+                                <h4>Medical Care</h4>
+                            </div>
+                        </div>
+                        <div class="item-card col-12">
+                            <div class="item-image">
+                                <picture>
+                                    <source type="image/webp" srcset="images/home-carousel-purchases.webp">
+                                    <img src="images/home-carousel-purchases.png" alt="logo" class="img-fluid"/>
+                                </picture>
+                            </div>
+                            <div class="item-text">
+                                <h4>Major Purchases or Events</h4>
+                            </div>
+                        </div>
+        </div>
+    </div>
+    <p class=" mt-5">See what we can do for you.</p>
+    <button class="comman-btn yellow-btn">Check My Rate</button>
+</div>
+<style asp-add-nonce="true">
+    .text-danger {
+        --bs-text-opacity: 1;
+        color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+        height: 21px;
+        display: block;
+    }
+    .fetchhide {
+       display: none;
+       margin-bottom: 12px;
+       
+    }
+    .fetchprogress {
+     width: 100%;
+    }
+    .progress-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        color: var(--bs-progress-bar-color);
+        text-align: center;
+        white-space: nowrap;
+        background-color: #572b85 !important;
+        transition: var(--bs-progress-bar-transition);
+    }
+</style>
+
+<script type="text/javascript" asp-add-nonce="true">
+
+    var CustomerFormCallback = function (response, statusText, xhr, $form) {};
+      var CustomerFormBeforeSubmit = function (rr, $form, options) {
+            document.getElementById("submit-verify").disabled = true;
+            $(".btn-submit-form").css("filter","grayscale(100%)");
+            document.getElementById("submit-verify").innerHTML = "Verifying...";
+          
+        };
+        var CustomerFormCallback = function (response, statusText, xhr, $form) {
+            document.getElementById("submit-verify").disabled = false;
+            $(".btn-submit-form").css("filter","grayscale(0)");
+            document.getElementById("submit-verify").innerHTML = "Get My Quote";
+     };
+window.addEventListener("load", function () {
+    $(document).ready(function(){
+       const $form = $('#CustomerForm');
+         $('.items').slick({
+           infinite: true,
+           slidesToShow: 3,
+           slidesToScroll: 1,
+               prevArrow: '<button class="slide-arrow prev-arrow"></button>',
+               nextArrow: '<button class="slide-arrow next-arrow"></button>',
+            responsive: [
+                 {
+                   breakpoint: 1024,
+                   settings: {
+                     slidesToShow: 2,
+                     slidesToScroll: 2,
+                   }
+                 },
+                 {
+                   breakpoint: 600,
+                   settings: {
+                     slidesToShow: 1,
+                     slidesToScroll: 1
+                   }
+                 },
+                 {
+                   breakpoint: 480,
+                   settings: {
+                     slidesToShow: 1,
+                     slidesToScroll: 1
+                   }
+                 }
+               ]
+           },
+           );
+       $form.attr('formhelper')
+       $form.attr('dataType', 'FormData');
+       $form.attr('CheckTheFormFieldsMessage', 'Check the form fields.');
+       $form.attr('redirectDelay', '0');
+       $form.attr('beforeSubmit', 'CustomerFormBeforeSubmit');
+       $form.attr('callback', 'CustomerFormCallback');
+       $form.attr('enableButtonAfterSuccess', 'False');
+       $form.attr('resetFormAfterSuccess', 'True');
+       $form.attr('toastrPositionClass', 'formhelper-toast-top-right');
+
+     
+        $("input[name='Phone']").keyup(function() {
+            $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d+)$/, "($1)$2-$3"));
+        });
+        $("input[name='Offer']").keyup(function() {
+           if( $(this).val().length > 8) {
+                 $(".fetchhide").css("display","flex");
+               $.ajax({
+                       url: "/home/GetPromotion?accessCode="+$(this).val()+"",
+                       type: 'GET',
+                       dataType: 'json', // added data type
+                       success: function(res) {
+                              if(res != null) {
+                                    $(".offer-err").html("");
+                                    $("input[name='FirstName']").val(res.firstName);
+                                   $("input[name='LastName']").val(res.lastName);
+                                   $(".fetchhide").css("display","none");
+                               }
+                             else {
+                                     $(".fetchhide").css("display","none");
+                                     $(".offer-err").html("Offer Code not found");
+                              }
+                             },
+                              error: function (jqXHR, exception) {
+                                     $(".offer-err").html("Offer Code not found");
+                                   }
+                   });
+              }
+        });
+    });
+});
+</script>

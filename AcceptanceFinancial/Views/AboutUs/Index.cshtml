@@ -1,0 +1,992 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+
+<div>
+    @await Html.PartialAsync("Partials/_MainContent")
+</div>
+<style asp-add-nonce="true">
+.about-goal .tirngle-shape img {
+    position: relative;
+    left: 240px;
+    mix-blend-mode: multiply;
+}
+  .pg-banner.about-us {
+  	 padding: 240px 0 0;
+  }
+   .pg-banner.about-us .page-img {
+  	 position: relative;
+  }
+   .pg-banner.about-us .page-img .about-tringle {
+  	 position: absolute;
+  	 top: 0;
+  	 /*left: 50%;*/
+  	 transform: translate(-50%, 0);
+  }
+   .pg-banner.about-us .page-img::after {
+  	 display: none;
+  }
+   .about-us {
+  	 padding: 240px 0 0;
+  	 background-image: url('images/triangle-bg.webp');
+  }
+   .about-us .inner-banner {
+  	 clip-path: polygon(16% 1%, 100% 8%, 100% 100%, 0% 100%);
+  }
+   .about-us .page-img .banner-img::after {
+  	 top: 0;
+  	 transform: translate(-50%, 0);
+  }
+   .about-us .top-img .about-img {
+  	 top: -20px;
+  }
+   .pladge-block {
+  	 position: relative;
+  	 z-index: 1;
+  	 clip-path: polygon(0 0, 100% 0%, 100% 90%, 0% 100%);
+  	 padding: 0;
+  }
+   .pladge-block .people-details {
+  	 margin-left: 0;
+  	 padding: 100px 0;
+  }
+   .pladge-block .people-details p, .pladge-block .people-details .join-btn {
+  	 margin-left: 40px;
+  	 font-size: 25px !important;
+  }
+   .pladge-block .join-people {
+  	 height: 100%;
+  	 clip-path: polygon(0 0, 80% 1%, 100% 100%, 0% 100%);
+  }
+   .pladge-block .join-people img {
+  	 height: 100%;
+  	 width: 100%;
+  	 object-fit: cover;
+  }
+   .customber-block {
+  	 padding: 50px 0 113px;
+  }
+   .customber-block h3 {
+  	 font-size: 35px;
+  	 line-height: 40px;
+  	 color: #a3cd39;
+  	 font-weight: 700;
+  	 margin: 0 0 20px;
+  }
+   .customber-block p {
+  	 font-size: 25px;
+  	 line-height: 30px;
+  }
+   .about-goal {
+  	 background: none !important;
+  	 position: relative;
+  	 z-index: 2;
+  }
+   .about-goal .tirngle-shape {
+  	 width: 100%;
+  	 background: transparent linear-gradient(93deg, #5f2f90 0%, #301848 100%);
+  }
+   .about-goal .tirngle-shape img {
+  	 position: relative;
+  	 /*left: calc((100% - 1425px)/2);*/
+  	 mix-blend-mode: multiply;
+  }
+   .possibilities-section.our-goal {
+  	 overflow: visible;
+  }
+   .possibilities-section.turn-tripoint {
+  	 padding: 78px 0 78px;
+  	 background: transparent linear-gradient(267deg, #5f2f90 0%, #301848 100%);
+  }
+   .possibilities-section.turn-tripoint .possible-title h2 {
+  	 color: #acd2ed;
+  	 margin: 0;
+  }
+   .possibilities-section .your-self ul {
+  	 padding: 20px 0 30px;
+  }
+   .possibilities-section .your-self ul li {
+  	 color: #fff;
+  }
+   .possibilities-section .your-self ul li::before {
+  	 content: '';
+  	 top: 4px;
+  	 width: 21px;
+  	 height: 18px;
+  	 background-image: url('images/list-triangle.svg');
+  }
+   .unique {
+  	 position: relative;
+  }
+   .unique .unique-people {
+  	 position: absolute;
+  	 z-index: 99;
+  	 top: -30px;
+  	 right: 270px;
+  }
+   .about-details {
+  	 margin: 0 58px 0 0;
+  }
+   @@media (max-width: 1799px) {
+  	 .unique .unique-people {
+  		 right: 100px;
+  	}
+  }
+   @@media (max-width: 1599px) {
+  	 .about-details {
+  		 margin: 0 58px 90px 0;
+  	}
+  	 .unique .unique-people {
+  		 top: -30px;
+  		 right: 40px;
+  	}
+  	 .about-us {
+  		 padding: 50px 0 0;
+  	}
+  /*	 .about-goal .tirngle-shape img {
+  		 left: calc((100% - 1320px) / 2);
+  	}*/
+  }
+   @@media (max-width: 1499px) {
+  	 .pg-banner.about-us {
+  		 padding: 50px 0 0;
+  	}
+  	 .unique .unique-people {
+  		 top: 40px;
+  	}
+  }
+   @@media (max-width: 1399px) {
+  	 .about-us {
+  		 padding: 20px 0 0;
+  	}
+  	 .unique .unique-people {
+  		 top: 156px;
+  	}
+  	 .unique .unique-people img {
+  		 max-width: 500px;
+  	}
+  /*	 .about-goal .tirngle-shape img {
+  		 left: calc((100% - 1180px) / 2);
+  	}*/
+  }
+   @@media (max-width: 1199px) {
+  	 .possibilities-section.about-goal .possible-title h1 {
+  		 font-size: 35px;
+  		 line-height: 35px;
+  	}
+  	 .possibilities-section.our-goal .possible-title p {
+  		 font-size: 19px;
+  		 line-height: 25px;
+  	}
+  	 .unique .unique-people {
+  		 top: 100px;
+  		 right: 50px;
+  	}
+  	 .unique .unique-people img {
+  		 max-width: 450px;
+  	}
+  	 .customber-block {
+  		 padding: 50px 0;
+  	}
+  	 .customber-block h3 {
+  		 font-size: 29px;
+  		 line-height: 30px;
+  	}
+  	 .customber-block p {
+  		 font-size: 21px;
+  		 line-height: 29px;
+  	}
+  	 .people-details p {
+  		 font-size: 20px;
+  		 line-height: 27px;
+  		 margin-left: 20px !important;
+  	}
+  	 .about-goal .tirngle-shape img {
+  		/* left: calc((100% - 960px)/2);*/
+  		 width: 20%;
+  	}
+  }
+   @@media (max-width: 991px) {
+  	 .pladge-block .container-fluid {
+  		 max-width: 720px;
+  		 margin: 0 auto;
+  	}
+  	 .possibilities-section .your-self ul li {
+  		 display: block;
+  		 text-align: left;
+  	}
+  	 .possibilities-section.about-goal .possible-title h1 {
+  		 font-size: 28px;
+  		 line-height: 28px;
+  	}
+  	 .about-bg-content {
+  		 padding: 0 0 30px !important;
+  	}
+  	 .about-goal .tirngle-shape img {
+  		/* left: calc((100% - 630px) / 2);*/
+  	}
+  	 .pladge-block .join-people {
+  		 display: none;
+  	}
+  	 .pladge-block .people-details {
+  		 padding: 60px 0;
+  	}
+  }
+   @@media (max-width: 767px) {
+  	 .about-us .comman-block .details-content {
+  		 padding: 0;
+  	}
+  	 .about-us .comman-block .details-content p {
+  		 text-align: center !important;
+  	}
+  	 .unique .customber-block {
+  		 padding: 21px 0 100px;
+  	}
+  	 .unique .customber-block .possible-title {
+  		 margin-top: 0;
+  	}
+  	 .unique .unique-people {
+  		 top: unset;
+  		 bottom: -250px;
+  		 left: 0;
+  		 margin: 0 auto;
+  		 text-align: center;
+  	}
+  	 .unique .unique-people img {
+  		 max-width: unset;
+  		 width: 100%;
+  	}
+  	 .join-people {
+  		 display: none;
+  	}
+  	 .pladge-block .people-details {
+  		 max-width: 340px;
+  		 padding: 40px 15px 100px;
+  		 margin: 0 auto;
+  	}
+  	 .customber-block {
+  		 padding: 21px 0;
+  		 text-align: center;
+  	}
+  	 .customber-block h3 {
+  		 font-size: 25px;
+  		 line-height: 30px;
+  	}
+  	 .customber-block p {
+  		 font-size: 18px;
+  		 line-height: 22px;
+  	}
+  	 .pladge-block .people-details p, .pladge-block .people-details .join-btn {
+  		 margin-left: 0;
+  		 font-size: 25px !important;
+  	}
+  	 .possibilities-section.turn-tripoint {
+  		 padding: 0px 0 0px;
+  	}
+  	 .possibilities-section.turn-tripoint {
+  		 overflow: visible;
+  	}
+  	 .possibilities-section.turn-tripoint .possible-title {
+  		 text-align: left;
+  		 margin-top: 0;
+  		 top: -100px;
+  		 overflow: visible;
+  		 text-align: center;
+  	}
+  	 .possibilities-section.turn-tripoint .possible-title img {
+  		 margin: 0 auto 20px;
+  	}
+  	 .possibilities-section.turn-tripoint .possible-title ul {
+  		 padding: 0;
+  		 margin: 0;
+  	}
+  	 .join-btn {
+  		 margin: 20px 0 0;
+  	}
+  	 .about-goal .tirngle-shape img {
+  		 display: none;
+  	}
+  	 .pladge-block {
+  		 -webkit-clip-path: polygon(0 0, 100% 0%, 100% 95%, 0% 100%);
+  		 clip-path: polygon(0 0, 100% 0%, 100% 95%, 0% 100%);
+  	}
+  }
+   .our-loan-page {
+  	 margin-top: 178px;
+  	 background-image: url('images/triangle-bg.webp');
+  }
+   .our-loan-page .banner-content {
+  	 margin-left: 140px;
+  }
+   .our-loan-page .loan-details h1 {
+  	 font-size: 90px;
+  	 line-height: 90px;
+  	 color: #5f2f90;
+  	 font-weight: 700;
+  }
+   .our-loan-mobile {
+  	 display: none;
+  }
+   .possibilities-section {
+  	 background: transparent linear-gradient(93deg, #5f2f90 0%, #301848 100%);
+  	 padding: 40px 0 43px;
+  	 position: relative;
+  	 overflow: hidden;
+  }
+   .possibilities-section .tirngle-shape {
+  	 position: absolute;
+  	 left: 0;
+  	 top: 0;
+  	 bottom: 0;
+  	 z-index: 0;
+  	 display: flex;
+  	 align-items: center;
+  }
+   .possibilities-section .possible-title {
+  	 position: relative;
+  	 z-index: 1;
+  }
+   .possibilities-section .possible-title h1 {
+  	 font-size: 45px;
+  	 line-height: 45px;
+  	 font-weight: 700;
+  	 color: #a3cd39;
+  	 margin: 0;
+  	 text-align: center;
+  }
+   .possibilities-section .possible-title h2 {
+  	 font-size: 35px;
+  	 line-height: 45px;
+  	 color: #a3cd39;
+  	 margin: 0 0 0 40px;
+  	 font-weight: 700;
+  }
+   .possibilities-section .possible-title p {
+  	 font-size: 25px;
+  	 line-height: 30px;
+  	 color: #fff;
+  	 margin: 0;
+  }
+   .loan-easy {
+  	 padding: 60px 0 100px;
+  	 clip-path: polygon(0 0, 100% 0%, 100% 91%, 0% 100%);
+  }
+   .loan-easy h2 {
+  	 font-weight: 700;
+  }
+   .loan-easy p {
+  	 font-size: 30px;
+  	 line-height: 35px;
+  	 margin: 0 0 48px;
+  }
+   .loan-easy .easy-block ul li {
+  	 display: inline-block;
+  }
+   .loan-easy .easy-block img {
+  	 height: 86px;
+  }
+   .loan-easy .easy-block h3 {
+  	 font-size: 35px;
+  	 line-height: 47px;
+  	 font-weight: 700;
+  	 color: #5f2f90;
+  	 text-transform: uppercase;
+  	 margin: 21px 0 12px;
+  }
+   .life-block {
+  	 padding: 100px 80px 250px;
+  }
+   .life-block p {
+  	 font-size: 25px;
+  	 line-height: 30px;
+  }
+   .slider-possible .slick-dots button {
+  	 background-color: #acd2ed;
+  }
+   .slider-possible .slick-dots li.slick-active button {
+  	 background-color: #5f2f90;
+  }
+   .slider-possible .slick-track {
+  	 display: flex;
+  }
+   .slider-possible .slick-track .slider-item {
+  	 height: auto;
+  }
+   .slider-possible .cost-content {
+  	 background-color: #5f2f90;
+  	 display: inline-block;
+  	 border-radius: 2px;
+  	 margin: 0 8px;
+  	 height: 100%;
+  }
+   .slider-possible .cost-content .item-content {
+  	 padding: 20px 10px 25px;
+  }
+   .slider-possible .cost-content .item-content h2 {
+  	 font-size: 30px;
+  	 line-height: 40px;
+  	 color: #acd2ed;
+  	 margin: 0 0 5px;
+  }
+   .slider-possible .cost-content .item-content p {
+  	 color: #fff;
+  	 font-size: 22px;
+  	 line-height: 30px;
+  }
+   .find-loan {
+  	 padding: 80px 0;
+  }
+   .loan-section {
+  	 background: transparent linear-gradient(266deg, #5f2f90 0%, #301848 100%) 0% 0% no-repeat padding-box;
+  }
+   .loan-section .trust-img {
+  	 margin-left: 300px;
+  	 padding: 80px 0;
+  }
+   .loan-section .shape-img::before {
+  	 background-image: url(../images/loan-people.webp);
+  	 background-size: cover;
+  }
+   .shape-img {
+  	 position: relative;
+  }
+   .shape-img .loan-img {
+  	 position: absolute;
+  	 z-index: 999;
+  	 top: -100px;
+  }
+   @@media (max-width: 1799px) {
+  	 .loan-section .trust-img {
+  		 margin-left: 240px;
+  	}
+  	 .possibilities-section .possible-title h2 {
+  		 margin: 0 0 0 0px;
+  	}
+  }
+   @@media (max-width: 1499px) {
+  	 .pg-banner .page-img.banner-img::after {
+  		 width: 280px;
+  		 height: 280px;
+  	}
+  	 .shape-img .loan-img {
+  		 top: -160px;
+  		 width: 340px;
+  		 left: 130px;
+  	}
+  	 .our-loan-page {
+  		 margin-top: 0;
+  	}
+  	 .our-loan-page .banner-content {
+  		 margin-left: 90px;
+  	}
+  	 .possibilities-section .possible-title h2 {
+  		 margin: 0 0 0 0px;
+  	}
+  	 .loan-section .trust-img {
+  		 margin-left: 160px;
+  	}
+  }
+   @@media (max-width: 1199px) {
+  	 .loan-section .trust-img {
+  		 margin-left: 60px;
+  	}
+  	 .life-block {
+  		 padding: 50px 80px 250px;
+  	}
+  	 .life-block p br {
+  		 display: none;
+  	}
+  	 .loan-img {
+  		 top: -130px;
+  	}
+  	 .loan-img img {
+  		 width: 60%;
+  	}
+  }
+   @@media (max-width: 991px) {
+  	 .loan-section .shape-img::before {
+  		 display: none;
+  	}
+  	 .our-loan-mobile img {
+  		 width: 100%;
+  	}
+  	 .our-loan-page .banner-content {
+  		 margin-left: 0px;
+  	}
+  	 .loan-easy .easy-block h3 {
+  		 font-size: 25px;
+  		 line-height: 30px;
+  		 margin: 21px 0 12px;
+  	}
+  	 .loan-section .shape-img::before {
+  		 height: 450px;
+  		 width: 110%;
+  		 -webkit-clip-path: polygon(20% 0%, 100% 8%, 100% 100%, 0% 100%);
+  		 clip-path: polygon(20% 0%, 100% 8%, 100% 100%, 0% 100%);
+  	}
+  	 .life-block {
+  		 padding: 50px 80px 110px;
+  	}
+  	 .shape-img .loan-img {
+  		 display: none;
+  	}
+  	 .shape-img .loan-section .shape-img {
+  		 display: none;
+  	}
+  	 .our-loan-mobile {
+  		 display: block;
+  	}
+  }
+   @@media (max-width: 767px) {
+  	 .our-loan-page .banner-content {
+  		 padding: 30px 0 30px !important;
+  		 margin-left: 0px;
+  		 text-align: center;
+  	}
+  	 .our-loan-page .page-img {
+  		 clip-path: polygon(0 0, 100% 22%, 100% 100%, 0 100%);
+  	}
+  	 .possibilities-section {
+  		 padding: 28px 0px 41px;
+  		 text-align: center;
+  	}
+  	 .possibilities-section .possible-title h1 {
+  		 font-size: 25px;
+  		 line-height: 30px;
+  		 margin: 0 0 13px;
+  	}
+  	 .possibilities-section .possible-title h1 br {
+  		 display: none;
+  	}
+  	 .possibilities-section .possible-title h2 {
+  		 font-size: 25px;
+  		 line-height: 30px;
+  		 margin: 0 0 10px 0;
+  		 padding: 0 0 18px;
+  	}
+  	 .possibilities-section .possible-title p {
+  		 font-size: 16px;
+  		 line-height: 21px;
+  	}
+  	 .possibilities-section .tirngle-shape {
+  		 align-items: start;
+  	}
+  	 .loan-easy {
+  		 padding: 28px 0 30px;
+  		 clip-path: polygon(0 0, 100% 0%, 100% 95%, 0% 100%);
+  	}
+  	 .loan-easy .easy-block {
+  		 margin: 0 0 45px;
+  	}
+  	 .loan-easy .easy-block img {
+  		 height: auto;
+  	}
+  	 .loan-easy p {
+  		 font-size: 18px;
+  		 line-height: 22px;
+  		 margin: 0 0 30px;
+  	}
+  	 .loan-easy .slide-arrow {
+  		 top: -30px;
+  		 margin: 0 10px;
+  	}
+  	 .loan-easy .slide-arrow.next-arrow {
+  		 right: 20%;
+  	}
+  	 .loan-easy .slide-arrow.prev-arrow {
+  		 left: 20%;
+  	}
+  	 .slider-possible .cost-content {
+  		 margin: 20px 0 0;
+  	}
+  	 .slider-possible .cost-content img {
+  		 height: 430px;
+  		 object-fit: cover;
+  	}
+  	 .slider-possible .cost-content .item-content h2 {
+  		 font-size: 25px;
+  		 line-height: 30px;
+  		 margin: 0 0 5px;
+  	}
+  	 .loan-section .shape-img::before {
+  		 height: 275px;
+  		 bottom: 300px;
+  	}
+  	 .loan-section .trust-img {
+  		 margin-left: 0px;
+  	}
+  	 .easy-apply .section-title {
+  		 font-size: 20px;
+  		 line-height: 25px;
+  	}
+  	 .easy-details p {
+  		 margin: 0 0 70px;
+  	}
+  	 .loan-easy.life-block {
+  		 padding: 28px 0 100px;
+  	}
+  	 .loan-easy.life-block .live-content {
+  		 max-width: 340px;
+  		 padding: 0 15px;
+  		 margin: 0 auto;
+  	}
+  	 .loan-section {
+  		 clip-path: none !important;
+  		 margin-top: 0;
+  	}
+  	 .loan-section .easy-apply {
+  		 padding: 0 15px;
+  		 max-width: 340px;
+  		 margin: 0 auto;
+  		 background: unset;
+  	}
+  }
+   
+     .top-img {
+     	 position: relative;
+     }
+      .top-img .about-tringle {
+     	 position: absolute;
+     	 top: -60px;
+     	 left: 200px;
+     	 width: 500px;
+     }
+      .faq-main .main-img {
+     	 clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+     	 -webkit-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+     	 -o-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+     	 -ms-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+     }
+      .faq-page {
+     	 background: rgba(0, 0, 0, 0) linear-gradient(359deg, #daeefd 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0%;
+     	 z-index: 99;
+     }
+      .faq-section {
+     	 padding: 85px 0 100px;
+     }
+      .faq-section .faq-block {
+     	 margin-bottom: 40px;
+     }
+      .faq-section .faq-block h2 {
+     	 font-size: 30px;
+     	 line-height: 35px;
+     	 color: #5f2f90;
+     	 font-weight: 700;
+     }
+      .faq-section .faq-block p {
+     	 font-size: 30px;
+     	 line-height: 35px;
+     }
+      .additional {
+     	 background-color: #e3f0fb;
+     	 margin-top: -30px;
+     	 padding: 0px 0 30px;
+     	 position: relative;
+     	 z-index: 999;
+     }
+      .additional .additional-block {
+     	 padding: 70px 0 66px;
+     }
+      .additional .additional-block a {
+     	 border-bottom: 1px solid #a3cd39;
+     }
+      .additional::before {
+     	 position: absolute;
+     	 content: "";
+     	 width: 100%;
+     	 height: 100%;
+     	 top: 0;
+     	 background: rgba(0, 0, 0, 0) linear-gradient(267deg, #5f2f90 0%, #301848 100%) 0% 0%;
+     	 clip-path: polygon(0 19%, 100% 0%, 100% 100%, 0 100%);
+     }
+      .additional .call-details {
+     	 position: relative;
+     }
+      .additional .call-details .images-group {
+     	 position: absolute;
+     	 top: -233px;
+     	 right: 0;
+     }
+      .additional .call-details .images-group .mask-img .mask {
+     	 mask: url('../images/trinagle-mask.webp') no-repeat;
+     	 -webkit-mask: url('../images/trinagle-mask.webp') no-repeat;
+     	 width: 100%;
+     }
+      .additional .call-details p {
+     	 font-size: 25px;
+     	 line-height: 30px;
+     	 color: #fff;
+     	 margin: 0;
+     }
+      .additional .call-details p span, .additional .call-details p a {
+     	 color: #a3cd39;
+     	 display: inline-block;
+     }
+      @@media (max-width: 1799px) {
+     	 .pg-banner .contact-detail h1 {
+     		 font-size: 63px;
+     		 line-height: 75px;
+     		 font-weight: 700;
+     	}
+     }
+      @@media (max-width: 1499px) {
+     	 .additional .call-details .images-group {
+     		 right: -70px;
+     	}
+     	 .pg-banner .contact-detail h1 {
+     		 font-size: 58px;
+     		 line-height: 60px;
+     	}
+     }
+      @@media (max-width: 1199px) {
+     	 .top-img .about-tringle {
+     		 width: 300px;
+     		 left: 110px;
+     		 top: -30px;
+     	}
+     	 .faq-section {
+     		 padding: 45px 0 0;
+     	}
+     	 .pg-banner .contact-detail h1 {
+     		 font-size: 50px;
+     		 line-height: 50px;
+     		 text-align: left;
+     	}
+     	 .faq-section .faq-block h2 {
+     		 font-size: 24px;
+     		 line-height: 30px;
+     	}
+     	 .faq-section .faq-block p {
+     		 font-size: 24px;
+     		 line-height: 30px;
+     	}
+     	 .additional .call-details .images-group {
+     		 position: absolute;
+     		 top: -182px;
+     		 right: 0;
+     		 width: 40%;
+     	}
+     }
+      @@media (max-width: 991px) {
+     	 .top-img .about-tringle {
+     		 width: 40%;
+     	}
+     	 .additional .call-details p {
+     		 font-size: 23px;
+     	}
+     	 .faq-details h1 {
+     		 text-align: center;
+     	}
+     	 .faq-section {
+     		 text-align: center;
+     	}
+     	 .faq-section .faq-block h2 {
+     		 font-size: 25px;
+     		 line-height: 30px;
+     	}
+     	 .faq-section .faq-block p {
+     		 font-size: 18px;
+     		 line-height: 22px;
+     	}
+     	 .images-group {
+     		 display: none;
+     	}
+     	 .question-img {
+     		 display: none;
+     	}
+     	 .additional .additional-block {
+     		 padding: 50px 0 0;
+     	}
+     	 .comman-block .details-content {
+     		 padding: 40px 0px 45px;
+     		 margin: 0 auto;
+     	}
+     	 .comman-block .details-content h2 {
+     		 text-align: center;
+     	}
+     }
+      @@media (max-width: 767px) {
+     	 .top-img .about-tringle {
+     		 width: 210px;
+     		 left: 70px;
+     	}
+     	 .comman-block .details-content {
+     		 padding: 30px 0px 45px;
+     	}
+     	 .pg-banner.faq-main {
+     		 background: transparent linear-gradient(358deg, #e7f3fc 0%, #fff 0D 100%);
+     	}
+     	 .pg-banner.faq-main .main-img {
+     		 height: 300px;
+     		 clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+     		 -webkit-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+     		 -o-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+     		 -ms-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+     	}
+     	 .pg-banner.faq-main .main-img img {
+     		 width: 100%;
+     		 height: 100%;
+     		 object-fit: cover;
+     	}
+     	 .additional .call-details {
+     		 padding: 68px 0 68px;
+     		 text-align: center;
+     	}
+     	 .pg-banner .contact-detail h1 {
+     		 text-align: center;
+     	}
+     	 .pg-banner .contact-detail p {
+     		 text-align: center;
+     	}
+     	 .pg-banner.about-us .page-img {
+     		 height: unset;
+     		 clip-path: unset;
+     	}
+     	 .tirngle-shape {
+     		 display: none;
+     	}
+     }
+      .pg-banner {
+      	 position: relative;
+      	 background: transparent linear-gradient(358deg, #e7f3fc 0%, #fff 0D 100%) 0% 0%;
+      }
+       .pg-banner::after {
+      	 position: absolute;
+      	 content: '';
+      	 top: 0;
+      	 left: 0;
+      	 right: 0;
+      	 bottom: 0;
+      	 background-image: url(../images/Triangle-Pattern_TPL.webp);
+      	 width: 100%;
+      	 z-index: -1;
+      }
+       .pg-banner .page-img {
+      	 clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+      	 -webkit-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+      	 -o-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+      	 -ms-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+      }
+       .pg-banner .page-img.banner-img::after {
+      	 background-image: url(../images/grediant-shape.webp);
+      	 width: 500px;
+      	 margin-top: -40px;
+      }
+       .pg-banner .page-img img {
+      	 width: 100%;
+      }
+       .pg-banner .contact-detail h1 {
+      	 font-size: 75px;
+      	 line-height: 85px;
+      	 font-weight: 700;
+      	 color: #5f2f90;
+      	 margin: 0 0 16px;
+      	 display: inline-block;
+      }
+       .pg-banner .contact-detail p {
+      	 font-size: 30px;
+      	 line-height: 35px;
+      	 margin: 0;
+      }
+       .form-section {
+      	 padding: 78px 0;
+      	 background: transparent linear-gradient(96deg, rgba(95, 47, 144, 1) 0%, rgba(48, 24, 72, 1) 100%);
+      }
+       .contact-form .custom-row .form-control {
+      	 height: 70px;
+      	 padding: 19px 33px;
+      }
+       .contact-form .custom-row textarea {
+      	 padding: 19px 33px !important;
+      }
+       .contact-main .top-img .about-tringle {
+      	 left: 50%;
+      	 transform: translate(-50%, 0);
+      }
+       .contact-main.pg-banner .page-img.banner-img::after {
+      	 top: 0;
+      	 margin: 0;
+      	 transform: translate(-50%, 0);
+      }
+       @@media (max-width: 1499px) {
+      	 .form-section {
+      		 padding: 38px 0;
+      	}
+      	 .pg-banner .contact-detail h1 {
+      		 font-size: 50px;
+      		 line-height: 50px;
+      	}
+      	 .pg-banner .contact-detail p {
+      		 font-size: 20px;
+      		 line-height: 25px;
+      		 text-align: left !important;
+      	}
+      	 .contact-form .custom-row .form-control {
+      		 height: 50px;
+      		 padding: 15px 18px;
+      	}
+      	 .contact-form .custom-row textarea {
+      		 padding: 19px 18px !important;
+      	}
+      }
+       @@media (max-width: 1199px) {
+      	 .pg-banner .page-img.banner-img::after {
+      		 width: 200px;
+      		 height: 205px;
+      	}
+      }
+       @@media (max-width: 991px) {
+      	 .pg-banner .contact-detail {
+      		 padding: 0px 0px 0px 0px;
+      		 display: inline-block;
+      		 text-align: left;
+      	}
+      	 .about-tringle .page-img {
+      		 display: none;
+      	}
+      	 .contact-detail.about-details {
+      		 margin: 0 0 50px;
+      	}
+      }
+       @@media (max-width: 767px) {
+      	 .pg-banner.contact-main {
+      		 background: rgba(0, 0, 0, 0) linear-gradient(358deg, #a1d7ff 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0% !important;
+      	}
+      	 .pg-banner.contact-main .page-img {
+      		 height: 300px;
+      		 clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+      		 -webkit-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+      		 -o-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+      		 -ms-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
+      	}
+      	 .pg-banner.contact-main .page-img img {
+      		 height: 100%;
+      		 object-fit: cover;
+      	}
+      	 .pg-banner.contact-main .page-img.banner-img::after {
+      		 top: -60px;
+      		 width: 260px;
+      		 height: 265px;
+      	}
+      	 .contact-form .custom-row .form-control {
+      		 font-size: 16px;
+      		 line-height: 16px;
+      	}
+      	 .form-section {
+      		 padding: 23px 0 55px;
+      	}
+      	 .submit-btn {
+      		 margin-top: 40px;
+      	}
+      	 .contact-main .comman-block .details-content {
+      		 padding: 45px 0 45px;
+      	}
+      	 .top-img .about-tringle {
+      		 top: 0;
+      	}
+      }
+       .pladge-block .people-details p, .pladge-block .people-details .join-btn {
+           margin-left: 40px;
+           font-size: 25px !important;
+       }
+</style>
