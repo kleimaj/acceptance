@@ -6,16 +6,84 @@
     @await Html.PartialAsync("Partials/_MainContent")
 </div>
 <style asp-add-nonce="true">
+.unique-section { 
+	background: #536380;
+	color:  #fff;
+} 
+.unique-section h2 {
+	font-family: Oswald;
+	font-size: 50px;
+}
+.unique-section p {
+	font-family: Poppins;
+	font-size: 20px;
+}
+.unique-section .unique-checks img {
+	padding-bottom: 10px;
+}
+.unique-section .unique-checks p {
+	font-family: Oswald;
+	font-size: 22px;
+}
+.unique-checks .check { 
+	padding: 25px;
+	width: 280px;
+}
+.harness-section {
+	z-index: 2;
+}
+.harness-section h2 {
+	font-size: 45px;
+	font-family: Oswald;  
+	color:  #0847BA;
+}  
+.harness-section p {
+	font-family: Poppins; 
+	font-size: 20px; 
+}
+.harness-section h4 {
+	font-family: Oswald;
+	font-size: 22px;
+	text-transform: uppercase;
+	color:  #0847BA;
+}
+.about-harness {
+	margin-bottom: -150px;
+}
+.questions-section {
+	background: #0847BA;
+	color:  #fff;
+}
+.questions-section p {
+	font-size: 25px;
+	font-family: Poppins;
+	margin: 0;
+}
+.questions-section a {
+	color: #fff;
+	text-decoration: none;
+}
+.questions-section:before {
+	content: ' ';
+		background: #54D6FB;
+		width: 5%;
+		height: 100%;
+		top: inherit;
+		/* bottom: 0; */
+		left: 0;
+		bottom: 0;
+		position: absolute;
+}
 .about-goal .tirngle-shape img {
     position: relative;
     left: 240px;
     mix-blend-mode: multiply;
 }
   .pg-banner.about-us {
-  	 padding: 240px 0 0;
-  }
+  	 padding: 0 0; 
+  } 
    .pg-banner.about-us .page-img {
-  	 position: relative;
+  	 position: relative; 
   }
    .pg-banner.about-us .page-img .about-tringle {
   	 position: absolute;
@@ -31,7 +99,7 @@
   	 background-image: url('images/triangle-bg.webp');
   }
    .about-us .inner-banner {
-  	 clip-path: polygon(16% 1%, 100% 8%, 100% 100%, 0% 100%);
+  	/* clip-path: polygon(16% 1%, 100% 8%, 100% 100%, 0% 100%);*/
   }
    .about-us .page-img .banner-img::after {
   	 top: 0;
@@ -54,7 +122,7 @@
   	 margin-left: 40px;
   	 font-size: 25px !important;
   }
-   .pladge-block .join-people {
+   .pladge-block .join-people { 
   	 height: 100%;
   	 clip-path: polygon(0 0, 80% 1%, 100% 100%, 0% 100%);
   }
@@ -104,12 +172,12 @@
   }
    .possibilities-section .your-self ul {
   	 padding: 20px 0 30px;
-  }
+  } 
    .possibilities-section .your-self ul li {
   	 color: #fff;
   }
    .possibilities-section .your-self ul li::before {
-  	 content: '';
+  	 content: ''; 
   	 top: 4px;
   	 width: 21px;
   	 height: 18px;
@@ -125,17 +193,17 @@
   	 right: 270px;
   }
    .about-details {
-  	 margin: 0 58px 0 0;
+  	 margin: 0 0px 0 0;
   }
    @@media (max-width: 1799px) {
   	 .unique .unique-people {
   		 right: 100px;
-  	}
-  }
+  	} 
+  } 
    @@media (max-width: 1599px) {
-  	 .about-details {
+/*  	 .about-details {
   		 margin: 0 58px 90px 0;
-  	}
+  	}*/
   	 .unique .unique-people {
   		 top: -30px;
   		 right: 40px;
@@ -227,14 +295,25 @@
   	}
   	 .pladge-block .join-people {
   		 display: none;
-  	}
+  	} 
   	 .pladge-block .people-details {
   		 padding: 60px 0;
-  	}
+  	} 
+  } 
+  @@media(max-width: 990px) {
+  .about-us .comman-block .details-content {
+  	padding-top: 200px;
   }
-   @@media (max-width: 767px) {
+  }
+   @@media (max-width: 767px) { 
+   .questions-section p {
+   	font-size: 18px;
+   }
+   	.about-harness {  
+   		margin-bottom: 0;
+   	} 
   	 .about-us .comman-block .details-content {
-  		 padding: 0;
+  		 padding-top: 200px; 
   	}
   	 .about-us .comman-block .details-content p {
   		 text-align: center !important;
@@ -870,22 +949,24 @@
        .pg-banner .page-img.banner-img::after {
       	 background-image: url(../images/grediant-shape.webp);
       	 width: 500px;
-      	 margin-top: -40px;
+      	 margin-top: -40px; 
       }
        .pg-banner .page-img img {
-      	 width: 100%;
-      }
+      	 width: 100%; 
+      } 
        .pg-banner .contact-detail h1 {
-      	 font-size: 75px;
+      	 font-size: 75px;  
       	 line-height: 85px;
-      	 font-weight: 700;
-      	 color: #5f2f90;
+      	 font-weight: 700; 
+      	 font-family: 'Oswald';
+      	 color: #0847BA;
       	 margin: 0 0 16px;
       	 display: inline-block;
-      }
+      } 
        .pg-banner .contact-detail p {
-      	 font-size: 30px;
+      	 font-size: 30px; 
       	 line-height: 35px;
+      	 font-family: Poppins;
       	 margin: 0;
       }
        .form-section {
