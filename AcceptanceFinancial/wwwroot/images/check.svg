@@ -1,0 +1,10 @@
+<svg id="check-mark-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57.174" height="40.618" viewBox="0 0 57.174 40.618">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1023" data-name="Rectangle 1023" width="57.174" height="40.618" fill="#ffc400"/>
+    </clipPath>
+  </defs>
+  <g id="Group_2117" data-name="Group 2117" clip-path="url(#clip-path)">
+    <path id="Path_21767" data-name="Path 21767" d="M55.714,1.46a4.849,4.849,0,0,0-6.937,0L21.03,29.208,8.008,17.281a4.815,4.815,0,0,0-6.815.243,4.936,4.936,0,0,0,.365,6.815L17.987,39.309a4.775,4.775,0,0,0,6.693-.122L55.714,8.4a4.849,4.849,0,0,0,0-6.937" transform="translate(0 0)" fill="#ffc400"/>
+  </g>
+</svg>

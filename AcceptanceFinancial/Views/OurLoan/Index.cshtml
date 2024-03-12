@@ -6,15 +6,66 @@
     @await Html.PartialAsync("Partials/_MainContent")
 </div>
 <style asp-add-nonce="true">
+.details-content .smaller {
+	font-size: 18px;
+}
+.details-content p {
+	font-family: Poppins;
+}
  .pg-banner {
      position: relative;
-     background: transparent linear-gradient(358deg,#e7f3fc 0%,#fff 0D 100%) 0% 0%;
      padding: 153px 0 0;
  }
 .loan-section {
     background: rgba(0,0,0,0) linear-gradient(266deg, #5F2F90 0%, #301848 100%) 0% 0% no-repeat padding-box !important;
 }
-
+.loan-benefits h2 {
+	font-size: 35px;
+	color: #0847BA;
+	font-family: Oswald;
+}
+.loan-benefits .benefit {
+	background: #536380;
+	border-radius: 50%;
+	width: 188px;
+	height: 188px;
+	border: 6px solid #54D6FB;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 18px;
+	font-family: Poppins;
+	margin: 15px;
+	color:  #fff;
+}
+.loan-benefits .benefit img {
+	width: 40px;
+	margin: 10px;
+}
+.borrowing-section .container{
+	background: rgba(84,214,251,.17);
+}
+.borrowing-section img {
+	transform: rotate(-90deg);
+	padding:  0px 20px;
+}
+.borrowing-section h2 {
+	font-size: 45px;
+	color: #0847BA;
+	font-family: Oswald;
+}
+.borrowing-section h4 {
+	font-size: 30px;
+	color: #0847BA;
+	font-family: Oswald;
+}
+.borrowing-section p {
+	font-size: 25px;
+	font-family: Poppins;
+}
+.borrowing-items p {
+	font-size: 20px;
+}
 .our-loan-page {
 	 margin-top: 178px;
 	 background-image: url('images/triangle-bg.webp');
@@ -32,26 +83,28 @@
 	 display: none;
 }
  .possibilities-section {
-	 background: transparent linear-gradient(93deg, #5f2f90 0%, #301848 100%);
-	 padding: 40px 0 43px;
+	 background: #0847BA;
+	 padding: 60px 0 60px;
 	 position: relative;
 	 overflow: hidden;
 }
- .possibilities-section .tirngle-shape {
-	 position: absolute;
-	 left: 0;
-	 top: 0;
-	 bottom: 0;
-	 z-index: 0;
-	 display: flex;
-	 align-items: center;
+.possibilities-section:before {
+	content: ' ';
+	background: #BA03FC;
+	width: 5%;
+	height: 100%;
+	top: inherit;
+	/* bottom: 0; */
+	left: 0;
+	bottom: 0;
+	position: absolute;
 }
  .possibilities-section .possible-title {
 	 position: relative;
 	 z-index: 1;
 }
  .possibilities-section .possible-title h1 {
-	 font-size: 45px;
+	 font-size: 55px;
 	 line-height: 45px;
 	 font-weight: 700;
 	 color: #a3cd39;
@@ -59,17 +112,45 @@
 	 text-align: center;
 }
  .possibilities-section .possible-title h2 {
-	 font-size: 35px;
+	 font-size: 45px;
 	 line-height: 45px;
-	 color: #a3cd39;
-	 margin: 0 0 0 40px;
+	 font-family: Oswald;
+	 color: #FFC400;
 	 font-weight: 700;
 }
  .possibilities-section .possible-title p {
-	 font-size: 25px;
+	 font-size: 20px;
+	 font-family: Poppins;
 	 line-height: 30px;
 	 color: #fff;
 	 margin: 0;
+}
+.funding-img {
+	margin-top: -270px;
+	position: relative;
+}
+.funding-section .example {
+	padding: 0 25px 0 20;
+}
+.funding-section h2 {
+	color: #0847BA;
+	font-family: Oswald;
+	font-size: 55px; 
+}
+.funding-section p {
+	font-family: Poppins;
+	font-size: 30px;
+}
+.funding-section .smaller {
+	font-size: 18px;
+}
+.funding-section .example h4 {
+	font-family: Oswald;
+	font-size: 22px;
+	color:  #0847BA;
+}
+.funding-section .example p {
+	font-size: 20px;
 }
  .loan-easy {
 	 padding: 60px 0 100px;
@@ -239,7 +320,40 @@
 		 display: block;
 	}
 }
+@@media(max-width: 992px) {
+	.funding-img {
+		margin-top: 0;
+	}
+}
  @@media (max-width: 767px) {
+ .borrowing-section h2 {
+ 	font-size: 35px;
+ }
+ .borrowing-section p {
+ 	font-size: 20px;
+ }
+ .borrowing-section img {
+ 	padding: 15px;
+ 	transform: none;
+ }
+ .borrowing-items h4 {
+ 	font-size: 30px;
+ }
+ .borrowing-items p {
+ 	font-size: 20px;
+ }
+ .borrowing-section {
+	background: rgba(84,214,251,.17);
+ }
+ .borrowing-section .container {
+ 	background: none;
+ }
+ .funding-section h2 {
+ 	font-size: 35px;
+ }
+ .funding-section p {
+ 	font-size: 25px;
+ }
 	 .our-loan-page .banner-content {
 		 padding: 30px 0 30px !important;
 		 margin-left: 0px;
@@ -261,8 +375,7 @@
 		 display: none;
 	}
 	 .possibilities-section .possible-title h2 {
-		 font-size: 25px;
-		 line-height: 30px;
+		 font-size: 35px;
 		 margin: 0 0 10px 0;
 		 padding: 0 0 18px;
 	}
@@ -345,18 +458,6 @@
 }
  .top-img {
  	 position: relative;
- }
-  .top-img .about-tringle {
- 	 position: absolute;
- 	 top: -60px;
- 	 left: 200px;
- 	 width: 500px;
- }
-  .faq-main .main-img {
- 	 clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
- 	 -webkit-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
- 	 -o-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
- 	 -ms-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
  }
   .faq-page {
  	 background: rgba(0, 0, 0, 0) linear-gradient(359deg, #daeefd 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0%;
@@ -519,10 +620,6 @@
  	}
  	 .pg-banner.faq-main .main-img {
  		 height: 300px;
- 		 clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
- 		 -webkit-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
- 		 -o-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
- 		 -ms-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
  	}
  	 .pg-banner.faq-main .main-img img {
  		 width: 100%;
@@ -535,9 +632,11 @@
  	}
  	 .pg-banner .contact-detail h1 {
  		 text-align: center;
+ 		 font-size: 42px !important;
  	}
- 	 .pg-banner .contact-detail p {
- 		 text-align: center;
+
+ 	.pg-banner .contact-detail .smaller {
+ 		font-size: 18px;
  	}
  	 .pg-banner.about-us .page-img {
  		 height: unset;
@@ -554,15 +653,13 @@
   
   .pg-banner {
   	 position: relative;
-  	background: rgba(0,0,0,0) linear-gradient(358deg, #E7F3FC 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0%;
-   padding: 153px 0 0;
+   padding: 0 0;
   	 
   }
  @@media (max-width: 1499px) {
  .pg-banner {
    	 position: relative;
-   	 background: rgba(0,0,0,0) linear-gradient(358deg, #E7F3FC 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0%;
-   	 padding: 0;
+   	 padding: 60px 0 0;
    }
   }
    .pg-banner::after {
@@ -572,15 +669,8 @@
   	 left: 0;
   	 right: 0;
   	 bottom: 0;
-  	 background-image: url('images/Triangle-Pattern_TPL.webp');
   	 width: 100%;
   	 z-index: -1;
-  }
-   .pg-banner .page-img {
-  	 clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-  	 -webkit-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-  	 -o-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-  	 -ms-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
   }
    .pg-banner .page-img.banner-img::after {
   	 background-image: url('images/grediant-shape.webp');
@@ -594,7 +684,8 @@
   	 font-size: 75px;
   	 line-height: 85px;
   	 font-weight: 700;
-  	 color: #5f2f90;
+  	 font-family: Oswald;
+  	 color: #0847BA;
   	 margin: 0 0 16px;
   	 display: inline-block;
   }
@@ -603,6 +694,9 @@
   	 line-height: 35px;
   	 margin: 0;
   }
+   	 .pg-banner .contact-detail .smaller {
+   		 font-size: 18px;
+   	}
    .form-section {
   	 padding: 78px 0;
   	 background: transparent linear-gradient(96deg, rgba(95, 47, 144, 1) 0%, rgba(48, 24, 72, 1) 100%);
@@ -632,9 +726,8 @@
   		 line-height: 50px;
   	}
   	 .pg-banner .contact-detail p {
-  		 font-size: 20px;
-  		 line-height: 25px;
-  		 text-align: left !important;
+  		 font-size: 25px;
+  		 text-align: left;
   	}
   	 .contact-form .custom-row .form-control {
   		 height: 50px;
@@ -664,6 +757,18 @@
   	}
   }
    @@media (max-width: 767px) {
+   .pg-banner {
+   	padding-top:  200px;
+   }
+   .pg-banner .mobile-img {
+   	width: 100%;
+   	margin-top: -200px;
+   }
+   .possibilities-section:before {
+   	    width: 100%;
+        top: 0;
+        height: 10%;
+   }
   	 .pg-banner.contact-main {
   		 background: rgba(0, 0, 0, 0) linear-gradient(358deg, #a1d7ff 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0% !important;
   	}
@@ -774,6 +879,9 @@
       	}
       }
        @@media (max-width: 991px) {
+       .pg-banner {
+	   	padding-top: 200px;
+	   }
       	 .people-details .tringle-shape {
       		 display: none;
       	}
@@ -855,11 +963,8 @@
        	 width: 500px;
        }
         .faq-main .main-img {
-       	 clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-       	 -webkit-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-       	 -o-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-       	 -ms-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-       }
+       	
+       	}
         .faq-page {
        	 background: rgba(0, 0, 0, 0) linear-gradient(359deg, #daeefd 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0%;
        	 z-index: 99;
@@ -1022,11 +1127,7 @@
        	}
        	 .pg-banner.faq-main .main-img {
        		 height: 300px;
-       		 clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-       		 -webkit-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-       		 -o-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-       		 -ms-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-       	}
+       		}
        	 .pg-banner.faq-main .main-img img {
        		 width: 100%;
        		 height: 100%;
@@ -1038,6 +1139,8 @@
        	}
        	 .pg-banner .contact-detail h1 {
        		 text-align: center;
+       		 
+       		 
        	}
        	 .pg-banner .contact-detail p {
        		 text-align: center;
