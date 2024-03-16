@@ -6,7 +6,7 @@
         Callback = "CustomerFormCallback"
     };
     var stateList = new List<SelectListItem> {
-        new() { Text = "State", Value = "State" },
+        new() { Text = "State", Value = "" },
         new() { Text = "Alabama", Value = "AL" },
         new() { Text = "Alaska", Value = "AK" },
         new() { Text = "Arizona", Value = "AZ" },
@@ -62,16 +62,29 @@
 }
 @using AcceptanceFinancial.Models.Const
 @model AcceptanceFinancial.Models.Customer
-  <form id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="Apply" asp-action="Save" enctype="multipart/form-data" formhelper>
-                           <div class="custom-row mb-4">
-                               <input asp-for="Offer" type="text" class="form-control" placeholder=" ">
-                               <label class="form-label" asp-for="Offer">Offer Code</label>
-                               <span asp-validation-for="Offer" class="text-danger offer-err"></span>
-                           </div>
+  <form class="apply-form" id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="Apply" asp-action="Save" enctype="multipart/form-data" formhelper>
+      <div class="offer py-4 my-5">
+          <div class="container row align-items-center mx-auto">
+              <div class="col-md-6 d-flex flex-md-row flex-column align-items-center">
+              <h4 class="text-md-start text-center">If you have an Offer Code, please enter it here.</h4>
+              <picture class="d-md-flex justify-content-end mx-4">
+                  <source type="image/webp" srcset="images/careers-arrow.svg">
+
+                  <img src="images/career-arrow.svg" alt="product" class="">
+              </picture>
+                </div>
+              <div class="custom-row mt-4 col-md-6">
+                  <input asp-for="Offer" type="text" class="form-control" placeholder=" ">
+                  <label class="form-label" asp-for="Offer">Offer Code</label>
+                  <span asp-validation-for="Offer" class="text-danger offer-err"></span>
+              </div>
+
+          </div>
+      </div>
                             <div class="progress fetchhide">
                               <div class="progress-bar progress-bar-striped progress-bar-animated fetchprogress" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
                             </div>
-                                   
+      <div class="container">  
                                    <div class="row">
                                        <div class="col-md-6">
                                            <div class="custom-row form-group">
@@ -91,7 +104,7 @@
                                           </div>
                                       </div>
                                  </div>
-                                @*<div class="row">
+                                <div class="row">
                                        <div class="col-md-6">
                                             <div class="custom-row form-group">
                                                  <input asp-for="Address" type="text" class="form-control" placeholder=" ">
@@ -131,7 +144,7 @@
                                                  <span asp-validation-for="Zip" class="text-danger"></span>
                                              </div>
                                        </div>
-                                   </div>*@
+                                   </div>
        
        
                                    <div class="row">
@@ -170,17 +183,14 @@
                                            </div>
                                        </div>
                                    </div>
-                                    <div class="custom-row mb-2 center_div">
-                                        @await Html.PartialAsync("Partials/_CloudflareTurnstile") 
-                                    </div>
-                                   <p class="click-verify">By clicking ‘VERIFY’, you authorize — with respect to the telephone number provided above and any other telephone number associated or related to you that may be provided to us in the future — TRIPOINT LENDING LLC® can contact you by phone, text, email, mail, or by artificial or pre-recorded voice, even if you have listed yourself on any Do-Not-Call List. You also agree to Privacy Policy and Terms of Use, and further agree that any person or entity contacting you pursuant to your consent here may use an automatic telephone dialing system, even if the telephone number you provided above (or any telephone number associated with you) is connected to a mobile phone and even if you might be charged for the call. Your consent to receive automated calls or text messages is not required for any purchase or availability of goods/services from TRIPOINT LENDING LLC®. If you do not consent, you may call us at <a href="tel:(800) 307-1789">(800) 307-1789</a> to continue your inquiry.</p>
-       
-                                   <div class="verify-btn d-flex justify-content-center">
-                                            <button id="submit-verify" type="submit" class="comman-btn green-btn btn-submit-form">Verify</button>
-                                   </div>
-       
-                                   <span class="confidence">The safety of your information is of the utmost importance to us. Rest assured that all of the information you provide is kept in the strictest confidence.</span>
-       
+      <div class="custom-row mb-2 center_div">
+          @await Html.PartialAsync("Partials/_CloudflareTurnstile") 
+      </div>
+      <div class="verify-btn d-flex justify-content-center mb-5">
+                                                  <button id="submit-verify" type="submit" class="comman-btn yellow-btn btn-submit-form">Check My Rate</button>
+                                         </div>
+          <p class="click-verify">By clicking “CHECK MY RATE,” you authorize – with respect to the telephone number provided above and any other telephone number associated or related to you that may be provided to us in the future — Acceptance Financial® can contact you by phone, text, email, mail, or by artificial or pre-recorded voice, even if you have listed yourself on any Do-Not-Call List. You also agree to our Privacy Policy and Terms of Use, and further agree that any person or entity contacting you pursuant to your consent here may use an automatic telephone dialing system, even if the telephone number you provided above (or any telephone number associated with you) is connected to a mobile phone and even if you might be charged for the call. Your consent to receive automated calls or text messages is not required for any purchase or availability of goods/services from Acceptance Financial®. If you do not consent, you may call us at <a href="tel:(800) 410-5845">(800) 410-5845</a> to continue your inquiry.</p>
+      </div>
                                </form>
 
 
@@ -240,11 +250,11 @@ window.addEventListener("load", function () {
                                      $(".offer-err").html("");
                                     $("input[name='FirstName']").val(res.firstName);
                                     $("input[name='LastName']").val(res.lastName);
-                                    //$("input[name='Address']").val(res.address);
-                                    //$("input[name='City']").val(res.city); 
-                                    //$('.stateList option')[res.stateCode].selected = true;    
-                                   // $('.stateList').val(res.stateCode);
-                                    //$("input[name='Zip']").val(res.zip);
+                                    $("input[name='Address']").val(res.address);
+                                    $("input[name='City']").val(res.city); 
+                                    $('.stateList option')[res.stateCode].selected = true;    
+                                    $('.stateList').val(res.stateCode);
+                                    $("input[name='Zip']").val(res.zip);
                                     $(".fetchhide").css("display","none");
                               }
                               else {

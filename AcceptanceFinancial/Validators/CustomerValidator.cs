@@ -15,14 +15,14 @@ public class CustomerValidator : AbstractValidator<Customer> {
             .Length(13, 18).WithMessage("Phone number is not a valid number.");
         RuleFor(x => x.Cell)
             .NotEmpty().WithMessage("Cell phone number is required").Length(13, 18).WithMessage("Cell phone number is not a valid number.");
-        RuleFor(x => x.Address);
-          //  .NotEmpty().WithMessage("Address is required.");
-        RuleFor(x => x.City);
-          //  .NotEmpty().WithMessage("City is required.");
-        RuleFor(x => x.State);
-          //  .NotNull().NotEqual("State").WithMessage("Please select a state.");
-          RuleFor(x => x.Zip);
-          //  .NotEmpty().WithMessage("Zip code is required.");
+        RuleFor(x => x.Address)
+          .NotEmpty().WithMessage("Address is required.");
+        RuleFor(x => x.City)
+          .NotEmpty().WithMessage("City is required.");
+        RuleFor(x => x.State)
+          .NotNull().NotEqual("").WithMessage("Please select a state.");
+          RuleFor(x => x.Zip)
+          .NotEmpty().WithMessage("Zip code is required.");
         RuleFor(x => x.Offer);
         RuleFor(x => x.Address2);
         RuleFor(x => x.LoanAmount)

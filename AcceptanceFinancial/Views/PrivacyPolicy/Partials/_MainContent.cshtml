@@ -2,7 +2,7 @@
     <!-- great-news section start -->
     <section class="great-news congratulations">
       <div class="custom-padding">
-        <div class="container">
+        <div class="container p-md-5 py-5">
           <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-12">
               <div class="terms-section">
@@ -10,10 +10,10 @@
                   <h1 class="title blue-text">Privacy Policy</h1>
                   <div class="sidebar-scroll" id="scrollbar">
                     <div class="terms-details">
-                      <p><b>UPDATED 1/1/2023</b></p>
-                      <p>The Tripoint Lending Privacy Policy applies to everyone who visits our website:</p>
+                      <p><b>UPDATED 2/16/2024</b></p>
+                      <p>The Acceptance Financial Privacy Policy applies to everyone who visits our website:</p>
                       <p>Information Collection, Use, and Sharing</p>
-                      <p>Tripoint Lending is the sole owner of the information collected on this site. We only have access
+                      <p>Acceptance Financial is the sole owner of the information collected on this site. We only have access
                         to/collect information that you voluntarily give us via email or other direct contact with you.
                         Information we collect may include, but is not limited to:</p>
                       <p>-Name</p>
@@ -31,7 +31,7 @@
                         changes to this privacy policy.</p>
                       <p><b>Your Access to and Control over Information</b></p>
                       <p>You may opt out of any future contact from us at any time. This may be done through the following
-                        at any time: contact us via email at <a href="mailto:marketing@tplend.com">marketing@tplend.com</a>  or contact us via telephone at <a href="tel:1(800) 307-1789">1(800) 307-1789</a>. By contacting us you may: see what data we have about you, if any. Change/correct any data
+                        at any time: contact us via email at <a href="mailto:hello@acceptanceteam.com">hello@acceptance.com</a>  or contact us via telephone at <a href="tel:800-307-1789">800-307-1789</a>. By contacting us you may: see what data we have about you, if any. Change/correct any data
                         we have about you. Have us delete any data we have about you. Express any concern you have about our
                         use of your data.</p>
                       <p><b>Security</b></p>
@@ -45,7 +45,7 @@
                         (for example, billing or customer service) are granted access to personally identifiable
                         information. The computers/servers in which we store personally identifiable information are kept in
                         a secure environment. If you feel that we are not abiding feel free to contact us at <a
-                          href="tel:(800) 307-1789">1(800) 307-1789</a></p>
+                          href="tel:800-307-1789">800-307-1789</a></p>
                     </div>
                   </div>
 
@@ -62,14 +62,35 @@
          overflow: auto;
          }
        .custom-padding {
-           padding: 200px 0 90px !important;
+           padding: 200px 15px 90px !important;
        }
        .congratulations {
-           background: rgba(0,0,0,0) linear-gradient(358deg, #E7F3FC 0%, rgba(255, 255, 255, 0.0509803922) 100%);
            position: relative;
        }
+       .congratulations .container {
+       	 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+       	 position: relative;
+       }
+      .congratulations h1 {
+       font-family: Oswald;
+       font-size: 50px;
+       color: #0847BA !important;
+      }
+      .congratulations p {
+          font-size: 14px;
+          font-family: Poppins;
+         }
+              
+         .congratulations .container:before {
+          width: 100%;
+          height: 30px;
+          background: #54D6FB;
+          content: ' ';
+          position: absolute;
+          top: 0;
+          left: 0;
+         }
        .congratulations {
-           background: transparent linear-gradient(358deg, #E7F3FC 0%, #FFFFFF0D 100%);
            position: relative;
            &::after {
                position: absolute;
@@ -78,7 +99,6 @@
                bottom: 0;
                left: 0;
                right: 0;
-               background-image: url('images/Triangle-Pattern_TPL.webp');
                z-index: -1;
            }
        }
@@ -86,4 +106,10 @@
           width: 100%;
           height: 100% !important;
       }
+       @@media (max-width: 767px) {
+         .congratulations h1 {
+            font-size: 40px;
+            line-height: 45px;
+          }
+        }
 </style>

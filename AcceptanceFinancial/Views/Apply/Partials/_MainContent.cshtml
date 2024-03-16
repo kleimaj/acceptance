@@ -1,26 +1,55 @@
-﻿<!-- great-news section start -->
+﻿
+      <!-- page banner section desgin start -->
+<section class="pg-banner apply-header">
+    <div class="comman-block">
+        <div class="product-img">
+            <div class="row m-0 justify-content-end">
+                <div class="col-lg-12 col-md-12 p-0">
+                    <div class="product-img top-img">
+                        <div class="inner-banner main-img">
+                            <picture class="d-none d-md-flex justify-content-end">
+                                <source type="image/webp" srcset="images/apply-bg.webp">
+
+                                <img src="images/apply-bg.png" alt="product" class="img-fluid">
+                            </picture>
+                            <picture class="d-md-none d-block text-center">
+                                <source type="image/webp" srcset="images/apply-bg-mobile.webp">
+                            
+                                <img src="images/apply-bg-mobile.png" alt="product" class="img-fluid mobile-img w-100">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="details-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 pt-md-4">
+                        <div class="contact-detail about-details pt-md-5">
+	                        <h1 class="mt-4">We’re here for your lending needs!</h1>
+	                        <p class="">Please complete the form below to see your personal loan offer.
+                                <b>For immediate service, call <a href="tel:(800) 410-5845">(800) 410-5845</a>.</b></p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+      <!-- page banner section desgin end -->
+
+<!-- great-news section start -->
 <section class="great-news">
     <div class="custom-padding">
-        <div class="container">
-            <div class="news-details text-center">
-                <h1 class="title m-0 blue-text">
-                    Great News! <br>
-                    You’re One Step Closer To Getting Your Personal Loan
-                </h1>
-                <h3>For expedited service, call <a href="tel:8778005343">(877) 800-5343</a>. Or simply continue below. </h3>
-                <p>
-                    <b>Please note: The security of your personal information is very important to us.</b> <br>
-                    We employ high levels of encryption to keep your information safe and confidential. <br>
-                    <b>Verify your information by completing any empty fields then click VERIFY.</b>
-                </p>
-                <p class="mb-0">
-                    <b>This will <u>Not</u> affect your credit score</b>
-                </p>
-            </div>
+        <div class="">
             <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-12 col-md-12">
+                <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="custom-form">
-                        <h3 class="text-center">If you have an Offer Code, please enter it below.</h3>
+                        <div class="container">
+                            <p class="text-center mb-5"><b>Please note:</b> The security of your personal information is very important to us. We employ high levels of encryption to keep your information safe and confidential. Verify your information by completing any empty fields, then click “CHECK MY RATE.”
+                                <br/><b>This will NOT affect your credit score.</b></p>
+                            </div>
                         @await Html.PartialAsync("Partials/_ApplyForm")
                     </div>
                 </div>
@@ -31,6 +60,21 @@
 <!-- great-news section end -->
 
 <style asp-add-nonce="true">
+.apply-header h1{
+    color: #0847BA;
+    font-size: 63px;
+    font-family: Oswald;
+}
+.apply-header p {
+    font-size: 30px;
+    font-family: Poppins;
+}
+.apply-header a {
+    color: black;
+}
+.apply-header a:hover {
+    color:  #0847BA;
+}
 .news-details h3 {
     margin-top: 22px;
     margin-bottom: 22px;
@@ -41,12 +85,12 @@
        height: 70px;
        font-size: 20px;
        line-height: 20px;
-       font-family: "Open Sans";
+       font-family: "Poppins";
        padding: 9px 22px;
        font-weight: normal;
    }
    .custom-form h3 {
-       color: #5f2f90;
+       color: #fff;
        font-size: 26px;
        line-height: 26px;
        font-weight: 700;
@@ -54,14 +98,71 @@
    }
     .great-news {
      	 position: relative;
-      padding: 178px 0 0;
-     	 
+      padding: 0 0;
+      background: #536380;
      }
+     .click-verify a {
+        color:  #fff;
+     }
+     .great-news p {
+        color:  #fff;
+        font-family: Poppins;
+        font-size: 20px;
+        padding: 0 10px;
+     }
+     .offer {
+        background: #0847BA;
+     }
+     .offer img {
+        width: 30px;
+     }
+     .offer h4 {
+        color:  #fff;
+        font-family: Poppins; 
+        font-weight: bold;
+        font-size: 25px;
+     }
+     .apply-form .custom-row label {
+        text-indent: 0.5rem;
+         color: #0847BA;
+         font-family: Poppins;
+         font-size: 22px;
+     }
+     .apply-form .custom-row .form-control {
+        font-size: 22px;
+        font-weight: bold;
+        color: #0847BA;
+     }
+      .apply-form .custom-row .form-select {
+         font-weight: normal;
+         background-image: url('images/select-icon.svg');
+         cursor: pointer;
+      }
+      .form-select.valid {
+        font-weight: bold !important;
+      }
     @@media (max-width: 1499px) {
     .great-news {
       	 position: relative;
       	 padding: 0;
       }
+      .apply-header {
+        padding-top: 80px !important;
+      }
      }
+    @@media (max-width: 767px) {
+        .apply-header {
+            padding-top: 150px !important;
+        }
+        .apply-header h1 {
+            font-size: 40px !important;
+        }
+        .apply-header p {
+            font-size: 22px;
+        }
+        .offer img {
+            transform: rotate(90deg);
+        }
+    }
      
 </style>

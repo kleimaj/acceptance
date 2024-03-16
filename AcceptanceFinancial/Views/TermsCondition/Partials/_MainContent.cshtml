@@ -1,50 +1,50 @@
 ﻿ <!-- great-news section start -->
   <section class=" great-news congratulations">
     <div class="custom-padding">
-      <div class="container">
+      <div class="container p-md-5 py-5">
         <div class="row justify-content-center">
           <div class="col-xl-10 col-lg-12 col-md-12">
             <div class="terms-section">
               <div class="position-relative">
-                <h1 class="title blue-text">Terms & Conditions </h1>
+                <h1 class="title blue-text mb-4">Terms & Conditions </h1>
                 <div class="sidebar-scroll" id="scrollbar">
                   <div class="terms-details">
                     <p>Please note that all calls with the company may be recorded or monitored for quality assurance and
                       training purposes.</p>
-                    <p>Tripoint Lending provides “The User” with access to its content, resources, tools for
+                    <p>Acceptance Financial provides “The User” with access to its content, resources, tools for
                       communication, public forums, commerce platforms, and other services through its network of
-                      websites, “The Service”. Tripoint Lending provides its service to the user, subject to the following
+                      websites, “The Service”. Acceptance Financial provides its service to the user, subject to the following
                       Terms of Service.
                     </p>
-                    <p>Tripoint Lending is not responsible for providing you access facilities or equipment (in any form)
+                    <p>Acceptance Financial is not responsible for providing you access facilities or equipment (in any form)
                       to its service. You, “The User”, by using this website, and BY COMPLETING THE REGISTRATION PROCESS
                       AND CLICKING THE “SUBMIT” BUTTON, comprehend and agree that “The Service” may include advertisements
-                      and sponsorships and that these are necessary for Tripoint Lending to provide “The Service”. You
-                      also comprehend and agree that Tripoint Lending makes no representations or warranties about the
+                      and sponsorships and that these are necessary for Acceptance Financial to provide “The Service”. You
+                      also comprehend and agree that Acceptance Financial  makes no representations or warranties about the
                       suitability, reliability, availability, timeliness, and accuracy of the information, products,
                       services and related graphics contained within “The Service” for any purpose. “The Service” is
-                      provided “as is” without warranty of any kind. Tripoint Lending hereby disclaims all warranties and
+                      provided “as is” without warranty of any kind. Acceptance Financial  hereby disclaims all warranties and
                       conditions with regard to “The Service”.
-                    </p>
+                    </p> 
                     <b>THE SERVICE IS SUBJECT TO THE APPLICABLE RETAINER AGREEMENTS AND LEGAL DISCLAIMER.</b>
                     <p><b>ACKNOWLEDGMENT AND ACCEPTANCE OF TERMS OF SERVICE</b></p>
                     <p>“The Service” is provided to you, “The User”, under the terms and conditions and any amendments
-                      thereto and any operating rules or policies that may be published from time to time by Tripoint
-                      Lending as part of the Terms of Service/Legal Disclaimer and related disclosures which are
-                      cumulatively included herein by reference. The Tripoint Lending Terms of Service comprises the
-                      entire agreement between “The User” and Tripoint Lending and supersedes any prior agreements
+                      thereto and any operating rules or policies that may be published from time to time by Acceptance Financial
+                       as part of the Terms of Service/Legal Disclaimer and related disclosures which are
+                      cumulatively included herein by reference. The Acceptance Financial  Terms of Service comprises the
+                      entire agreement between “The User” and Acceptance Financial  and supersedes any prior agreements
                       pertaining to the subject matter contained herein. BY COMPLETING THE REGISTRATION PROCESS AND
-                      CLICKING THE “SUBMIT” BUTTON, YOU ARE AGREEING TO BE BOUND BY THE Tripoint Lending Terms of Service,
+                      CLICKING THE “SUBMIT” BUTTON, YOU ARE AGREEING TO BE BOUND BY THE Acceptance Financial  Terms of Service,
                       Legal Disclaimer and applicable terms of the Retainer Agreement.</p>
                     <p><b>MODIFICATION OF THESE TERMS OF USE</b></p>
-                    <p>Tripoint Lending reserves the right to change any of the terms, conditions, and notices under which
+                    <p>Acceptance Financial  reserves the right to change any of the terms, conditions, and notices under which
                       “The Services” are offered. You are responsible for regularly reviewing these terms and conditions,
                       including changes/modifications if any incorporated by us from time to time. Your continued use of
                       “The Service” constitutes your agreement to all such terms, conditions, and notices.</p>
                     <p><b>MODIFICATION TO “THE SERVICE”</b></p>
-                    <p>Tripoint Lending reserves the right to modify or discontinue, temporarily or permanently, “The
+                    <p>Acceptance Financial  reserves the right to modify or discontinue, temporarily or permanently, “The
                       Service” (or any part of “The Service”) with or without notice to “The User” at any time. “The User”
-                      agrees that Tripoint Lending shall not be liable to “The User” or any third party for any
+                      agrees that Acceptance Financial  shall not be liable to “The User” or any third party for any
                       modification or discontinuance of the Service.</p>
                   </div>
                 </div>
@@ -67,14 +67,36 @@
          overflow: auto;
          }
        .custom-padding {
-           padding: 200px 0 90px !important;
+           padding: 200px 15px 90px !important;
        }
        .congratulations {
-           background: rgba(0,0,0,0) linear-gradient(358deg, #E7F3FC 0%, rgba(255, 255, 255, 0.0509803922) 100%);
            position: relative;
        }
+       .congratulations h1 {
+        font-family: Oswald;
+        font-size: 50px;
+        color: #0847BA !important;
+       }
+       .congratulations p {
+        font-size: 14px;
+        font-family: Poppins;
+       }
+       .congratulations .container:before {
+        width: 100%;
+        height: 30px;
+        background: #BA03FC;
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+       }
+       .congratulations .container {
+	 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	 position: relative;
+       
+       }
        .congratulations {
-           background: transparent linear-gradient(358deg, #E7F3FC 0%, #FFFFFF0D 100%);
+       
            position: relative;
            &::after {
                position: absolute;
@@ -83,12 +105,17 @@
                bottom: 0;
                left: 0;
                right: 0;
-               background-image: url('images/Triangle-Pattern_TPL.webp');
                z-index: -1;
            }
        }
       .sidebar-scroll {
           width: 100%;
           height: 100% !important;
+      }
+     @@media (max-width: 767px) {
+       .congratulations h1 {
+          font-size: 40px;
+          line-height: 45px;
+        }
       }
 </style>

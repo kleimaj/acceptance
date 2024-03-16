@@ -1,31 +1,49 @@
 ﻿    <!-- great-news section start -->
-       <section class=" great-news congratulations">
-         <div class="custom-padding">
-           <div class="container">
-             <div class="row justify-content-center">
-               <div class="col-xl-10 col-lg-12 col-md-12">
-                 <div class="news-details text-center">
-                     <h1 class="title m-0 blue-text">Congratulations! </h1>
-                     <h3>A loan specialist will call you shortly to review your offer. <br class="d-lg-block d-none"> <b>If you need immediate assistance, please call <a href="tel:(877) 800-5343">(877) 800-5343.</a></b></h3>
+    <section class=" great-news congratulations">
+	    <div class="custom-padding">
+		    <div class="container  p-md-5 py-5">
+			    <div class="row justify-content-center">
+				    <div class="col-xl-10 col-lg-12 col-md-12">
+					    <div class="news-details text-center d-flex align-items-center flex-column">
+						    <h1 class="title m-0 blue-text">Thank You for Your Application!</h1>
+						    <h3>An Acceptance Financial Team Member will contact 
+							    you shortly to go over your information and options.</h3>
                      
-                     <div class="d-flex justify-content-center">
-                       <a href="/" class="comman-btn blue-outline back-btn">Back</a>
-                     </div>
+						    <div class="d-flex justify-content-center">
+							    <p>We strive to provide a fast response during regular business hours, and within 24 hours during weekends or on holidays. <b>If you need immediate assistance, please call <a href="tel:(800) 410-5845">(800) 410-5845</a> M-F 9 a.m. to 5 p.m. PST.</b></p>
+						    </div>
      
-                 </div>
+					    </div>
                  
-               </div>
-             </div>
-           </div>
-         </div>
-       </section>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+    </section>
+    <div class="bottom-section">
+	    <div></div>
+    </div>
        <!-- great-news section end -->
 
    
 <style asp-add-nonce="true">
 	.custom-padding {
-        padding: 178px 0 90px !important;
+        padding: 178px 0 0px !important;
 	}
+	.bottom-section {
+		padding: 90px;
+		position: relative;
+		background: white;
+	}
+		.bottom-section:before {
+    		width: 100%;
+    		left: 0;
+    		top: 0;
+    		content: ' ';
+    		position: absolute;
+    		height: 30px;
+    		background: #54D6FB;
+    	}
    .news-details h3 {
    	 font-size: 30px;
    	 line-height: 35px;
@@ -39,16 +57,44 @@
     .news-details h3 a:hover {
    	 color: #5f2f90;
    }
+   .congratulations h1 {
+   	color:  #0847BA !important;
+   	font-family: Oswald;
+   	font-size: 75px;
+   	width: 60%;
+   	line-height: 90px;
+   }
+   .congratulations h3 {
+   	font-family: Poppins;
+   	font-size: 30px;
+   	width: 80%;
+   }
+   .congratulations .container {
+	 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	 border-radius: 15px;
+	 position: relative;
+	 background: white;
+	 margin-bottom: -100px;
+	 z-index: 2;
+   }
+   .congratulations {
+   	background: #536380;
+   }
+   .congratulations p {
+   	border-top: 1px solid #0847BA;
+   	padding-top: 10px;
+   	font-family: Poppins;
+   }
     .news-details p {
    	 font-size: 22px;
    	 line-height: 26px;
    	 margin: 9px 0 22px;
    }
     .news-details p a {
-   	 color: #384b3d;
+   	 color: black;
    }
     .news-details p a:hover {
-   	 color: #5f2f90;
+   	 color: #0847BA;
    }
     .custom-form .slected-color .selectric .label {
    	 font-weight: 700;
@@ -90,7 +136,6 @@
    }
    
     .congratulations {
-   	background: rgba(0,0,0,0) linear-gradient(358deg, #E7F3FC 0%, rgba(255, 255, 255, 0.0509803922) 100%);
    	 position: relative;
    }
     .congratulations::after {
@@ -100,7 +145,6 @@
    	 bottom: 0;
    	 left: 0;
    	 right: 0;
-   	 background-image: url('images/Triangle-Pattern_TPL.webp');
    	 z-index: -1;
    }
     .great-news .browse-btn {
@@ -162,7 +206,7 @@
    		 margin: 0 0 5px;
    	}
    	 .great-news {
-   		 padding: 30px 8px 60px;
+   		 padding: 30px 8px 0px;
    	}
    }
     @@media (max-width: 991px) {

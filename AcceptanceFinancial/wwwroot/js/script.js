@@ -1,11 +1,6 @@
 $(document).ready(function () {
   // Custome Scrollbar Start
-  $(".navbar .navbar-toggler").click(function () {
-    $(this).toggleClass("show");
-  });
-  $(".navbar .navbar-toggler").click(function () {
-    $("body").toggleClass("body-show");
-  });
+
   $(".navbar-collapse .navbar-nav .nav-item .nav-link").click(function () {
     $(".navbar-collapse").removeClass("show");
     $(".navbar .navbar-toggler").removeClass("show");
@@ -13,6 +8,8 @@ $(document).ready(function () {
 
   $('.navbar-toggler-icon').click(function () {
 		$(this).toggleClass('open');
+        $('.navbar').toggleClass("show");
+        
 	});
 
   $('.people-slider').slick({

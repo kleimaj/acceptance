@@ -22,28 +22,8 @@
    	 padding: 0;
    }
   }
-   .pg-banner::after {
-  	 position: absolute;
-  	 content: '';
-  	 top: 0;
-  	 left: 0;
-  	 right: 0;
-  	 bottom: 0;
-  	 background-image: url('images/Triangle-Pattern_TPL.webp');
-  	 width: 100%;
-  	 z-index: -1;
-  }
- .pg-banner .page-img {
-	 clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-	 -webkit-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-	 -o-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-	 -ms-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-}
- .pg-banner .page-img.banner-img::after {
-	 background-image: url(../images/grediant-shape.webp);
-	 width: 500px;
-	 margin-top: -40px;
-}
+
+
  .pg-banner .page-img img {
 	 width: 100%;
 }
@@ -54,19 +34,43 @@
 	 color: #5f2f90;
 	 margin: 0 0 16px;
 	 display: inline-block;
-}
+} 
  .pg-banner .contact-detail p {
 	 font-size: 30px;
 	 line-height: 35px;
-	 margin: 0;
-}
- .form-section {
+	 margin: 0;  
+}  
+ .form-section { 
 	 padding: 78px 0;
-	 background: transparent linear-gradient(96deg, rgba(95, 47, 144, 1) 0%, rgba(48, 24, 72, 1) 100%);
+	 background: #0847BA;
+	 text-align: center;  
+	 position: relative;
+} 
+.form-section:before {
+left: 0;
+top:  0;
+	width: 5%;
+	height: 100%;
+	content: ' ';
+	background: #BA03FC;
+	position: absolute; 
+}
+.contact-form h1 {
+	font-family: Oswald;
+	font-size: 75px;
+	color: #FFC400;
+}
+.contact-form p {
+	font-size: 30px;
+	font-family: Poppins;
+	color:  #fff;
 }
  .contact-form .custom-row .form-control {
 	 height: 70px;
 	 padding: 19px 18px;
+}
+.custom-form .custom-row label {
+	top: 38% !important;
 }
  .contact-form .custom-row textarea {
 	 padding: 19px 18px !important;
@@ -121,24 +125,21 @@
 	}
 }
  @@media (max-width: 767px) {
-	 .pg-banner.contact-main {
-		 background: rgba(0, 0, 0, 0) linear-gradient(358deg, #a1d7ff 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0% !important;
-	}
-	 .pg-banner.contact-main .page-img {
-		 height: 300px;
-		 clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-		 -webkit-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-		 -o-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-		 -ms-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-	}
+
 	 .pg-banner.contact-main .page-img img {
 		 height: 100%;
 		 object-fit: cover;
-	}
+	} 
 	 .pg-banner.contact-main .page-img.banner-img::after {
 		 top: -60px;
 		 width: 260px;
 		 height: 265px;
+	}
+	.contact-form h1 {
+		font-size: 40px;
+	}
+	.contact-form p {
+		font-size: 18px;
 	}
 	 .contact-form .custom-row .form-control {
 		 font-size: 16px;
@@ -231,6 +232,19 @@
     	}
     }
      @@media (max-width: 991px) {
+
+     	 .form-section:before {
+     	 left: 0;
+     	 top:  0;
+     		width: 100%;
+     		height: 35px;
+     		content: ' ';
+     		background: #BA03FC;
+     		position: absolute; 
+     	 }
+     	 .form-section h1 {
+     	 	padding-top: 1.5rem;
+     	 }
     	 .people-details .tringle-shape {
     		 display: none;
     	}
@@ -368,8 +382,6 @@
      	 right: 0;
      }
       .additional .call-details .images-group .mask-img .mask {
-     	 mask: url('images/trinagle-mask.webp') no-repeat;
-     	 -webkit-mask: url('images/trinagle-mask.webp') no-repeat;
      	 width: 100%;
      }
       .additional .call-details p {
@@ -388,7 +400,7 @@
      		 line-height: 75px;
      		 font-weight: 700;
      	}
-     }
+     } 
       @@media (max-width: 1499px) {
      	 .additional .call-details .images-group {
      		 right: -70px;
@@ -399,6 +411,9 @@
      	}
      }
       @@media (max-width: 1199px) {
+           .pg-banner { 
+           	padding-top: 120px !important;
+           }
      	 .top-img .about-tringle {
      		 width: 300px;
      		 left: 110px;
@@ -407,7 +422,7 @@
      	 .faq-section {
      		 padding: 45px 0 0;
      	}
-     	 .pg-banner .contact-detail h1 {
+     	 .pg-banner .contact-detail h1 { 
      		 font-size: 50px;
      		 line-height: 50px;
      		 text-align: left;
@@ -462,10 +477,13 @@
      		 margin: 0 auto;
      	}
      	 .comman-block .details-content h2 {
-     		 text-align: center;
+     		 text-align: center; 
      	}
      }
       @@media (max-width: 767px) {
+		 .pg-banner { 
+			padding-top: 0px !important;
+		 }
      	 .top-img .about-tringle {
      		 width: 210px;
      		 left: 70px;
@@ -473,16 +491,7 @@
      	 .comman-block .details-content {
      		 padding: 30px 0px 45px;
      	}
-     	 .pg-banner.faq-main {
-     		 background: transparent linear-gradient(358deg, #e7f3fc 0%, #fff 0D 100%);
-     	}
-     	 .pg-banner.faq-main .main-img {
-     		 height: 300px;
-     		 clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-     		 -webkit-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-     		 -o-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-     		 -ms-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-     	}
+
      	 .pg-banner.faq-main .main-img img {
      		 width: 100%;
      		 height: 100%;
@@ -506,5 +515,10 @@
      		 display: none;
      	}
      }
+      @@media (max-width: 376px) {
+      			 .pg-banner { 
+        			padding-top: 40px !important;
+        		 }
+      }
       
 </style>

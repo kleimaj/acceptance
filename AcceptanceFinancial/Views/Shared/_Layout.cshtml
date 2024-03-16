@@ -66,10 +66,13 @@ window.addEventListener("load", function () {
 });
    
 </script>
-
+ 
 @await RenderSectionAsync("Scripts", false)
 </body>
 <style asp-add-nonce="true">
+.pg-banner {
+	padding:  0 0;
+}
   .home-bg-mobile {
 	width:  100%;	
   }
@@ -196,6 +199,7 @@ window.addEventListener("load", function () {
   	 color: #fff;
   }
    .comman-btn {
+   text-transform: uppercase;
   	 font-family: 'Oswald', sans-serif;
   	 padding: 13px 20px;
   	 font-weight: 700;
@@ -204,7 +208,7 @@ window.addEventListener("load", function () {
   	 align-items: center;
   	 justify-content: center;
   	 text-align: center;
-  	 border-radius: 25px;
+  	 border-radius: 15px;
   	 cursor: pointer;
   	 transition: all 0.3s;
   	 font-size: 22px;
@@ -301,7 +305,7 @@ window.addEventListener("load", function () {
   }
    .custom-form .form-control:focus {
   	 box-shadow: none;
-  	 border-color: #a3cd39;
+  	 border-color: #003046;
   }
    .custom-form .form-control:focus + .form-label {
   	 background: #fff;
@@ -312,6 +316,7 @@ window.addEventListener("load", function () {
   	 left: 13px;
   	 transform: translateY(-50%) scale(0.9);
   	 color: #5f2f90;
+  	 display: none;
   }
    .custom-form .form-control:not(:placeholder-shown) + label {
   	 background: #fff;
@@ -321,6 +326,7 @@ window.addEventListener("load", function () {
   	 top: 0;
   	 left: 13px;
   	 transform: translateY(-50%) scale(0.9);
+  	 display: none;
   }
    .offer-msg {
   	 font-size: 18px;
@@ -661,6 +667,16 @@ window.addEventListener("load", function () {
   		 font-size: 16px;
   		 line-height: 22px;
   		 padding: 0 15px;
+  	}
+  	.apply-form .custom-row .form-control {
+  		font-size: 16px;
+  		height: 50px;
+  	}
+  	.apply-form .custom-row label {
+  		 top:  32%;
+  	}
+  	.custom-form .custom-row .form-select {
+  		font-size: 16px;
   	}
   	 .custom-form .custom-row .selectric .label {
   		 font-size: 16px;
@@ -1021,17 +1037,6 @@ window.addEventListener("load", function () {
    }
     .banner-img {
    	 position: relative;
-   }
-    .banner-img::after {
-   	 position: absolute;
-   	 content: '';
-   	 top: 50%;
-   	 left: 50%;
-   	 background-image: url(../images/light-shape.webp);
-   	 background-size: cover;
-   	 width: 600px;
-   	 height: 516px;
-   	 transform: translate(-50%, -50%);
    }
    .carousel-card { 
    	 box-shadow: rgba(149,157,165,.2) 0 8px 24px;
@@ -1553,17 +1558,6 @@ window.addEventListener("load", function () {
    		 font-size: 60px;
    		 line-height: 70px;
    	}
-   	 .banner-section .banner-img::after {
-   		 position: absolute;
-   		 content: "";
-   		 top: 50%;
-   		 left: 50%;
-   		 background-image: url(../images/light-shape.webp);
-   		 background-size: cover;
-   		 width: 380px;
-   		 height: 386px;
-   		 transform: translate(-50%, -50%);
-   	}
    	 .banner-section .banner-bottom-content .goal-content h3 {
    		 font-size: 28px;
    		 line-height: 34px;
@@ -1698,23 +1692,12 @@ window.addEventListener("load", function () {
    		 font-size: 40px;
    		 line-height: 45px;
    	}
-   	 .banner-section .banner-img::after {
-   		 position: absolute;
-   		 content: "";
-   		 top: 50%;
-   		 left: 50%;
-   		 background-image: url(../images/light-shape.webp);
-   		 background-size: cover;
-   		 width: 260px;
-   		 height: 266px;
-   		 transform: translate(-50%, -50%);
-   	}
    	 .custom-form h2 {
    		 font-size: 26px;
    		 line-height: 1;
    	}
    	 .easy-quote {
-   		 padding: 30px 24px 35px;
+   		 padding: 30px 24px 35px; 
    		 margin-top: -100px;
    		 clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%);
    	}

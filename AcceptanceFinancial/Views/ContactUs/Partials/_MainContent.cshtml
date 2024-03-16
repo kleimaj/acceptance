@@ -9,31 +9,24 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model AcceptanceFinancial.Models.ContactUs
 <!-- page banner section desgin start -->
-      <section class="faq-main pg-banner contact-main pg-banner">
+      <section class="pg-banner contact-main pg-banner">
         <div class="comman-block">
           <div class="product-img">
-            <div class="row m-0 justify-content-end">
-                <div class="col-md-12 col-lg-7 p-0">
+            <div class="row m-0 justify-content-center">
+                <div class="col-md-12 p-0">
                   <div class="product-img top-img">
-                    <div class="main-img page-img banner-img">
+                    <div class="main-img page-img banner-img d-none d-md-block">
                       <picture>
-                        <source srcset="images/page-banner-img.webp" type="image/webp"/>
-                        <img src="images/page-banner-img.jpeg" alt="product" class="img-fluid">
+                        <source srcset="images/contact-bg.webp" type="image/webp"/>
+                        <img src="images/contact-bg.png" alt="product" class="img-fluid">
                       </picture>
-                      
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="details-content">
-              <div class="inner-container">
-                <div class="row">
-                  <div class="col-lg-5 col-md-12">
-                    <div class="contact-detail">
-                      <h1>Contact Us</h1>
-                      <p>There is a real person behind every loan application, so we have a TriPoint team member ready to answer all your questions.</p>
-                    </div>
+                  <div class="d-block d-md-none">
+                    <picture>
+                      <source srcset="images/contact-bg-mobile.webp" type="image/webp"/>
+                      <img src="images/contact-bg-mobile.png" alt="product" class="img-fluid w-100">
+                    </picture>
                   </div>
                 </div>
               </div>
@@ -43,10 +36,18 @@
 
       <section class="form-section blue-bg">
         <div class="inner-container">
-          <div class="custom-form contact-form">
-            
-            <form id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="ContactUs" asp-action="Save" enctype="multipart/form-data" formhelper>
+          <div class="custom-form contact-form container">
+            <h1>Contact us</h1>
+            <p class="mb-4">We’re here to assist if you have questions or need information about our services.</p>
+            <form class="mt-4" id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="ContactUs" asp-action="Save" enctype="multipart/form-data" formhelper>
               <div class="row">
+                <div class="col-md-6">
+                                  <div class="custom-row">
+                                    <input asp-for="Name" type="text" class="form-control" placeholder=" ">
+                                    <label class="form-label" asp-for="Name">Name (First, Last)</label>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                  </div>
+                        </div>
                 <div class="col-md-6">
                   <div class="custom-row">
                     <input asp-for="Subject" type="text" class="form-control" placeholder=" ">
@@ -54,40 +55,34 @@
                     <span asp-validation-for="Subject" class="text-danger"></span>
                   </div>
                 </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 d-flex flex-column">
+                                  <div class="custom-row">
+                                    <input asp-for="Email" type="text" class="form-control" placeholder=" ">
+                                    <label class="form-label" asp-for="Email">Email Address</label>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                  </div>
+                                  <div class="custom-row">
+                                    <input asp-for="Phone" type="text" class="form-control" placeholder=" ">
+                                    <label class="form-label" asp-for="Phone">Phone</label>
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                  </div>
+                                </div>
                 <div class="col-md-6">
                   <div class="custom-row">
-                    <input asp-for="Name" type="text" class="form-control" placeholder=" ">
-                    <label class="form-label" asp-for="Name">Name (First, Last)</label>
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <div class="form-floating">
+                      <textarea asp-for="Message" type="text" class="form-control" placeholder="Message (Max 500 characters)"></textarea>
+                      <!--<label class="form-label" asp-for="Name"></label>-->
+                      <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
                   </div>
                 </div>
+
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="custom-row">
-                      <div class="form-floating">
-                        <textarea asp-for="Message" type="text" class="form-control" placeholder="Message (Max 500 characters)"></textarea>
-                        <!--<label class="form-label" asp-for="Name"></label>-->
-                        <span asp-validation-for="Message" class="text-danger"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 d-flex flex-column justify-content-between">
-                    <div class="custom-row">
-                      <input asp-for="Email" type="text" class="form-control" placeholder=" ">
-                      <label class="form-label" asp-for="Email">Email Address</label>
-                      <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="custom-row">
-                      <input asp-for="Phone" type="text" class="form-control" placeholder=" ">
-                      <label class="form-label" asp-for="Phone">Phone</label>
-                      <span asp-validation-for="Phone" class="text-danger"></span>
-                    </div>
-                    
-                    <div class="d-flex justify-content-end align-items-end submit-btn">
-                      <button id="submit-verify" type="submit" class="comman-btn yellow-btn btn-submit-form">Submit</button>
-                    </div>
-                  </div>
+              <div class="d-flex justify-content-center align-items-end submit-btn mt-4">
+                <button id="submit-verify" type="submit" class="comman-btn yellow-btn btn-submit-form">Submit</button>
               </div>
             </form>
           </div>
@@ -128,14 +123,14 @@ window.addEventListener("load", function () {
 });
 </script>
 <style asp-add-nonce="true">
-.custom-form .custom-row label {
+.custom-form .custom-row label { 
     color: black !important;
 }
 .contact-form .custom-row textarea {
     padding: 19px 18px!important;
 }
 textarea.form-control {
-    height: 210px !important;
+    height: 175px !important;
 }
 textarea.form-control::placeholder {
     color: black !important;
@@ -145,11 +140,14 @@ textarea.form-control::placeholder {
         color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
         height: 21px;
         display: block;
-        color: #a3cd39 !important;
+        text-align: left;
+    }
+    #submit-verify {
+      border-radius: 8px;
     }
     .custom-form .custom-row label {
         line-height: 20px;
-        font-family: 'Open Sans';
+        font-family: 'Poppins';
         color: #d7dcdd;
         position: absolute;
         left: 0;
