@@ -145,8 +145,8 @@ public class HomeController : Controller {
         request.AddParameter("cell_phone", customer.Phone);
         request.AddParameter("loan_amount", customer.LoanAmount);
         
-        var response = client.Execute(request);
-        if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
+        //var response = client.Execute(request);
+        //if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
     }
     /// <summary>
     ///   Get endpoint url based on loan amount and offer code
