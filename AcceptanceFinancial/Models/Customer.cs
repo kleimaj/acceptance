@@ -13,6 +13,7 @@ public class Customer {
     public string? State { get; set; }
     public string? Zip { get; set; }
     public string? Offer { get; set; }
+    public string? TotalDebt { get; set; }
     public string? LoanAmount { get; set; }
     public string? IpAddress { get; set; }
 }

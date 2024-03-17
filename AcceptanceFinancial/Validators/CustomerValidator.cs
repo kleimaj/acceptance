@@ -25,7 +25,7 @@ public class CustomerValidator : AbstractValidator<Customer> {
           .NotEmpty().WithMessage("Zip code is required.");
         RuleFor(x => x.Offer);
         RuleFor(x => x.Address2);
-        RuleFor(x => x.LoanAmount)
-            .NotEmpty().WithMessage("Please enter a loan amount.");
+        RuleFor(x => x.TotalDebt)
+            .NotEmpty().WithMessage("Please enter total debt.");
     }
 }

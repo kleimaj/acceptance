@@ -118,17 +118,17 @@ public class ApplyController : Controller {
         request.AddParameter("first_name",customer.FirstName );
         request.AddParameter("last_name", customer.LastName);
         request.AddParameter("email", customer.Email);
-      //  request.AddParameter("address", customer.Address);
+        request.AddParameter("address", customer.Address);
         request.AddParameter("cell_phone", customer.Cell);
-      //  request.AddParameter("state", customer.State);
-       // request.AddParameter("city", customer.City);
-      //  request.AddParameter("zip_code", customer.Zip);
+        request.AddParameter("state", customer.State);
+        request.AddParameter("city", customer.City);
+        request.AddParameter("zip_code", customer.Zip);
         request.AddParameter("home_phone", customer.Phone);
-        request.AddParameter("loan_amount", customer.LoanAmount);
+        request.AddParameter("total_debt", customer.TotalDebt);
         request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?"None":customer.Offer);
         
-        var response = client.Execute(request);
-        if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
+        //var response = client.Execute(request);
+        //if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
         
     }
 
@@ -144,7 +144,7 @@ public class ApplyController : Controller {
         var claEndpoint = CrmEndpoints.claEndpoint;
         var tplEndpoint = CrmEndpoints.tplEndpoint;
         // anything under 20k goes to CLA
-        if (loanAmtList.FindIndex(x => x.Value.Contains(customer.LoanAmount)) < 3) {
+        if (loanAmtList.FindIndex(x => x.Value.Contains(customer.TotalDebt)) < 3) {
             url = claEndpoint;
         }
         // everything else goes to TPL
@@ -181,7 +181,7 @@ public class ApplyController : Controller {
       //  body += "\nZip Code: " + customerResponse.Zip;
         body += "\nCell Phone: " + customerResponse.Cell;
         body += "\nHome Phone: " + customerResponse.Phone;
-        body += "\nloan Amount: " + customerResponse.LoanAmount;
+        body += "\nTotal Debt: " + customerResponse.TotalDebt;
         body += "\nOffer: " + (string.IsNullOrEmpty(customerResponse.Offer)?"None":customerResponse.Offer);
         
         body += "\nTime(PDT): " + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
