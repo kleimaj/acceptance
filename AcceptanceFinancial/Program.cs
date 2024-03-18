@@ -151,12 +151,14 @@ app.UseCsp(csp => {
         .FromSelf()
         .From("https://app.jazz.co/")
         .From("data:");
+    csp.AllowFonts.FromSelf().From("https://fonts.googleapis.com").From("https://fonts.gstatic.com/s/");
     csp.AllowStyles
 
         .FromSelf()
         .From("data:")
         .From("https://app.jazz.co")
         .From("https://ajax.googleapis.com/")
+        .From("https://fonts.googleapis.com")
         .AddNonce()
         .AllowUnsafeInline(); //Fallback for browsers that don't support nonce*/
     csp.AllowFrames
