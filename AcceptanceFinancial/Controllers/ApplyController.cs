@@ -54,7 +54,7 @@ public class ApplyController : Controller {
             var ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
             customer.IpAddress = ip;
             var formData = new MultipartFormDataContent();
-            const string SECRET_KEY = "0x4AAAAAAAIUXGJaJKd7EGHsvUK8FToQJk4";
+            const string SECRET_KEY = "1x0000000000000000000000000000000AA";
             formData.Add(new StringContent(SECRET_KEY), "secret");
             formData.Add(new StringContent(token), "response");
             formData.Add(new StringContent(ip), "remoteip");
@@ -108,9 +108,9 @@ public class ApplyController : Controller {
    /// <param name="customer"></param>
    /// <exception cref="InvalidOperationException"></exception>
     internal void postToCRM(Customer customer) {
-        var url = GetEndpointUrl(customer);
+        // var url = GetEndpointUrl(customer);
 
-        var client = new RestClient(url);
+        var client = new RestClient("https://alv.debtpaypro.com/post/e35e20706992972b1ce929f1510b3c3825160560/");
         var request = new RestRequest($"") {
             Method = Method.Post
         };
@@ -124,11 +124,10 @@ public class ApplyController : Controller {
         request.AddParameter("city", customer.City);
         request.AddParameter("zip_code", customer.Zip);
         request.AddParameter("home_phone", customer.Phone);
-        request.AddParameter("total_debt", customer.TotalDebt);
         request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?"None":customer.Offer);
         
-        //var response = client.Execute(request);
-        //if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
+        var response = client.Execute(request);
+        if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
         
     }
 
@@ -174,11 +173,11 @@ public class ApplyController : Controller {
         var body = "First Name: " + customerResponse.FirstName;
         body += "\nLast Name: " + customerResponse.LastName;
         body += "\nEmail: " + customerResponse.Email;
-      //  body += "\nAddress 1: " + customerResponse.Address;
-      //  body += "\nAddress 2: " + customerResponse.Address2;
-     //   body += "\nCity: " + customerResponse.City;
-     //   body += "\nState: " + customerResponse.State;
-      //  body += "\nZip Code: " + customerResponse.Zip;
+        body += "\nAddress 1: " + customerResponse.Address;
+        body += "\nAddress 2: " + customerResponse.Address2;
+        body += "\nCity: " + customerResponse.City;
+        body += "\nState: " + customerResponse.State;
+        body += "\nZip Code: " + customerResponse.Zip;
         body += "\nCell Phone: " + customerResponse.Cell;
         body += "\nHome Phone: " + customerResponse.Phone;
         body += "\nTotal Debt: " + customerResponse.TotalDebt;

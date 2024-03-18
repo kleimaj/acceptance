@@ -131,22 +131,22 @@ public class HomeController : Controller {
     /// <param name="customer"></param>
     /// <exception cref="InvalidOperationException"></exception>
     internal void postShortToCRM(ShortCustomer customer) {
-        var url = GetEndpointUrl(customer);
+        //var url = GetEndpointUrl(customer);
 
-        var client = new RestClient(url);
+        var client = new RestClient("https://alv.debtpaypro.com/post/e35e20706992972b1ce929f1510b3c3825160560/");
         var request = new RestRequest($"") {
             Method = Method.Post
         };
       
+        request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?"None":customer.Offer);
         request.AddParameter("first_name",customer.FirstName );
         request.AddParameter("last_name", customer.LastName);
         request.AddParameter("email", customer.Email);
-        request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?"None":customer.Offer);
         request.AddParameter("cell_phone", customer.Phone);
         request.AddParameter("loan_amount", customer.LoanAmount);
         
-        //var response = client.Execute(request);
-        //if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
+        var response = client.Execute(request);
+        if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
     }
     /// <summary>
     ///   Get endpoint url based on loan amount and offer code
