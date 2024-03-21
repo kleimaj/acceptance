@@ -348,8 +348,8 @@ window.addEventListener("load", function () {
         $("input[name='Phone']").keyup(function() {
             $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d+)$/, "($1)$2-$3"));
         });
-        $("input[name='Offer']").keyup(function() {
-           if( $(this).val().length > 8) {
+        $("input[name='Offer']").change(function() {
+           if( $(this).val().length > 5) {
                  $(".fetchhide").css("display","flex");
                $.ajax({
                        url: "/home/GetPromotion?accessCode="+$(this).val()+"",

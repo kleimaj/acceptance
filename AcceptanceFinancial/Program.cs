@@ -82,6 +82,8 @@ builder.Services.AddControllersWithViews().AddFormHelper(options => {
     options.EmbeddedFiles = true;
     options.ToastrDefaultPosition = ToastrPosition.TopRight;
 });
+builder.Services.AddSwaggerGen();
+
 builder.Services.Configure<DmsApiConfig>(builder.Configuration.GetSection(DmsApiConfig.Key));
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection(EmailSettings.Key));
 
@@ -127,6 +129,12 @@ builder.Logging.AddSerilog(log);
 });*/
 
 var app = builder.Build();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment()) {
     app.UseExceptionHandler("/Home/Error");

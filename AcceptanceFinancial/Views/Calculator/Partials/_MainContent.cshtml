@@ -1,74 +1,167 @@
-﻿ <!-- page banner section desgin start -->
+﻿<!-- page banner section desgin start -->
 
-    <section class="pg-banner mt-5">
-      
-        <div class="container toggle-2-content bg-white text-lg-start mb-4 p-md-4">
+<section class="pg-banner mt-5">
+<div class="backdrop">
+        <section class="container debt-block mt-2 pt-md-5">
+            <div class="white-bg border-radius-card mb-3 pb-2">
+            <button class="toggle-btn" click="toggleCalc(1)"><img class="toggle-1" src="/images/down.svg" alt="down arrow"/></button>
+        <div class="container toggle-1-content bg-white text-lg-start mb-4 px-md-5">
+            <div class="col-lg-12 col-md-12">
+                <div class="debt-section text-center">
+                <div class="debt-question mb-4 d-flex flex-column align-items-md-center">
+                    <h3 class="col-md-7 mb-4 lh-sm">Debt Repayment Calculator</h3>
+                    <p class="col-md-11"><strong>Trying to pay down a large credit card balance?</strong> Acceptance Financial negotiates 
+                                                 with creditors on your behalf to lower your debt amounts. See how our debt relief 
+                                                 program compares to other common payoff methods.</p>
+    <br/>
+    <a class="d-none" href="#">How it works.</a>
+                </div>
+                </div>
+                <div class="debt-section custom-form d-block d-md-flex align-items-end justify-content-between">
+                    <div class="debt-question custom-row mb-md-0 col-md-6">
+                        <p><strong>Total Unsecured Debt</strong></p>
+                        <br/>
+                        <div class="error-message">
+                        <input :options="{ currency: 'USD',       
+                            hideCurrencySymbolOnFocus: false,
+                            hideGroupingSeparatorOnFocus: false,
+                            hideNegligibleDecimalDigitsOnFocus: false,
+                            valueRange: {min: 0, max: 500000}}" class="form-control" placeholder="$0" ref="inputRef" keyup="autoCalculate($event)" v-model="totalDebt" type="text" />
+                        <label class="form-label">Total</label>
+                        </div>
+                        <!-- <div class="debt-question custom-row mb-md-0">
+                        <p><strong>Payoff Loan Term (yrs)</strong></p>
+                        <br/>
+                        <div class="error-message">
+                        <input class="form-control" placeholder="$0" v-model="payOffTerm" change="updateAllLoanTerms()" type="number" />
+                        <label class="form-label">Years</label>
+                        </div> -->
+                    <!-- </div> -->
+                    </div>
+                    <div class="debt-question mb-0 col-md-6">
+                        <div class="button-group d-flex flex-column flex-md-row d-md-flex align-items-center justify-content-evenly">
+                            <button click="calcPayOff()" class="btn comman-btn yellow-btn mb-3 mb-md-0">CALCULATE</button>
+                            <button click="resetPayOff()" class="btn clear mb-4 mb-md-0">RESET</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-block d-md-flex">
+                    <div class="debt-section box purple mt-4 me-md-2 col-md-6">
+                        <h4 class="header">Current Payoff</h4>
+                        <p class="pt-2">Time to Payoff: <strong>30 Years</strong></p>
+                        <p>Total Interest Paid: <strong>$</strong></p> 
+                        <p>Interest Rate: <strong>22%</strong></p>
+                        <p>Monthly Payment: <strong>$</strong></p>
+                        <!-- <p>Total Cost: <strong>${{ payOffTotalCost.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}</strong></p> --><br/>
+                        <div class="savings">
+                            <h5>Total Cost:</h5>
+                            <h1>$</h1>
+                            <p class="col-md-6 m-auto mb-4">Payoff numbers are calculated based on the national average</p>
+                        </div>
+                    </div>
+                    <div class="debt-section box blue mt-4 ms-md-2 col-md-6">
+                        <h4 class="header">Consolidation Loan</h4>
+                        <p class="pt-2">Time to Payoff: <strong>5 Years</strong></p>
+                        <p>Total Interest Paid: <strong>$</strong></p> 
+                        <p>Interest Rate: <strong>6.95%</strong></p>
+                        <p>Monthly Payment: <strong>$</strong></p>
+                        <p>Total Savings: <strong>$</strong></p>
+                        <div class="savings">
+                            <h5>Total Cost:</h5>
+                            <h1>$</h1>
+                            <p class="col-md-6 m-auto mb-4 d-none">Payoff numbers are calculated based on the national average</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="bg-white toggle-1-hidden text-lg-start mb-4 px-md-5  d-none">
+                <div class="col-lg-12 col-md-12">
+                <div class="debt-section text-center">
+                <div class="debt-question mb-4 d-flex flex-column align-items-md-center">
+                    <h3 class="col-md-12 mb-4 lh-sm">Eliminate Credit
+                        Card Debt and
+                        Save With a
+                        Personal Loan</h3>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="white-bg mb-3 pb-2 border-radius-card">
+            <button class="toggle-btn" click="toggleCalc(2)"><img class="toggle-2" src="images/down.svg" alt="down arrow"/></button>
+
+            <div class="container toggle-2-content bg-white text-lg-start mb-4">
             <div class="col-lg-12 col-md-12">
                 <div class="debt-section text-center">
                     <div class="debt-question d-flex flex-column align-items-md-center mb-md-4">
-                        <h3 class="mb-md-4">Minimum Payment 
-                            Calculator</h3>
-                        <p class="col-md-10">Trying to pay down a large credit card balance? Let us know how much you’d like to pay a month, or when you’d like to be debt-free, and we’ll help you come up with a monthly payment plan.</p>
+                    <h3 class="mb-md-4">Minimum Payment 
+    Calculator</h3>
+                    <p class="col-md-10">Trying to pay down a large credit card balance? Let us know how much you’d like to pay a month, or when you’d like to be debt-free, and we’ll help you come up with a monthly payment plan.</p>
                     </div>
                 </div>
-                <div class="d-block d-md-flex align-items-stretch min-pay-calc">
-                    <div class="debt-section custom-form col-md-6 px-md-4 d-grid flex-column">
+                <div class="d-block d-md-flex align-items-start">
+                    <div class="debt-section custom-form col-md-6 px-md-4">
                         <div class="debt-question custom-row">
-	                        <p><strong>What is your credit card balance?</strong></p>
-	                        <br/>
+                            <p><strong>What is your credit card balance?</strong></p>
+                            <br/>
                             <div class="error-message">
-                                <input class="form-control" type="text" placeholder="$0" />
-								<label class="form-label">Total</label>
-                                </div>
+                            <input :options="{ currency: 'USD',       
+                            hideCurrencySymbolOnFocus: false,
+                            hideGroupingSeparatorOnFocus: false,
+                            hideNegligibleDecimalDigitsOnFocus: false,
+                            valueRange: {min: 0, max: 500000}}" class="form-control" ref="inputRef2" change="minPaymentChange()" type="text" keyup="autoCalculateMin($event)" placeholder="$0" v-model="minTotal"/>
+                            <label class="form-label">Total</label>
+                            </div>
                         </div>
                         <div class="debt-question custom-row">
                             <p><strong>What is the interest rate on your credit card?</strong></p>
                             <br/>
                             <select class="multiselect form-select form-control" v-model="minInterestRate">
-                                <option value=".01" selected>1%</option>
-                                <option value=".02">2%</option>
-                                <option value=".03">3%</option>
-                                <option value=".04">4%</option>
-                                <option value=".05">5%</option>
-                                <option value=".06">6%</option>
-                                <option value=".07">7%</option>
-                                <option value=".08">8%</option>
-                                <option value=".09">9%</option>
-                                <option value=".1">10%</option>
-                                <option value=".11">11%</option>
-                                <option value=".12">12%</option>
-                                <option value=".13">13%</option>
-                                <option value=".14">14%</option>
-                                <option value=".15">15%</option>
-                                <option value=".16">16%</option>
-                                <option value=".17">17%</option>
-                                <option value=".18">18%</option>
-                                <option value=".19">19%</option>
-                                <option value=".20">20%</option>
-                                <option value=".21">21%</option>
-                                <option value=".22">22%</option>
-                                <option value=".23">23%</option>
-                                <option value=".24">24%</option>
-                                <option value=".25">25%</option>
-                                <option value=".26">26%</option>
-                                <option value=".27">27%</option>
-                                <option value=".28">28%</option>
-                                <option value=".29">29%</option>
-                                <option value=".30">30%</option>
-                                <option value=".31">31%</option>
-                                <option value=".32">32%</option>
-                                <option value=".33">33%</option>
-                                <option value=".34">34%</option>
-                                <option value=".35">35%</option>
-                                <option value=".36">36%</option>
-                                <option value=".37">37%</option>
-                                <option value=".38">38%</option>
+                                    <option value=".01" selected>1%</option>
+                                    <option value=".02">2%</option>
+                                    <option value=".03">3%</option>
+                                    <option value=".04">4%</option>
+                                    <option value=".05">5%</option>
+                                    <option value=".06">6%</option>
+                                    <option value=".07">7%</option>
+                                    <option value=".08">8%</option>
+                                    <option value=".09">9%</option>
+                                    <option value=".1">10%</option>
+                                    <option value=".11">11%</option>
+                                    <option value=".12">12%</option>
+                                    <option value=".13">13%</option>
+                                    <option value=".14">14%</option>
+                                    <option value=".15">15%</option>
+                                    <option value=".16">16%</option>
+                                    <option value=".17">17%</option>
+                                    <option value=".18">18%</option>
+                                    <option value=".19">19%</option>
+                                    <option value=".20">20%</option>
+                                    <option value=".21">21%</option>
+                                    <option value=".22">22%</option>
+                                    <option value=".23">23%</option>
+                                    <option value=".24">24%</option>
+                                    <option value=".25">25%</option>
+                                    <option value=".26">26%</option>
+                                    <option value=".27">27%</option>
+                                    <option value=".28">28%</option>
+                                    <option value=".29">29%</option>
+                                    <option value=".30">30%</option>
+                                    <option value=".31">31%</option>
+                                    <option value=".32">32%</option>
+                                    <option value=".33">33%</option>
+                                    <option value=".34">34%</option>
+                                    <option value=".35">35%</option>
+                                    <option value=".36">36%</option>
+                                    <option value=".37">37%</option>
+                                    <option value=".38">38%</option>
                             </select>
                         </div>
                         <div class="debt-question custom-row">
                             <p><strong>How is your minimum payment calculated?</strong></p>
                             <br/>
-                            <select class="multiselect form-select form-control" v-model="minCalculated">
+                            <select class="multiselect form-select form-control" change="minPaymentChange()" v-model="minCalculated">
                                 <option value=".01" selected>Interest + 1% of balance</option>
                                 <option value=".02">2% of balance</option>
                                 <option value=".0208">2.08% of balance</option>
@@ -82,437 +175,202 @@
                             </select>
                         </div>
                         <div class="debt-question custom-row">
+                            <p class="text-black">Your minimum payment: <strong>$</strong></p>
+                            <p class="text-black mt-4"><strong>Select a payment schedule based on:</strong></p>
+                            <br/>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" change="showFixedPayment()" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Minimum payment
+                            </label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" change="showFixedPayment()">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Fixed payment
+                            </label>
+                            </div>
                         </div>
                         <div class="debt-question custom-row fixed-payment d-none">
                             <p><strong>What fixed payment could you make monthly?</strong></p>
                             <br/>
                             <div class="error-message">
-                                <input class="form-control" placeholder="$0" v-model="fixedPayment"/>
-                                <label class="form-label">Total</label>
+                            <input class="form-control" placeholder="$0" v-model="fixedPayment" change="updateFixedPayment()"/>
+                            <label class="form-label">Total</label>
                             </div>
                         </div>
-                        <div class="debt-question d-flex flex-column mb-0 flex-md-row align-items-center calc-buttons">
-                            <button class="btn blue mb-3 mb-md-0 me-md-4">CALCULATE</button>
-                            <button class="btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
+                        <div class="debt-question d-flex flex-column mb-0 flex-md-row ">
+                            <button click="calcMinPayment()" class="btn blue mb-3 mb-md-0 me-md-4">CALCULATE</button>
+                            <button click="resetMinPayment()" class="btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
                         </div>
                     </div>
-                    <div class="col-md-6 pe-md-4 pt-md-5 d-flex flex-column align-items-center">
-	                    <div class="debt-section box green pb-4 px-md-4 mt-md-4">
-		                    <p class="pt-2 mt-4"><strong>With a minimum payment:</strong></p>
-		                    <p class="col-md-6 m-auto mb-3">It will take you <strong>X months</strong> to be rid of your debt.</p> 
-		                    <div class="savings">
-			                    <h5>In that time, you will pay:</h5>
-			                    <h1 class="mb-0 pb-2">$X.XX</h1>
-			                    <h5 class="mb-4">in interest.</h5>
-			                    <p class="link text-decoration-underline d-none d-md-block" role="button">{{togglePaymentSchedule ? 'Hide' : 'Show'}} payment schedule</p>
-		                    </div>
-	                    </div>
-	                    <p>VS.</p>
-	                    <div class="debt-section box blue pb-4 px-md-4 mt-md-4">
-                                                    <p class="pt-2 mt-4"><strong>With a minimum payment:</strong></p>
-                                                    <p class="col-md-6 m-auto mb-3">It will take you <strong>X months</strong> to be rid of your debt.</p> 
-                                                    <div class="savings">
-                                                        <h5>In that time, you will pay:</h5>
-                                                        <h1 class="mb-0 pb-2">$X.XX</h1>
-                                                        <h5 class="mb-4">in interest.</h5>
-                                                        <p class="link text-decoration-underline d-none d-md-block" role="button">{{togglePaymentSchedule ? 'Hide' : 'Show'}} payment schedule</p>
-                                                    </div>
-                                                </div>
+                    <div class="col-md-6 pe-md-4 pt-md-5">
+                        <div class="debt-section box blue pb-4 px-md-4 mt-md-4">
+                            <p class="pt-2 mt-4"><strong>With a _ payment:</strong></p>
+                            <p class="col-md-6 m-auto mb-3">It will take you <strong> minMonths  months</strong> to be rid of your debt.</p> 
+                            <div class="savings">
+                                <h5>In that time, you will pay:</h5>
+                                <h1 class="mb-0 pb-2">$</h1>
+                                <h5 class="mb-4">in interest.</h5>
+                                <p class="link text-decoration-underline d-none d-md-block" role="button" click="showPaymentSchedule()">Show payment schedule</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="d-none d-md-block">
-                    <div class="schedule payment-schedule d-none mt-4 p-4">
-                        <h4>Payment Schedule</h4>
-                        <div class="table d-flex align-items-center">
-                            <div class="col-md-2">
-                                <p>Month</p>
+                <div class="schedule payment-schedule d-none mt-4 p-4">
+                            <h4>Payment Schedule</h4>
+                            <div class="table d-flex align-items-center">
+                                <div class="col-md-2">
+                                    <p>Month</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>Fixed Payment</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Interest Paid</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Prinicipal Paid</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>Remaining Balance</p>
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <p>Minimum Payment</p>
-                            </div>
-                            <div class="col-md-2">
-                                <p>Interest Paid</p>
-                            </div>
-                            <div class="col-md-2">
-                                <p>Prinicipal Paid</p>
-                            </div>
-                            <div class="col-md-3">
-                                <p>Remaining Balance</p>
-                            </div>
+                                @*<MinPaySchedule v-for="(item,idx) in MinPayItems" :key="idx" v-bind="item"/>*@
                         </div>
-                        <MinPaySchedule v-for="(item,idx) in MinPayItems" :key="idx" v-bind="item"/>
-                    </div>
                 </div>
             </div>
-        </div>
-        
-    <div class="container toggle-3-content bg-white text-lg-start pb-4 px-md-5 ">
-                <div class="col-lg-12 col-md-11">
-                    <div class="debt-section text-center">
-                        <div class="debt-question mb-md-3">
-                        <h3 class="mb-md-4">Personal Loan
-        Calculator</h3>
-                        <p class="col-md-10 m-auto">This personal loan calculator will help
-                            you determine the monthly
-                            payments on a loan. To see your
-                            estimated monthly payments and
-                            total interest you’ll pay, just enter the
-                            loan amount, loan term and interest
-                            rate in the fields below and click
-                            calculate.
-                        </p>
-                        </div>
+            </div>
+            <div class="bg-white toggle-2-hidden text-lg-start mb-4 px-md-5  d-none">
+                <div class="col-lg-12 col-md-12">
+                <div class="debt-section text-center">
+                <div class="debt-question mb-4 d-flex flex-column align-items-md-center">
+                    <h3 class="col-md-12 mb-4 lh-sm">Minimum Payment Calculator</h3>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="white-bg mb-3 pb-2 border-radius-card">
+            <button class="toggle-btn" click="toggleCalc(3)"><img class="toggle-3" src="/images/down.svg" alt="down arrow"/></button>
+            <div class="container toggle-3-content bg-white text-lg-start pb-4 px-md-5 ">
+            <div class="col-lg-12 col-md-11">
+                <div class="debt-section text-center">
+                    <div class="debt-question mb-md-3">
+                    <h3 class="mb-md-4">Personal Loan
+    Calculator</h3>
+                    <p class="col-md-10 m-auto">This personal loan calculator will help
+                        you determine the monthly
+                        payments on a loan. To see your
+                        estimated monthly payments and
+                        total interest you’ll pay, just enter the
+                        loan amount, loan term and interest
+                        rate in the fields below and click
+                        calculate.
+                    </p>
                     </div>
-                    <div class="debt-section d-block d-md-flex justify-content-center">
-                    
-	                    <div class="debt-section custom-form col-md-6 pe-md-4">
-		                    <div class="debt-question">
-			                    <h3 class="text-black mb-2 loan-info mb-md-4">Loan info</h3>
-		                    </div>
-		                    <div class="debt-question custom-row">
-                                <p><strong>Loan amount</strong></p>
-                                <br/>
-                                <div class="error-message">
-                                    <input class="form-control" type="text" placeholder="$0" />
-                            		<label class="form-label">Amount</label>
-                                    </div>
+                </div>
+                <div class="d-block d-md-flex justify-content-center">
+                    <div class="debt-section custom-form col-md-6 pe-md-4">
+                        <div class="debt-question custom-row">
+                            <h3 class="text-black mb-2 loan-info mb-md-4">Loan info</h3>
+                            <p><strong>Loan amount</strong></p>
+                            <br/>
+                            <div class="error-message">
+                            <input :options="{ currency: 'USD',       
+                            hideCurrencySymbolOnFocus: false,
+                            hideGroupingSeparatorOnFocus: false,
+                            hideNegligibleDecimalDigitsOnFocus: false,
+                            valueRange: {min: 0, max: 500000}}"
+                             class="form-control" placeholder="$0" keyup="autoCalculatePersonal($event)" v-model="loanAmount"/>
+                            <label class="form-label">Amount</label>
                             </div>
-		                    <div class="debt-question custom-row">
-			                    <p><strong>Loan term (yrs)</strong> Terms can be from 3-12 years</p>
-			                    <br/>
-			                    <input class="form-control" type="number" min="1" v-model="loanTerm"/>
-		                    </div>
-		                    <div class="debt-question custom-row">
-			                    <p><strong>Interest rate</strong></p>
-			                    <br/>
-			                    <div class="error-message">
-				                    <input class="form-control" type="number" min="0" v-model="loanInterest"/>
-				                    <label class="form-label percent">%</label>
-			                    </div>
-		                    </div>
-		                    <div class="debt-question d-flex flex-column mb-0 mb-md-5 mt-md-5 flex-md-row">
-			                    <button class="btn blue mb-3 mb-md-0 me-md-4">CALCULATE</button>
-			                    <button class="btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
-		                    </div>
-	                    </div>
-                        <div class="debt-section box box-result blue pb-4 mb-4 text-start col-md-6 ms-md-4 align-self-start px-md-4 mt-md-5">
-                            <h3 class="pt-2 mt-4 ps-3"><strong>Your results:</strong></h3>
-                            <div class="box-row d-flex"><p>Total prinicipal paid</p> <p><strong>$X.XX</strong></p></div>
-                            <div class="box-row d-flex"><p>Total interest paid</p> <p><strong>$X.XX</strong></p></div>
-                            <div class="box-row d-flex"><p><strong>Estimated payment</strong></p> <p class="jumbo"><strong>$X.XX</strong></p></div>
-                            <div class="box-row d-flex"><p><strong>Loan term (yrs)</strong></p> <p class="jumbo"><strong>X</strong></p></div>
-                            <div class="text-center pt-4">
                         </div>
+                        <div class="debt-question custom-row">
+                            <p><strong>Loan term (yrs)</strong> Terms can be from 3-12 years</p>
+                            <br/>
+                            <input class="form-control" type="number" min="1" v-model="loanTerm"/>
+                        </div>
+                        <div class="debt-question custom-row">
+                            <p><strong>Interest rate</strong></p>
+                            <br/>
+                            <div class="error-message">
+                            <input class="form-control" type="number" min="0"  v-model="loanInterest"/>
+                            <label class="form-label percent">%</label>
+                            </div>
+                        </div>
+                        <div class="debt-question d-flex flex-column mb-0 mb-md-5 mt-md-5 flex-md-row">
+                            <button click="calcPersonalLoan()" class="btn comman-btn yellow-btn mb-3 mb-md-0 me-md-4">CALCULATE</button>
+                            <button click="resetPersonalLoan()" class="btn comman-btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
                         </div>
                     </div>
-                    <div class="d-none d-md-block">
-                    <div class="schedule amort-schedule d-none mt-4 p-4">
-                                <h4>Amortization Schedule</h4>
-                                <div class="table d-flex align-items-center">
-                                    <div class="col-md-2">
-                                        <p>Payment Date</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Payment</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Principal</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Interest</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Total Interest</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Balance</p>
-                                    </div>
+                    <div class="debt-section box box-result blue pb-4 mb-4 text-start col-md-6 ms-md-4 align-self-start px-md-4 mt-md-5">
+                        <h3 class="pt-2 mt-4 ps-3"><strong>Your results:</strong></h3>
+                        <div class="box-row d-flex"><p>Total prinicipal paid</p> <p><strong>$</strong></p></div>
+                        <div class="box-row d-flex"><p>Total interest paid</p> <p><strong>$</strong></p></div>
+                        <div class="box-row d-flex"><p><strong>Estimated payment</strong></p> <p class="jumbo"><strong>$</strong></p></div>
+                        <div class="box-row d-flex"><p><strong>Loan term (yrs)</strong></p> <p class="jumbo"><strong></strong></p></div>
+                        <div class="text-center pt-4">
+                        <p role="button" click="showAmortSchedule()" class="link text-center text-decoration-underline d-none d-md-block">Show amortization schedule</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="d-none d-md-block">
+                <div class="schedule amort-schedule d-none mt-4 p-4">
+                            <h4>Amortization Schedule</h4>
+                            <div class="table d-flex align-items-center">
+                                <div class="col-md-2">
+                                    <p>Payment Date</p>
                                 </div>
-                                    <AmortSchedule v-for="(item,idx) in AmortItems" :key="idx" v-bind="item"/>
+                                <div class="col-md-2">
+                                    <p>Payment</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Principal</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Interest</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Total Interest</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Balance</p>
+                                </div>
                             </div>
-                    </div>
+                                @*<AmortSchedule v-for="(item,idx) in AmortItems" :key="idx" v-bind="item"/>*@
+                        </div>
+                </div>
+            </div>
+            </div>
+            <div class="bg-white toggle-3-hidden text-lg-start mb-4 px-md-5 d-none">
+                <div class="col-lg-12 col-md-12">
+                <div class="debt-section text-center">
+                <div class="debt-question mb-4 d-flex flex-column align-items-md-center">
+                    <h3 class="col-md-12 mb-4 lh-sm">Personal Loan Calculator</h3>
                 </div>
                 </div>
-    </section>
+                </div>
+            </div>
+            
+        </div>
+        </section>
+        <div class="check-rate position-relative">
+                <div class="container text-center pb-3 pb-md-5 pt-md-5">
+                <h3><strong>We're here for you.</strong><br class="d-md-none"/> Get your available rate today with <strong>no impact to your credit score.</strong></h3>
+                <div class="debt-question">
+                <button class="btn yellow-btn comman-btn mx-auto" click="redirectToCheckRate()">CHECK MY RATE</button>
+                </div>
+                <p class="pb-2 col-md-8 m-auto">This calculator is meant for educational purposes only. It is a tool to estimate monthly payments solely based on the information you provide. The loan rates, amounts, monthly payments, and terms are not guaranteed and do not constitute a credit offer.</p>
+                </div>
+            </div>
+    </div>
+</section>
 
-    
-    <!-- page banner section desgin end -->
+<script asp-add-nonce="true">
 
 
-<style>
-	.calc-buttons {
-		align-items: center;
-	}
-   .schedule .table {
-   	 border-top: 1px solid #b1b7c5;
-   	 border-bottom: 1px solid #b1b7c5;
-   	 margin-bottom: 0;
-   }
-    .schedule .table p {
-   	 margin: 0;
-   	 margin: 10px;
-   }
-    .schedule .table-entry {
-   	 border-bottom: 1px solid #b1b7c5;
-   }
-    .schedule .table-entry p {
-   	 margin: 10px;
-   	 margin-top: 5px;
-   }
-    .backdrop {
-   	 background-color: #d2f0fc;
-   }
-    .border-radius-card {
-   	 border-radius: 8px 8px 0 0;
-   }
-    .toggle-btn {
-   	 background-color: #2e0a46;
-   	 border: none;
-   	 width: 100%;
-   	 border-radius: 8px 8px 0 0;
-   }
-    .toggle-btn img {
-   	 margin: 10px;
-   }
-    .debt-question {
-   	/* display: none;
-   	 <- Crashes Chrome on hover */
-   	/* Firefox */
-   	 margin-top: 20px;
-   }
-    .debt-question input::-webkit-outer-spin-button, .debt-question input::-webkit-inner-spin-button {
-   	 -webkit-appearance: none;
-   	 margin: 0;
-   	/* <-- Apparently some margin are still there even though it's hidden */
-   }
-   .custom-form .form-control:focus+.form-label {
-   	top: 33% !important;
-   }
-    .debt-question input[type=number] {
-   	 -moz-appearance: textfield;
-   }
-    .debt-question h3 {
-   	 font-size: 35px;
-   	 line-height: 40px;
-   	 font-weight: 600;
-   }
-    .debt-question p {
-   	 font-size: 25px;
-   	 line-height: 32px;
-   	 margin: 0;
-   }
-    .debt-question a {
-   	 font-size: 25px;
-   	 text-decoration: underline;
-   }
-    .debt-question .form-label {
-   	 background: #fff;
-   	 padding: 0 6px !important;
-   	 font-size: 12px !important;
-   	 top: 33% !important;
-   	 height: auto !important;
-   	 left: 13px !important;
-   	 -webkit-transform: translateY(-50%) scale(0.9) !important;
-   	 transform: translateY(-50%) scale(0.9) !important;
-   	 color: #3066be;
-   }
-    .debt-question .form-label.percent {
-   	 left: 85% !important;
-   	 top: 24px !important;
-   	 font-size: 18px !important;
-   }
-    .debt-question .form-control {
-   	 border: 1px solid #A3CD39 !important;
-   	 height:  70px;
-   	     font-size: 20px;
-         line-height: 20px;
-   }
-    .debt-question .form-control::placeholder {
-   	 color: black !important;
-   	 opacity: 0.8;
-   }
-    .debt-question .form-check {
-   	 margin-bottom: 10px;
-   }
-    .debt-question .form-check input {
-   	 margin-top: 0 !important;
-   	 width: 21px;
-   	 height: 21px;
-   }
-    .debt-question .form-check label {
-   	 height: auto !important;
-   	 padding: 0 10px !important;
-   }
-    .debt-question .btn {
-   	 font-weight: bold;
-   	 font-size: 20px;
-   	 min-width: 200px;
-   }
-    .debt-question .btn.blue {
-   	 background-color: #a6e1fa;
-   	 color: #2e0a46;
-   }
-    .debt-question .btn.clear {
-   	 color: #3066be;
-   	 border: 2px solid #3066be;
-   }
-    .debt-section.purple {
-   	 border: 2px solid #2e0a46;
-   }
-    .debt-section.purple .header {
-   	 background: #2e0a46;
-   	 color: white;
-   }
-    .debt-section.purple p {
-   	 color: #2e0a46;
-   }
-    .debt-section .link {
-   	 color: #0d6efd !important;
-   }
-    .debt-section.blue {
-   	 border: 2px solid #5F2F90;
-   }
-   .debt-section.green {
-      	 border: 2px solid #A3CD39;
-      }
-    .debt-section.blue .header {
-   	 background: #a6e1fa;
-   	 color: black;
-   }
-    .debt-section.blue p {
-   	 color: black;
-   }
-    .debt-section.box {
-   	 border-radius: 8px;
-   	 text-align: center;
-   }
-    .debt-section.box .header {
-   	 text-align: center;
-   	 font-size: 25px;
-   	 padding: 15px;
-   	 border-radius: 4px 4px 0 0;
-   	 font-weight: bold;
-   }
-    .debt-section.box p {
-   	 padding: 0 15px;
-   }
-    .debt-section.box .savings h5 {
-   	 font-size: 20px;
-   	 font-weight: bold;
-   }
-    .debt-section.box .savings h1 {
-   	 font-weight: bold;
-   	 font-size: 45px;
-   	 padding-bottom: 10px;
-   }
-    .debt-section.box .savings p {
-   	 padding: 0 15px;
-   }
-    .debt-section.box .box-row {
-   	 border-bottom: 1px solid gray;
-   	 justify-content: space-between;
-   }
-    .debt-section.box .box-row p {
-   	 white-space: nowrap;
-   	 margin-bottom: 0.5rem;
-   	 margin-top: 1rem;
-   	 padding: 0;
-   }
-    .debt-section.box .box-row p.jumbo {
-   	 font-size: 28px;
-   	 padding: 5px 0;
-   }
-    .debt-section.box-result {
-   	 padding: 15px;
-   }
-    .debt-section .custom-row strong {
-   	 color: #2e0a46;
-   }
-    .check-rate {
-   	 background-color: #fffae2;
-   }
-    .check-rate img {
-   	 width: 100%;
-   }
-    .check-rate h3 {
-   	 font-size: 25px;
-   	 padding: 10px;
-   }
-    .check-rate .debt-question {
-   	 margin-bottom: 25px;
-   }
-    .check-rate p {
-   	 font-size: 14px;
-   }
-    @@media (max-width: 1199px) {
-   	 .debt-block {
-   		 padding: 100px 0 30px;
-   		 margin-top: -130px;
-   		 margin-bottom: 0;
-   	}
-   	 .debt-block .debt-question h3 {
-   		 font-size: 32px;
-   		 line-height: 37px;
-   	}
-   	 .debt-block .debt-question p {
-   		 font-size: 22px;
-   		 line-height: 28px;
-   	}
-   }
-    @@media (min-width: 991px) {
-   	 .backdrop {
-   		 margin-top: 5vh;
-   	}
-   	 .debt-question h3 {
-   		 font-size: 45px;
-   	}
-   	 .debt-question .loan-info {
-   		 font-size: 25px;
-   	}
-   	 .debt-question p {
-   		 font-size: 20px;
-   	}
-   	 .debt-question .form-label.percent {
-   		 left: 94% !important;
-   		 color: black !important;
-   	}
-   }
-    @@media (min-width: 1200px) {
-   	 .backdrop {
-   		 margin-top: 15vh;
-   	}
-   }
-    @@media (min-width: 1200px) {
-   	 .backdrop {
-   		 margin-top: 20vh;
-   	}
-   }
-    @@media (max-width: 425px) {
-   	 .debt-block {
-   		 padding: 0 !important;
-   	}
-   }
-    @@media (max-width: 767px) {
-   	 .backdrop {
-   		 margin-top: 5vh;
-   	}
-   	 .debt-block {
-   		 clip-path: unset;
-   		 padding: 33px 10px 0;
-   		 margin: 0 auto;
-   	}
-   	 .debt-block .debt-question h3 {
-   		 font-size: 28px;
-   		 line-height: normal;
-   	}
-   	 .debt-block .debt-question p {
-   		 font-size: 18px;
-   		 line-height: 25px;
-   	}
-   	 .debt-block .debt-question a {
-   		 font-size: 18px;
-   		 text-decoration: underline;
-   	}
-   }
-    
-</style>
+</script>
+<!-- page banner section desgin end -->
+

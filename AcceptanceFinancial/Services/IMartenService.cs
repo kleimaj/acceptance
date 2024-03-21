@@ -10,4 +10,5 @@ public interface IMartenService {
     internal Task<bool> CreateCustomerLoanInfo(CustomerLoanInfo customerLoanInfo);
     internal Task<bool> CreateDirectMails(List<DirectMail> directMails);
     internal Task<DirectMail?> GetDirectMail(string Promocode);
+    internal Task<bool> CreateDirectMail(DirectMail directMail);
 }

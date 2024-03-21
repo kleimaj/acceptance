@@ -238,21 +238,21 @@ window.addEventListener("load", function () {
                });
        
          $("input[name='Offer']").keyup(function() {
-              if( $(this).val().length > 8) {
+              if( $(this).val().length > 5) {
                     $(".fetchhide").css("display","flex");
                   $.ajax({
                           url: "/home/GetPromotion?accessCode="+$(this).val()+"",
                           type: 'GET',
                           dataType: 'json', // added data type
                           success: function(res) {
-                              
+                                console.log(res);
                                  if(res != null) {
                                      $(".offer-err").html("");
                                     $("input[name='FirstName']").val(res.firstName);
                                     $("input[name='LastName']").val(res.lastName);
                                     $("input[name='Address']").val(res.address);
                                     $("input[name='City']").val(res.city); 
-                                    $('.stateList option')[res.stateCode].selected = true;    
+                                    //$('.stateList option')[res.stateCode].selected = true;    
                                     $('.stateList').val(res.stateCode);
                                     $("input[name='Zip']").val(res.zip);
                                     $(".fetchhide").css("display","none");

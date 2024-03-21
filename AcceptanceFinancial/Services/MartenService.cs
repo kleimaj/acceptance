@@ -116,4 +116,20 @@ public class MartenService : IMartenService {
             return false;
         }
     }
+    public async Task<bool> CreateDirectMail(DirectMail directMail)
+    {
+        try
+        {
+            await using var session = _store!.LightweightSession();
+            session.Store(directMail);
+
+            await session.SaveChangesAsync().ConfigureAwait(false);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error("Unable to create customer {@ex} {@directMail}", ex, directMail);
+            return false;
+        }
+    }
 }

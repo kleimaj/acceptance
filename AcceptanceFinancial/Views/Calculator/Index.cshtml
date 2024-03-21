@@ -7,353 +7,312 @@
 </div>
 
 <style asp-add-nonce="true">
- .pg-banner {
-     position: relative;
-     background: transparent linear-gradient(358deg,#e7f3fc 0%,#fff 0D 100%) 0% 0%;
-     padding: 153px 0 0;
- }
- @@media (max-width: 1499px) {
- .pg-banner {
-   	 position: relative;
-   	 background: transparent linear-gradient(358deg, #e7f3fc 0%, #fff 0D 100%) 0% 0%;
-   	 padding: 0;
-   }
-  }
-    .top-img {
-    	 position: relative;
+    .schedule .table {
+      border-top: 1px solid #b1b7c5;
+      border-bottom: 1px solid #b1b7c5;
+      margin-bottom: 0;
     }
-     .top-img .about-tringle {
-    	 position: absolute;
-    	 top: -60px;
-    	 left: 200px;
-    	 width: 500px;
+    .schedule .table p {
+      margin: 0;
+      margin: 10px;
     }
-     .faq-main .main-img {
+    .schedule .table-entry {
+      border-bottom: 1px solid #b1b7c5;
     }
-     .faq-page {
-    	 background: rgba(0, 0, 0, 0) linear-gradient(359deg, #daeefd 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0%;
-    	 z-index: 99;
+    .schedule .table-entry p {
+      margin: 10px;
+      margin-top: 5px;
     }
-     .faq-section {
-    	 padding: 85px 0 100px;
+    .backdrop {
+      background-color: white;
     }
-     .faq-section .faq-block {
-    	 margin-bottom: 40px;
+    .border-radius-card {
+      border-radius: 8px 8px 0 0;
+  box-shadow: 0 0 10px -6px;
+      
     }
-     .faq-section .faq-block h2 {
-    	 font-size: 30px;
-    	 line-height: 35px;
-    	 color: #5f2f90;
-    	 font-weight: 700;
+    .toggle-btn {
+      background-color: #BA03FC;
+      border: none;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
     }
-     .faq-section .faq-block p {
-    	 font-size: 30px;
-    	 line-height: 35px;
+    .toggle-btn img {
+      margin: 10px;
     }
-     .additional {
-    	 background-color: #e3f0fb;
-    	 margin-top: -30px;
-    	 padding: 0px 0 30px;
-    	 position: relative;
-    	 z-index: 999;
+    .debt-question {
+      margin-top: 20px;
     }
-     .additional .additional-block {
-    	 padding: 70px 0 66px;
+    .debt-question h3 {
+      font-size: 35px;
+      font-family: Oswald;
+      line-height: 40px; 
+      font-weight: 600;
+      color: #0847BA;
     }
-     .additional .additional-block a {
-    	 border-bottom: 1px solid #a3cd39;
+    .debt-question p {
+      font-size: 25px;
+      line-height: 32px;
+      color: black;
+      margin: 0;
+      font-family: Poppins;
     }
-     .additional::before {
-    	 position: absolute;
-    	 content: "";
-    	 width: 100%;
-    	 height: 100%;
-    	 top: 0;
-    	 background: rgba(0, 0, 0, 0) linear-gradient(267deg, #5f2f90 0%, #301848 100%) 0% 0%;
-    	 clip-path: polygon(0 19%, 100% 0%, 100% 100%, 0 100%);
+    .debt-question a {
+      font-size: 25px;
+      color: black;
+      text-decoration: underline;
     }
-     .additional .call-details {
-    	 position: relative;
+    .debt-question .form-label {
+      background: #ffffff;
+      padding: 0 6px !important;
+      font-size: 12px !important;
+      top: 0 !important;
+      height: auto !important;
+      left: 13px !important;
+      -webkit-transform: translateY(-50%) scale(0.9) !important;
+      transform: translateY(-50%) scale(0.9) !important;
+      color: #3066BE;
     }
-     .additional .call-details .images-group {
-    	 position: absolute;
-    	 top: -233px;
-    	 right: 0;
+    .debt-question .form-label.percent {
+      left: 85% !important;
+      top: 24px !important;
+      font-size: 18px !important;
     }
-     .additional .call-details .images-group .mask-img .mask {
-    	 mask: url('images/trinagle-mask.webp') no-repeat;
-    	 -webkit-mask: url('images/trinagle-mask.webp') no-repeat;
-    	 width: 100%;
+    .debt-question .form-control {
+      border: 1px solid #0847BA !important;
     }
-     .additional .call-details p {
-    	 font-size: 25px;
-    	 line-height: 30px;
-    	 color: #fff;
-    	 margin: 0;
+    .debt-section .custom-row .form-control {
+      padding:  18px 22px;
     }
-     .additional .call-details p span, .additional .call-details p a {
-    	 color: #a3cd39;
-    	 display: inline-block;
+    .debt-question .form-control::placeholder {
+      color: black !important;
+      opacity: 0.8;
     }
-     @@media (max-width: 1799px) {
-    	 .pg-banner .contact-detail h1 {
-    		 font-size: 63px;
-    		 line-height: 75px;
-    		 font-weight: 500;
-    	}
+    .error-message {
+      position: relative;
     }
-     @@media (max-width: 1499px) {
-    	 .additional .call-details .images-group {
-    		 right: -70px;
-    	}
-    	 .pg-banner .contact-detail h1 {
-    		 font-size: 58px;
-    		 line-height: 60px;
-    	}
+    .debt-question .form-check {
+      margin-bottom: 10px;
+      font-family: Poppins;
     }
-     @@media (max-width: 1199px) {
-    	 .top-img .about-tringle {
-    		 width: 300px;
-    		 left: 110px;
-    		 top: -30px;
-    	}
-    	 .faq-section {
-    		 padding: 45px 0 0;
-    	}
-    	 .pg-banner .contact-detail h1 {
-    		 font-size: 50px;
-    		 line-height: 50px;
-    		 text-align: left;
-    	}
-    	 .faq-section .faq-block h2 {
-    		 font-size: 24px;
-    		 line-height: 30px;
-    	}
-    	 .faq-section .faq-block p {
-    		 font-size: 24px;
-    		 line-height: 30px;
-    	}
-    	 .additional .call-details .images-group {
-    		 position: absolute;
-    		 top: -182px;
-    		 right: 0;
-    		 width: 40%;
-    	}
+    .debt-question .form-check input {
+      margin-top: 0 !important;
+      width: 21px;
+      height: 21px;
     }
-     @@media (max-width: 991px) {
-    	 .top-img .about-tringle {
-    		 width: 40%;
-    	}
-    	 .additional .call-details p {
-    		 font-size: 23px;
-    	}
-    	 .faq-details h1 {
-    		 text-align: center;
-    	}
-    	 .faq-section {
-    		 text-align: center;
-    	}
-    	 .faq-section .faq-block h2 {
-    		 font-size: 25px;
-    		 line-height: 30px;
-    	}
-    	 .faq-section .faq-block p {
-    		 font-size: 18px;
-    		 line-height: 22px;
-    	}
-    	 .images-group {
-    		 display: none;
-    	}
-    	 .question-img {
-    		 display: none;
-    	}
-    	 .additional .additional-block {
-    		 padding: 50px 0 0;
-    	}
-    	 .comman-block .details-content {
-    		 padding: 40px 0px 45px;
-    		 margin: 0 auto;
-    	}
-    	 .comman-block .details-content h2 {
-    		 text-align: center;
-    	}
+    .debt-question .form-check label {
+      height: auto !important;
+      padding: 0 10px !important;
+      text-indent: 1.5rem;
+      top: 40%;
     }
-     @@media (max-width: 767px) {
-    	 .top-img .about-tringle {
-    		 width: 210px;
-    		 left: 70px;
-    	}
-    	 .comman-block .details-content {
-    		 padding: 30px 0px 45px;
-    	}
-    	 .pg-banner.faq-main {
-    		 background: transparent linear-gradient(358deg, #e7f3fc 0%, #fff 0D 100%);
-    	}
-    	 .pg-banner.faq-main .main-img {
-    		 height: 300px;
-    	}
-    	 .pg-banner.faq-main .main-img img {
-    		 width: 100%;
-    		 height: 100%;
-    		 object-fit: cover;
-    	}
-    	 .additional .call-details {
-    		 padding: 68px 0 68px;
-    		 text-align: center;
-    	}
-    	 .pg-banner .contact-detail h1 {
-    		 text-align: center;
-    	}
-    	 .pg-banner .contact-detail p {
-    		 text-align: center;
-    	}
-    	 .pg-banner.about-us .page-img {
-    		 height: unset;
-    		 clip-path: unset;
-    	}
-    	 .tirngle-shape {
-    		 display: none;
-    	}
+    .debt-question .btn {
+      font-weight: bold;
+      font-size: 20px;
+      min-width: 200px;
     }
-    .pg-banner {
-        position: relative;
-        background: rgba(0,0,0,0) linear-gradient(358deg, #E7F3FC 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0%;
+    .debt-question .btn.blue {
+      background-color: #A6E1FA;
+      color: #2E0A46;
     }
-     .pg-banner::after {
-    	 position: absolute;
-    	 content: '';
-    	 top: 0;
-    	 left: 0;
-    	 right: 0;
-    	 bottom: 0;
-    	 background-image: url('images/Triangle-Pattern_TPL.webp');
-    	 width: 100%;
-    	 z-index: -1;
+    .debt-question .btn.clear {
+      color: #0847BA;
+      border: 2px solid #0847BA;
+      font-family: Oswald;
+      font-weight: bold;
+      border-radius: 15px;
     }
-     .pg-banner .page-img {
-    	 clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-    	 -webkit-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-    	 -o-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
-    	 -ms-clip-path: polygon(14% 0, 100% 0%, 100% 100%, 0% 100%);
+    .debt-section.purple {
+      border: 2px solid #0847BA;
     }
-     .pg-banner .page-img.banner-img::after {
-    	 background-image: url('images/grediant-shape.webp');
-    	 width: 500px;
-    	 margin-top: -40px;
+    .debt-section.purple .header {
+      background: #0847BA;
+      color: white !important;
+      font-family: Oswald;
     }
-     .pg-banner .page-img img {
-    	 width: 100%;
+    .debt-section.purple p {
+      color: #0847BA;
     }
-     .pg-banner .contact-detail h1 {
-    	 font-size: 75px;
-    	 line-height: 85px;
-    	 font-weight: 700;
-    	 color: #5f2f90;
-    	 margin: 0 0 16px;
-    	 display: inline-block;
+    .debt-section.purple h5 {
+      color: #0847BA;
     }
-     .pg-banner .contact-detail p {
-    	 font-size: 30px;
-    	 line-height: 35px;
-    	 margin: 0;
+    .debt-section.purple h1 {
+      color: #0847BA;
     }
-     .form-section {
-    	 padding: 78px 0;
-    	 background: transparent linear-gradient(96deg, rgba(95, 47, 144, 1) 0%, rgba(48, 24, 72, 1) 100%);
+    .debt-section .link {
+      color: #0d6efd !important;
     }
-     .contact-form .custom-row .form-control {
-    	 height: 70px;
-    	 padding: 19px 33px;
+    .debt-section.blue {
+      border: 2px solid #D6D6D6;
     }
-     .contact-form .custom-row textarea {
-    	 padding: 19px 33px !important;
+    .debt-section.blue .header {
+      background: #D6D6D6;
+      color: black;
+    } 
+    .debt-section.blue p {
+      color: #0A210F;
     }
-     .contact-main .top-img .about-tringle {
-    	 left: 50%;
-    	 transform: translate(-50%, 0);
+    .debt-section.blue h5 {
+      color: #0A210F;
     }
-     .contact-main.pg-banner .page-img.banner-img::after {
-    	 top: 0;
-    	 margin: 0;
-    	 transform: translate(-50%, 0);
+    .debt-section.blue h1 {
+      color: #0A210F;
     }
-     @@media (max-width: 1499px) {
-    	 .form-section {
-    		 padding: 38px 0;
-    	}
-    	 .pg-banner .contact-detail h1 {
-    		 font-size: 50px;
-    		 line-height: 50px;
-    	}
-    	 .pg-banner .contact-detail p {
-    		 font-size: 20px;
-    		 line-height: 25px;
-    		 text-align: left !important;
-    	}
-    	 .contact-form .custom-row .form-control {
-    		 height: 50px;
-    		 padding: 15px 18px;
-    	}
-    	 .contact-form .custom-row textarea {
-    		 padding: 19px 18px !important;
-    	}
+    .debt-section.box {
+      border-radius: 8px;
+      text-align: center;
     }
-     @@media (max-width: 1199px) {
-    	 .pg-banner .page-img.banner-img::after {
-    		 width: 200px;
-    		 height: 205px;
-    	}
+    .debt-section.box .header {
+      text-align: center;
+      font-size: 25px;
+      padding: 15px;
+      border-radius: 4px 4px 0 0;
+      font-weight: bold;
+      color: #0A210F;
+      font-family: Oswald;
     }
-     @@media (max-width: 991px) {
-    	 .pg-banner .contact-detail {
-    		 padding: 0px 0px 0px 0px;
-    		 display: inline-block;
-    		 text-align: left;
-    	}
-    	 .about-tringle .page-img {
-    		 display: none;
-    	}
-    	 .contact-detail.about-details {
-    		 margin: 0 0 50px;
-    	}
+    .debt-section.box p {
+      padding: 0 15px;
+      font-family: Poppins;
     }
-     @@media (max-width: 767px) {
-    	 .pg-banner.contact-main {
-    		 background: rgba(0, 0, 0, 0) linear-gradient(358deg, #a1d7ff 0%, rgba(255, 255, 255, 0.0509803922) 100%) 0% 0% !important;
-    	}
-    	 .pg-banner.contact-main .page-img {
-    		 height: 300px;
-    		 clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-    		 -webkit-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-    		 -o-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-    		 -ms-clip-path: polygon(0 0, 100% 9%, 100% 100%, 0% 100%);
-    	}
-    	 .pg-banner.contact-main .page-img img {
-    		 height: 100%;
-    		 object-fit: cover;
-    	}
-    	 .pg-banner.contact-main .page-img.banner-img::after {
-    		 top: -60px;
-    		 width: 260px;
-    		 height: 265px;
-    	}
-    	 .contact-form .custom-row .form-control {
-    		 font-size: 16px;
-    		 line-height: 16px;
-    	}
-    	 .form-section {
-    		 padding: 23px 0 55px;
-    	}
-    	 .submit-btn {
-    		 margin-top: 40px;
-    	}
-    	 .contact-main .comman-block .details-content {
-    		 padding: 45px 0 45px;
-    	}
-    	 .top-img .about-tringle {
-    		 top: 0;
-    	}
+    .debt-section.box .savings h5 {
+      font-size: 20px;
+      font-weight: bold;
     }
-     
-     
+    .debt-section.box .savings h1 {
+      font-weight: bold;
+      font-size: 45px;
+      padding-bottom: 10px;
+    }
+    .debt-section.box .savings p {
+      padding: 0 15px;
+    }
+    .debt-section.box .box-row {
+      border-bottom: 1px solid gray;
+      justify-content: space-between;
+    }
+    .debt-section.box .box-row p {
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+      padding: 0;
+    }
+    .debt-section.box .box-row p.jumbo {
+      font-size: 28px;
+      padding: 5px 0;
+    }
+    .debt-section.box-result {
+      padding: 15px;
+      border: 2px solid #0847BA;
+    }
+    .debt-section .custom-row strong { 
+      color: #2E0A46;
+    }
+    .check-rate {
+      background-color: #536380; 
+    }
+    .check-rate img { 
+      width: 100%; 
+    }  
+    .check-rate h3 {
+      font-size: 25px;
+      padding: 10px;
+      color: white;
+    }
+    .check-rate .debt-question {
+      margin-bottom: 25px;
+    }
+    .check-rate p {
+      font-size: 14px;
+      color: white;
+    }
+    .check-rate:before {
+      position: absolute;
+      content: ' ';
+      width: 5%;
+      height: 100%;
+      background: #54D6FB;
+    }
+    @@media (max-width: 1199px) {
+      .debt-block {
+        padding: 100px 0 30px;
+        margin-top: -130px;
+        margin-bottom: 0;
+      }
+      .debt-block .debt-question h3 {
+        font-size: 32px;
+        line-height: 37px;
+      }
+      .debt-block .debt-question p {
+        font-size: 22px;
+        line-height: 28px;
+      }
+    }
+    @@media (min-width: 991px) {
+      .backdrop {
+        margin-top: 5vh;
+      }
+      .debt-question h3 {
+        font-size: 45px;
+      }
+      .debt-question .loan-info {
+        font-size: 25px;
+      }
+      .debt-question p {
+        font-size: 20px;
+      }
+      .debt-question .form-label.percent {
+        left: 94% !important;
+        color: black !important;
+      }
+    }
+    @@media (min-width: 1200px) {
+      .backdrop {
+        margin-top: 15vh;
+      }
+    }
+    @@media (min-width: 1200px) {
+      .backdrop {
+        margin-top: 20vh;
+      }
+    }
+    @@media (max-width: 425px) {
+      .debt-block {
+        padding: 0 !important;
+      }
+    }
+    @@media (max-width: 767px) {
+      .backdrop {
+        margin-top: 5vh;
+      }
+      .debt-block {
+        clip-path: unset;
+        padding: 33px 10px 0;
+        margin: 0 auto;
+      }
+      .debt-block .debt-question h3 {
+        font-size: 28px;
+        line-height: normal;
+      }
+      .debt-block .debt-question p {
+        font-size: 18px;
+        line-height: 25px;
+      }
+      .debt-block .debt-question a {
+        font-size: 18px;
+        color: black;
+        text-decoration: underline;
+      }
+      .check-rate h3{
+         padding-top: 60px;
+      }
+      .check-rate:before {
+        position: absolute;
+        content: ' ';
+        width: 100%;
+        height: 30px;
+        background: #54D6FB;
+      }
+    }
+
 </style>
