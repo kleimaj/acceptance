@@ -66,9 +66,6 @@ window.addEventListener("load", function () {
 @await RenderSectionAsync("Scripts", false)
 </body>
 <style asp-add-nonce="true">
-.pg-banner {
-	padding:  0 0;
-}
   .home-bg-mobile {
 	width:  100%;	
   }
@@ -199,7 +196,7 @@ window.addEventListener("load", function () {
   	 font-family: 'Oswald', sans-serif;
   	 padding: 13px 20px;
   	 font-weight: 700;
-  	 width: 250px;
+  	 width: 280px; 
   	 display: flex;
   	 align-items: center;
   	 justify-content: center;
@@ -600,7 +597,7 @@ window.addEventListener("load", function () {
    @@media (max-width: 1799px) {
   	 .comman-btn {
   		 padding: 14px 20px;
-  		 width: 210px;
+  		 width: 280px;
   		 font-size: 18px;
   		 line-height: 18px; 
   	}
@@ -772,7 +769,7 @@ window.addEventListener("load", function () {
   		 padding: 30px 0 60px;
   	}
   	 .comman-btn {
-  		 width: 248px !important;
+  		 width: 280px !important;
   		 font-size: 22px;
   		 line-height: 22px;
   		 padding: 14px 11px;
@@ -911,7 +908,7 @@ window.addEventListener("load", function () {
    	 line-height: 33px;
    }
     .banner-content {
-   	 padding: 0px 0 150px;
+   	 padding: 0px 0 250px;
    }
     .banner-content h1 {
    	 font-size: 100px;
@@ -923,7 +920,7 @@ window.addEventListener("load", function () {
     .banner-content h2 {
    	 margin: 0 0 42px;
    	 color: #0a210f;
-   	 font-size: 45px;
+   	 font-size: 40px;
    	 font-weight: 400;
    	 font-family: 'Poppins';
    }
@@ -946,9 +943,9 @@ window.addEventListener("load", function () {
    	 display: inline-block;
    	 margin: 17px 0 0;
    }
-   @@media only screen and (min-width: 767px) {
+   @@media only screen and (max-width: 1600px) {
    	.banner-content h1 {
-   		font-size: 75px;
+   		font-size: 85px;
    		line-height: 85px;
    	}
    }
@@ -1105,6 +1102,9 @@ window.addEventListener("load", function () {
    	 margin-top: -75px;
    	 position: relative; 
    } 
+   .benefits-image img {
+   	border-radius: 15px;
+   }
    .benefits-text h3 {
 	font-family: Oswald;
 	font-size: 45px; 
@@ -1157,7 +1157,7 @@ window.addEventListener("load", function () {
    	 border-radius: 15px;
    	 box-shadow: rgba(149,157,165,.2) 0 8px 24px;
    	 width: 100%;
-   	 margin-top: -300px;
+   	 margin-top: -350px;
    	 position: relative;
    	 z-index: 99;
    }
@@ -1200,7 +1200,7 @@ window.addEventListener("load", function () {
    	 font-family: 'FontAwesome';
    }
     .experience-section {
-   	 padding: 170px 0 0px;
+   	 padding: 85px 0 0px;
    }
     .experience-section .goal-banner {
    	 position: absolute;
@@ -1480,7 +1480,7 @@ window.addEventListener("load", function () {
    		 width: 56vw;
    	}
    	 .banner-content {
-   		 padding: 0px 0 150px;
+   		 padding: 0px 0 250px;
    	}
    	 .goal-content {
    		 top: -10px;
@@ -1523,7 +1523,6 @@ window.addEventListener("load", function () {
    	}
    	 .easy-quote {
    		 margin-top: -160px;
-   		 clip-path: polygon(0 0, 100% 0, 100% 100%, 0 96%);
    	}
    	 .goal-content h3 {
    		 margin: 0 0 10px;
@@ -1572,7 +1571,7 @@ window.addEventListener("load", function () {
    		 width: 40%;
    	}
    	 .custom-form .view-rate {
-   		 padding: 0 0 60px;
+   		 padding: 0 0 20px;
    	}
    	 .thousans-section .people-block h2 {
    		 font-size: 38px;
@@ -1625,6 +1624,9 @@ window.addEventListener("load", function () {
    	 .thousans-section .people-block .housands-people p {
    		 font-size: 32px;
    		 line-height: 37px;
+   	}
+   	.side-info {
+   		margin: 2rem 0;
    	}
    	 .housands-people {
    		 margin: 0 auto;
@@ -1695,7 +1697,6 @@ window.addEventListener("load", function () {
    	 .easy-quote {
    		 padding: 30px 24px 35px; 
    		 margin-top: -100px;
-   		 clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%);
    	}
    	 .easy-quote::after {
    		 border-width: 30px 178px;
@@ -1809,13 +1810,12 @@ window.addEventListener("load", function () {
    		 line-height: 45px;
    	}
    	 .banner-sec .banner-content {
-   		 padding: 0 0 20px 0px;
+   		 padding: 0 0 0px 0px;
    	}
    	 .banner-sec .banner-content h1 br, .banner-sec .banner-content span br {
    		 display: none;
    	}
    	 .banner-sec .banner-content h2 {
-   		 margin: 0 0 20px;
    		 text-align: center;
    		 font-size: 25px;
    	}
@@ -1873,7 +1873,7 @@ window.addEventListener("load", function () {
    		 line-height: 19px;
    	}
    	 .experience-section {
-   		 padding: 34px 0 80px;
+   		 padding: 34px 0 0px;
    		 margin-top: -50px;
    	}
    	 .experience-section .experience-block {
@@ -2051,9 +2051,9 @@ window.addEventListener("load", function () {
     }
      @@media (max-width: 1799px) {
     	 .pg-banner .contact-detail h1 {
-    		 font-size: 63px;
-    		 line-height: 75px;
-    		 font-weight: 700;
+    		 font-size: 75px;
+    		 line-height: 80px;
+    		 font-weight: 500;
     	}
     }
      @@media (max-width: 1499px) {

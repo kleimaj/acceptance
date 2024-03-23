@@ -4,7 +4,7 @@
 <div class="backdrop">
         <section class="container debt-block mt-2 pt-md-5">
             <div class="white-bg border-radius-card mb-3 pb-2">
-            <button class="toggle-btn" click="toggleCalc(1)"><img class="toggle-1" src="/images/down.svg" alt="down arrow"/></button>
+            <button class="toggle-btn"><img class="toggle-1" src="/images/down.svg" alt="down arrow"/></button>
         <div class="container toggle-1-content bg-white text-lg-start mb-4 px-md-5">
             <div class="col-lg-12 col-md-12">
                 <div class="debt-section text-center">
@@ -79,17 +79,14 @@
                 <div class="col-lg-12 col-md-12">
                 <div class="debt-section text-center">
                 <div class="debt-question mb-4 d-flex flex-column align-items-md-center">
-                    <h3 class="col-md-12 mb-4 lh-sm">Eliminate Credit
-                        Card Debt and
-                        Save With a
-                        Personal Loan</h3>
+                    <h3 class="col-md-12 lh-sm">Debt Repayment Calculator</h3>
                 </div>
                 </div>
                 </div>
             </div>
             </div>
             <div class="white-bg mb-3 pb-2 border-radius-card">
-            <button class="toggle-btn" click="toggleCalc(2)"><img class="toggle-2" src="images/down.svg" alt="down arrow"/></button>
+            <button class="toggle-btn"><img class="toggle-2" src="images/down.svg" alt="down arrow"/></button>
 
             <div class="container toggle-2-content bg-white text-lg-start mb-4">
             <div class="col-lg-12 col-md-12">
@@ -246,14 +243,14 @@
                 <div class="col-lg-12 col-md-12">
                 <div class="debt-section text-center">
                 <div class="debt-question mb-4 d-flex flex-column align-items-md-center">
-                    <h3 class="col-md-12 mb-4 lh-sm">Minimum Payment Calculator</h3>
+                    <h3 class="col-md-12 lh-sm">Minimum Payment Calculator</h3>
                 </div>
                 </div>
                 </div>
             </div>
             </div>
             <div class="white-bg mb-3 pb-2 border-radius-card">
-            <button class="toggle-btn" click="toggleCalc(3)"><img class="toggle-3" src="/images/down.svg" alt="down arrow"/></button>
+            <button class="toggle-btn"><img class="toggle-3" src="/images/down.svg" alt="down arrow"/></button>
             <div class="container toggle-3-content bg-white text-lg-start pb-4 px-md-5 ">
             <div class="col-lg-12 col-md-11">
                 <div class="debt-section text-center">
@@ -348,7 +345,7 @@
                 <div class="col-lg-12 col-md-12">
                 <div class="debt-section text-center">
                 <div class="debt-question mb-4 d-flex flex-column align-items-md-center">
-                    <h3 class="col-md-12 mb-4 lh-sm">Personal Loan Calculator</h3>
+                    <h3 class="col-md-12 lh-sm">Personal Loan Calculator</h3>
                 </div>
                 </div>
                 </div>
@@ -368,7 +365,107 @@
     </div>
 </section>
 
-<script asp-add-nonce="true">
+<script type="text/javascript" asp-add-nonce="true">
+
+function toggleCalc(section) {
+    switch (section) {
+                case 1:
+                    this.toggleOneHidden = !this.toggleOneHidden
+                    if (this.toggleOneHidden) {
+                        document.querySelector('.toggle-1').src='/images/up.svg';
+                    }
+                    else {
+                        document.querySelector('.toggle-1').src='/images/down.svg'
+                    }
+                    document.querySelector('.toggle-1-content').classList.toggle("d-none");
+                    document.querySelector('.toggle-1-hidden').classList.toggle("d-none");
+                    break;
+                    case 2:
+                    this.toggleTwoHidden = !this.toggleTwoHidden
+                    if (this.toggleTwoHidden) {
+                        document.querySelector('.toggle-2').src='/images/up.svg';
+                    }
+                    else {
+                        document.querySelector('.toggle-2').src='/images/down.svg'
+                    }
+                    document.querySelector('.toggle-2-content').classList.toggle("d-none");
+                    document.querySelector('.toggle-2-hidden').classList.toggle("d-none");
+                    break;
+    
+                    case 3:
+                    this.toggleThreeHidden = !this.toggleThreeHidden
+                    if (this.toggleThreeHidden) {
+                        document.querySelector('.toggle-3').src='/images/up.svg';
+                    }
+                    else {
+                        document.querySelector('.toggle-3').src='/images/down.svg'
+                    }
+                    document.querySelector('.toggle-3-content').classList.toggle("d-none");
+                    document.querySelector('.toggle-3-hidden').classList.toggle("d-none");
+                    break;
+            
+                default:
+                    break;
+            }
+}
+function calcMinPayment() {
+    if ((this.minTotal <= 0 || this.minTotal > 100000 || this.minTotal === "") || (this.fixedPayment <= 0  || this.fixedPayment === "")) {
+            // this.resetMinPayment();
+        }
+        else {
+            this.MinPayItems = [];
+
+            var totalBalance = parseFloat(this.minTotal); 
+            var monthlyInterestRate = parseFloat(this.minInterestRate / 12);
+            var totalInterestPaid = 0;
+            let i = 0;
+            while(totalBalance > 0) {
+                var row = {};
+                row.month = i+1;
+                row.interest = parseFloat(totalBalance * monthlyInterestRate).toFixed(2);
+                if (this.toggleFixedPayment) {
+                    // Use fixed payment
+                    row.min = parseFloat(this.fixedPayment);
+                }
+                else {
+                    // Use minPayment
+                    row.min = totalBalance * parseFloat(this.minCalculated);
+                    if (this.minCalculated === ".01") {
+                        row.min = Math.max(15,parseFloat(this.minInterestRate) * totalBalance / 12 + (.01 * totalBalance));
+                    }
+                    if (this.minCalculated === ".01" && totalBalance < 15) {
+                        row.principal = parseFloat(totalBalance);
+                        row.min = parseFloat(row.principal) + parseFloat(row.interest);
+                    }
+                    if (row.min < 15 && totalBalance > 15) {
+                        row.min = 15;
+                    }
+                    else if (row.min < 15 && totalBalance < 15) {
+                        row.principal = parseFloat(totalBalance);
+                        row.min = parseFloat(row.principal) + parseFloat(row.interest);
+                    }
+                }
+                row.principal = row.min - row.interest
+                row.remaining = totalBalance - row.principal < 0 ? 0: totalBalance - row.principal;
+
+                this.MinPayItems.push(row);
+                totalBalance = row.remaining;
+                totalInterestPaid += parseFloat(row.interest);
+                i++;
+            }
+            this.minMonths = i;
+            this.minInterest = totalInterestPaid;
+        }
+}
+window.addEventListener("load", function () {
+$( document ).ready(function() {
+    document.querySelectorAll('.toggle-btn').forEach((item,key) => {
+        item.addEventListener('click',()=> {
+            toggleCalc(key+1) 
+        });
+    });
+});
+});
 
 
 </script>
