@@ -26,7 +26,7 @@
                             hideCurrencySymbolOnFocus: false,
                             hideGroupingSeparatorOnFocus: false,
                             hideNegligibleDecimalDigitsOnFocus: false,
-                            valueRange: {min: 0, max: 500000}}" class="form-control" placeholder="$0" ref="inputRef" keyup="autoCalculate($event)" v-model="totalDebt" type="text" />
+                            valueRange: {min: 0, max: 500000}}" class="form-control" placeholder="$0" ref="inputRef" keyup="autoCalculate($event)" id="totalDebt" type="text" />
                         <label class="form-label">Total</label>
                         </div>
                         <!-- <div class="debt-question custom-row mb-md-0">
@@ -40,8 +40,8 @@
                     </div>
                     <div class="debt-question mb-0 col-md-6">
                         <div class="button-group d-flex flex-column flex-md-row d-md-flex align-items-center justify-content-evenly">
-                            <button click="calcPayOff()" class="btn comman-btn yellow-btn mb-3 mb-md-0">CALCULATE</button>
-                            <button click="resetPayOff()" class="btn clear mb-4 mb-md-0">RESET</button>
+                            <button id="calcPayOff" class="btn comman-btn yellow-btn mb-3 mb-md-0">CALCULATE</button>
+                            <button id="resetPayOff" class="btn clear mb-4 mb-md-0">RESET</button>
                         </div>
                     </div>
                 </div>
@@ -49,26 +49,26 @@
                     <div class="debt-section box purple mt-4 me-md-2 col-md-6">
                         <h4 class="header">Current Payoff</h4>
                         <p class="pt-2">Time to Payoff: <strong>30 Years</strong></p>
-                        <p>Total Interest Paid: <strong>$</strong></p> 
+                        <p>Total Interest Paid: <strong>$<span id="payoffTotalInterest">0.00</span></strong></p> 
                         <p>Interest Rate: <strong>22%</strong></p>
-                        <p>Monthly Payment: <strong>$</strong></p>
+                        <p>Monthly Payment: <strong>$<span id="payoffMonthlyPayment">0.00</span></strong></p>
                         <!-- <p>Total Cost: <strong>${{ payOffTotalCost.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}</strong></p> --><br/>
                         <div class="savings">
                             <h5>Total Cost:</h5>
-                            <h1>$</h1>
+                            <h1>$<span id="payoffTotalCost">0.00</span></h1>
                             <p class="col-md-6 m-auto mb-4">Payoff numbers are calculated based on the national average</p>
                         </div>
                     </div>
                     <div class="debt-section box blue mt-4 ms-md-2 col-md-6">
                         <h4 class="header">Consolidation Loan</h4>
                         <p class="pt-2">Time to Payoff: <strong>5 Years</strong></p>
-                        <p>Total Interest Paid: <strong>$</strong></p> 
+                        <p>Total Interest Paid: <strong>$<span id="consolidationTotalInterest">0.00</span></strong></p> 
                         <p>Interest Rate: <strong>6.95%</strong></p>
-                        <p>Monthly Payment: <strong>$</strong></p>
-                        <p>Total Savings: <strong>$</strong></p>
+                        <p>Monthly Payment: <strong>$<span id="consolidationMonthlyPayment">0.00</span></strong></p>
+                        <p>Total Savings: <strong>$<span id="consolidationTotalSavings">0.00</span></strong></p>
                         <div class="savings">
                             <h5>Total Cost:</h5>
-                            <h1>$</h1>
+                            <h1>$<span id="consolidationTotalCost">0.00</span></h1>
                             <p class="col-md-6 m-auto mb-4 d-none">Payoff numbers are calculated based on the national average</p>
                         </div>
                     </div>
@@ -107,15 +107,15 @@
                             hideCurrencySymbolOnFocus: false,
                             hideGroupingSeparatorOnFocus: false,
                             hideNegligibleDecimalDigitsOnFocus: false,
-                            valueRange: {min: 0, max: 500000}}" class="form-control" ref="inputRef2" change="minPaymentChange()" type="text" keyup="autoCalculateMin($event)" placeholder="$0" v-model="minTotal"/>
+                            valueRange: {min: 0, max: 500000}}" class="form-control" ref="inputRef2" change="minPaymentChange()" type="text" keyup="autoCalculateMin($event)" placeholder="$0" id="minTotal"/>
                             <label class="form-label">Total</label>
                             </div>
                         </div>
                         <div class="debt-question custom-row">
                             <p><strong>What is the interest rate on your credit card?</strong></p>
                             <br/>
-                            <select class="multiselect form-select form-control" v-model="minInterestRate">
-                                    <option value=".01" selected>1%</option>
+                            <select class="multiselect form-select form-control" id="minInterestRate">
+                                    <option value=".01">1%</option>
                                     <option value=".02">2%</option>
                                     <option value=".03">3%</option>
                                     <option value=".04">4%</option>
@@ -136,7 +136,7 @@
                                     <option value=".19">19%</option>
                                     <option value=".20">20%</option>
                                     <option value=".21">21%</option>
-                                    <option value=".22">22%</option>
+                                    <option value=".22" selected>22%</option>
                                     <option value=".23">23%</option>
                                     <option value=".24">24%</option>
                                     <option value=".25">25%</option>
@@ -158,7 +158,7 @@
                         <div class="debt-question custom-row">
                             <p><strong>How is your minimum payment calculated?</strong></p>
                             <br/>
-                            <select class="multiselect form-select form-control" change="minPaymentChange()" v-model="minCalculated">
+                            <select class="multiselect form-select form-control" change="minPaymentChange()" id="minCalculated">
                                 <option value=".01" selected>Interest + 1% of balance</option>
                                 <option value=".02">2% of balance</option>
                                 <option value=".0208">2.08% of balance</option>
@@ -172,18 +172,18 @@
                             </select>
                         </div>
                         <div class="debt-question custom-row">
-                            <p class="text-black">Your minimum payment: <strong>$</strong></p>
+                            <p class="text-black">Your minimum payment: <strong>$<span id="minPayment">15.00</span></strong></p>
                             <p class="text-black mt-4"><strong>Select a payment schedule based on:</strong></p>
                             <br/>
                             <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" change="showFixedPayment()" checked>
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <input class="form-check-input" id="minPaymentRadio" type="radio" name="flexRadioDefault" change="showFixedPayment()" checked>
+                            <label class="form-check-label">
                                 Minimum payment
                             </label>
                             </div>
                             <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" change="showFixedPayment()">
-                            <label class="form-check-label" for="flexRadioDefault2">
+                            <input class="form-check-input" id="fixedPaymentRadio" type="radio" name="flexRadioDefault" change="showFixedPayment()">
+                            <label class="form-check-label">
                                 Fixed payment
                             </label>
                             </div>
@@ -192,24 +192,24 @@
                             <p><strong>What fixed payment could you make monthly?</strong></p>
                             <br/>
                             <div class="error-message">
-                            <input class="form-control" placeholder="$0" v-model="fixedPayment" change="updateFixedPayment()"/>
+                            <input class="form-control" placeholder="$0" id="fixedPayment" value="15" change="updateFixedPayment()"/>
                             <label class="form-label">Total</label>
                             </div>
                         </div>
                         <div class="debt-question d-flex flex-column mb-0 flex-md-row ">
-                            <button click="calcMinPayment()" class="btn blue mb-3 mb-md-0 me-md-4">CALCULATE</button>
-                            <button click="resetMinPayment()" class="btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
+                            <button id="calcMinPayment" class="btn comman-btn yellow-btn mb-3 mb-md-0 me-md-4">CALCULATE</button>
+                            <button id="resetMinPayment" class="btn comman-btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
                         </div>
                     </div>
                     <div class="col-md-6 pe-md-4 pt-md-5">
                         <div class="debt-section box blue pb-4 px-md-4 mt-md-4">
-                            <p class="pt-2 mt-4"><strong>With a _ payment:</strong></p>
-                            <p class="col-md-6 m-auto mb-3">It will take you <strong> minMonths  months</strong> to be rid of your debt.</p> 
+                            <p class="pt-2 mt-4"><strong>With a <span id="toggleFixedPayment">minimum</span> payment:</strong></p>
+                            <p class="col-md-6 m-auto mb-3">It will take you <strong> <span id="minMonths">0</span>  months</strong> to be rid of your debt.</p> 
                             <div class="savings">
                                 <h5>In that time, you will pay:</h5>
-                                <h1 class="mb-0 pb-2">$</h1>
+                                <h1 class="mb-0 pb-2">$<span id="minInterest">0.00</span></h1>
                                 <h5 class="mb-4">in interest.</h5>
-                                <p class="link text-decoration-underline d-none d-md-block" role="button" click="showPaymentSchedule()">Show payment schedule</p>
+                                <p class="link text-decoration-underline d-none d-md-block" role="button" id="showPaymentSchedule">Show payment schedule</p>
                             </div>
                         </div>
                     </div>
@@ -280,34 +280,34 @@
                             hideGroupingSeparatorOnFocus: false,
                             hideNegligibleDecimalDigitsOnFocus: false,
                             valueRange: {min: 0, max: 500000}}"
-                             class="form-control" placeholder="$0" keyup="autoCalculatePersonal($event)" v-model="loanAmount"/>
+                             class="form-control" placeholder="$0" keyup="autoCalculatePersonal($event)" id="loanAmount"/>
                             <label class="form-label">Amount</label>
                             </div>
                         </div>
                         <div class="debt-question custom-row">
                             <p><strong>Loan term (yrs)</strong> Terms can be from 3-12 years</p>
                             <br/>
-                            <input class="form-control" type="number" min="1" v-model="loanTerm"/>
+                            <input class="form-control" type="number" min="1" id="loanTerm" value="5"/>
                         </div>
                         <div class="debt-question custom-row">
                             <p><strong>Interest rate</strong></p>
                             <br/>
                             <div class="error-message">
-                            <input class="form-control" type="number" min="0"  v-model="loanInterest"/>
+                            <input class="form-control" type="number" min="0" value="6.95" id="loanInterest"/>
                             <label class="form-label percent">%</label>
                             </div>
                         </div>
                         <div class="debt-question d-flex flex-column mb-0 mb-md-5 mt-md-5 flex-md-row">
-                            <button click="calcPersonalLoan()" class="btn comman-btn yellow-btn mb-3 mb-md-0 me-md-4">CALCULATE</button>
-                            <button click="resetPersonalLoan()" class="btn comman-btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
+                            <button id="calcPersonalLoan" class="btn comman-btn yellow-btn mb-3 mb-md-0 me-md-4">CALCULATE</button>
+                            <button id="resetPersonalLoan" class="btn comman-btn clear mb-4 mb-md-0 ms-md-4">CLEAR ALL</button>
                         </div>
                     </div>
                     <div class="debt-section box box-result blue pb-4 mb-4 text-start col-md-6 ms-md-4 align-self-start px-md-4 mt-md-5">
                         <h3 class="pt-2 mt-4 ps-3"><strong>Your results:</strong></h3>
-                        <div class="box-row d-flex"><p>Total prinicipal paid</p> <p><strong>$</strong></p></div>
-                        <div class="box-row d-flex"><p>Total interest paid</p> <p><strong>$</strong></p></div>
-                        <div class="box-row d-flex"><p><strong>Estimated payment</strong></p> <p class="jumbo"><strong>$</strong></p></div>
-                        <div class="box-row d-flex"><p><strong>Loan term (yrs)</strong></p> <p class="jumbo"><strong></strong></p></div>
+                        <div class="box-row d-flex"><p>Total prinicipal paid</p> <p><strong>$<span id="principalPaid">0</span></strong></p></div>
+                        <div class="box-row d-flex"><p>Total interest paid</p> <p><strong>$<span id="totalInterestPaid">0.00</span></strong></p></div>
+                        <div class="box-row d-flex align-items-end"><p><strong>Estimated payment</strong></p> <p class="jumbo"><strong>$<span id="estimatedPayment">0</span></strong></p></div>
+                        <div class="box-row d-flex align-items-end"><p><strong>Loan term (yrs)</strong></p> <p class="jumbo"><strong><span id="loanTermResult">5</span></strong></p></div>
                         <div class="text-center pt-4">
                         <p role="button" click="showAmortSchedule()" class="link text-center text-decoration-underline d-none d-md-block">Show amortization schedule</p>
                     </div>
@@ -357,7 +357,7 @@
                 <div class="container text-center pb-3 pb-md-5 pt-md-5">
                 <h3><strong>We're here for you.</strong><br class="d-md-none"/> Get your available rate today with <strong>no impact to your credit score.</strong></h3>
                 <div class="debt-question">
-                <button class="btn yellow-btn comman-btn mx-auto" click="redirectToCheckRate()">CHECK MY RATE</button>
+                    <a href="/apply"><button class="btn yellow-btn comman-btn mx-auto" click="redirectToCheckRate()">CHECK MY RATE</button></a>
                 </div>
                 <p class="pb-2 col-md-8 m-auto">This calculator is meant for educational purposes only. It is a tool to estimate monthly payments solely based on the information you provide. The loan rates, amounts, monthly payments, and terms are not guaranteed and do not constitute a credit offer.</p>
                 </div>
@@ -408,54 +408,204 @@ function toggleCalc(section) {
                     break;
             }
 }
-function calcMinPayment() {
-    if ((this.minTotal <= 0 || this.minTotal > 100000 || this.minTotal === "") || (this.fixedPayment <= 0  || this.fixedPayment === "")) {
-            // this.resetMinPayment();
+function resetPayOff() {
+        totalDebt = 0;
+        $('#totalDebt').val("");
+        $('#payoffTotalInterest').text("0.00");
+        $('#payoffMonthlyPayment').text("0.00");
+        $('#consolidationTotalInterest').text("0.00");
+        $('#consolidationMonthlyPayment').text("0.00");
+        $('#payoffTotalCost').text("0.00");
+        $('#consolidationTotalCost').text("0.00");
+        $('#consolidationTotalSavings').text("0.00");
+    }
+function calcPayOff() {
+    var totalDebt = $("#totalDebt").val()
+    console.log(totalDebt);
+    if (totalDebt <= 0 && totalDebt < 100000) {
+        // this.resetPayOff();
+    }
+    else {
+        var r1 = (.22)/12;
+        var r2 = (.0695)/12;
+        var n1 = 30 * 12;
+        var n2 = 5*12;
+
+        var payOffMonthly = (parseFloat(totalDebt) * r1 * Math.pow(1+r1,n1)) / (Math.pow(1+r1,n1)-1);
+        var consolidationMonthly = (parseFloat(totalDebt) * r2 * Math.pow(1+r2,n2)) / (Math.pow(1+r2,n2)-1);
+        var payOffTotalInterest = payOffMonthly * n1 - parseFloat(totalDebt);
+        var consolidationTotalInterest = payOffMonthly * n2 - parseFloat(totalDebt);
+        var payOffTotalCost = parseFloat(totalDebt) + payOffTotalInterest;
+        var consolidationTotalCost = parseFloat(totalDebt) + consolidationTotalInterest; 
+        var consolidationSavings = payOffTotalCost - consolidationTotalCost;
+
+        // var r = (this.loanInterest * .01)/12;
+        // UPDATE
+        var remaining = totalDebt;
+        var consolRemaining = totalDebt;
+        var totalInterest = 0;
+        var consolTotalInterest = 0;
+        for (let i = 0; i < n1; i++) {
+            var interest= remaining * r1;
+            totalInterest += interest;
+            remaining = remaining - payOffMonthly + interest;
+        }
+        for (let i = 0; i < n2; i++) {
+            var consolInterest= consolRemaining * r2;
+            consolTotalInterest += consolInterest;
+            consolRemaining = consolRemaining - consolidationMonthly + consolInterest;
+        }
+        var payOffTotalInterest = totalInterest
+        var consolidationTotalInterest = consolTotalInterest;
+        var consolidationTotalCost = parseFloat(totalDebt) + consolidationTotalInterest;
+        $('#payoffTotalInterest').text(payOffTotalInterest.toFixed(2));
+        $('#payoffMonthlyPayment').text(payOffMonthly.toFixed(2));
+        $('#payoffTotalCost').text(payOffTotalCost.toFixed(2));
+        $('#consolidationTotalInterest').text(consolTotalInterest.toFixed(2));
+        $('#consolidationMonthlyPayment').text(consolidationMonthly.toFixed(2));
+        $('#consolidationTotalSavings').text(consolidationSavings.toFixed(2));
+        $('#consolidationTotalCost').text(consolidationTotalCost.toFixed(2));
+        
+    }
+}
+function resetMinPayment() {
+    this.MinPayItems = [];
+    this.minMonths = 0;
+    $("#minMonths").text(0);
+    this.minTotal = "";
+    $("#minTotal").val('');
+    $("#minInterest").text('0.00');
+    this.minPayment = 15;
+    $("#minPayment").text('15');
+    this.fixedPayment = 15;
+    $("#fixedPayment").val('15');
+}
+function minPaymentChange() {
+    var minTotal = parseFloat($('#minTotal').val());
+    var minInterestRate = $('#minInterestRate').val();
+    var minCalculated = $('#minCalculated').val();
+    var minPayment = 15;
+    if (minTotal !== "") {
+        if (minCalculated === ".01") {
+            // eslint-disable-next-line no-console
+            // console.log(this.minInterestRate, this.minTotal,'!');
+            minPayment = Math.max(15,parseFloat(minInterestRate) * parseFloat(minTotal) / 12 + (.01 * parseFloat(minTotal)));
         }
         else {
-            this.MinPayItems = [];
-
-            var totalBalance = parseFloat(this.minTotal); 
-            var monthlyInterestRate = parseFloat(this.minInterestRate / 12);
-            var totalInterestPaid = 0;
-            let i = 0;
-            while(totalBalance > 0) {
-                var row = {};
-                row.month = i+1;
-                row.interest = parseFloat(totalBalance * monthlyInterestRate).toFixed(2);
-                if (this.toggleFixedPayment) {
-                    // Use fixed payment
-                    row.min = parseFloat(this.fixedPayment);
-                }
-                else {
-                    // Use minPayment
-                    row.min = totalBalance * parseFloat(this.minCalculated);
-                    if (this.minCalculated === ".01") {
-                        row.min = Math.max(15,parseFloat(this.minInterestRate) * totalBalance / 12 + (.01 * totalBalance));
-                    }
-                    if (this.minCalculated === ".01" && totalBalance < 15) {
-                        row.principal = parseFloat(totalBalance);
-                        row.min = parseFloat(row.principal) + parseFloat(row.interest);
-                    }
-                    if (row.min < 15 && totalBalance > 15) {
-                        row.min = 15;
-                    }
-                    else if (row.min < 15 && totalBalance < 15) {
-                        row.principal = parseFloat(totalBalance);
-                        row.min = parseFloat(row.principal) + parseFloat(row.interest);
-                    }
-                }
-                row.principal = row.min - row.interest
-                row.remaining = totalBalance - row.principal < 0 ? 0: totalBalance - row.principal;
-
-                this.MinPayItems.push(row);
-                totalBalance = row.remaining;
-                totalInterestPaid += parseFloat(row.interest);
-                i++;
-            }
-            this.minMonths = i;
-            this.minInterest = totalInterestPaid;
+            minPayment = Math.max(15,parseFloat(minCalculated) * parseFloat(minTotal))
         }
+        $('#minPayment').text(minPayment.toFixed(2));
+    }
+    else {
+        this.minPayment = 15
+        $('#minPayment').text(minPayment.toFixed(2));
+    }
+    $("#fixedPayment").val(minPayment.toFixed(2));
+}
+function calcMinPayment() {
+    var minTotal = parseFloat($('#minTotal').val());
+    var minInterestRate = $('#minInterestRate').val();
+    var minCalculated = $('#minCalculated').val();
+    var toggleFixedPayment = $('#fixedPaymentRadio').is(':checked');
+    var fixedPayment = parseFloat($('#fixedPayment').val());
+    /*console.log(minTotal, minInterestRate, minCalculated, toggleFixedPayment, fixedPayment);*/
+    if ((minTotal <= 0 || minTotal > 100000 || minTotal === "") || (fixedPayment <= 0  || fixedPayment === "")) {
+        // this.resetMinPayment();
+    }
+    else {
+        this.MinPayItems = [];
+
+        var totalBalance = parseFloat(minTotal); 
+        var monthlyInterestRate = parseFloat(minInterestRate / 12);
+        var totalInterestPaid = 0;
+        let i = 0;
+        while(totalBalance > 0) {
+            var row = {};
+            row.month = i+1;
+            row.interest = parseFloat(totalBalance * monthlyInterestRate).toFixed(2);
+            if (toggleFixedPayment) {
+                // Use fixed payment
+                row.min = parseFloat(fixedPayment);
+            }
+            else {
+                // Use minPayment
+                row.min = totalBalance * parseFloat(minCalculated);
+                if (minCalculated === ".01") {
+                    row.min = Math.max(15,parseFloat(minInterestRate) * totalBalance / 12 + (.01 * totalBalance));
+                }
+                if (minCalculated === ".01" && totalBalance < 15) {
+                    row.principal = parseFloat(totalBalance);
+                    row.min = parseFloat(row.principal) + parseFloat(row.interest);
+                }
+                if (row.min < 15 && totalBalance > 15) {
+                    row.min = 15;
+                }
+                else if (row.min < 15 && totalBalance < 15) {
+                    row.principal = parseFloat(totalBalance);
+                    row.min = parseFloat(row.principal) + parseFloat(row.interest);
+                }
+            }
+            row.principal = row.min - row.interest
+            row.remaining = totalBalance - row.principal < 0 ? 0: totalBalance - row.principal;
+
+            this.MinPayItems.push(row);
+            totalBalance = row.remaining;
+            totalInterestPaid += parseFloat(row.interest);
+            i++;
+        }
+        $('#minMonths').text(i);
+        $('#minInterest').text(totalInterestPaid.toFixed(2));
+    }
+}
+function resetPersonalLoan() {
+    this.AmortItems = [];
+    this.loanTotalInterest = 0;
+    $("#totalInterestPaid").text("0.00");
+    this.loanAmount = "";
+    $("#loanAmount").val("");
+    $("#principalPaid").text("0");
+    this.loanMonthly= 0.00;
+    $("#estimatedPayment").text("0");
+}
+function calcPersonalLoan() {
+    var loanAmount = $('#loanAmount').val();
+    var loanTerm = $('#loanTerm').val();
+    var loanInterest = $('#loanInterest').val();
+    this.AmortItems = [];
+    console.log(loanAmount);
+    if (loanAmount <= 0 || loanAmount === "" || loanAmount > 100000 || loanInterest <= 0  || loanInterest === "" || loanTerm < 3 || loanTerm > 12 || loanTerm === "") {
+        // this.resetPersonalLoan();
+    }
+    else {
+        var r = (loanInterest * .01)/12;
+        var n = loanTerm*12;
+        var loanMonthly = (parseFloat(loanAmount) * r * Math.pow(1+r,n)) / (Math.pow(1+r,n)-1);
+
+        var remaining = loanAmount;
+        var totalInterest = 0;
+        for (let i = 0; i < n; i++) {
+            var row = {};
+            var now = new Date();
+            var current = new Date(now.getFullYear(), now.getMonth()+(i+1), 1)
+            var nextMonth = current.toLocaleString('en-US',{month: 'short'});
+            var year = current.getFullYear();
+            row.date = nextMonth + " " + year;
+            row.payment= loanMonthly;
+            
+            row.interest= remaining * r;
+            row.principal= loanMonthly - row.interest;
+            totalInterest += row.interest;
+            row.totalInterest = totalInterest;
+            remaining = remaining - loanMonthly + row.interest;
+            row.balance= remaining;
+
+            this.AmortItems.push(row);
+        }
+        var loanTotalInterest = totalInterest;
+        $("#principalPaid").text(loanAmount);
+        $("#totalInterestPaid").text(loanTotalInterest.toFixed(2));
+        $("#estimatedPayment").text(loanMonthly.toFixed(0));
+    }
 }
 window.addEventListener("load", function () {
 $( document ).ready(function() {
@@ -463,6 +613,67 @@ $( document ).ready(function() {
         item.addEventListener('click',()=> {
             toggleCalc(key+1) 
         });
+    });
+    
+    var totalDebt = 0;
+    $("#totalDebt").keyup(function (e) {
+        totalDebt = $(this).val();
+        $("#minTotal").val(totalDebt);
+        $("#loanAmount").val(totalDebt);
+        calcPayOff(); 
+        calcMinPayment();
+        calcPersonalLoan();
+    });
+/*    $("#totalDebt").change(function (e) {
+        const formatter = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"});
+        $("#totalDebt").val(formatter.format(totalDebt));
+    });*/
+    $("#minTotal").keyup(function () {
+         calcMinPayment();
+    });
+    $("#loanAmount").keyup(function () {
+        calcPersonalLoan(); 
+    });
+    $("#calcPayOff").on("click",function(){
+        calcPayOff();
+    });
+    $("#resetPayOff").on("click", function (){
+        resetPayOff(); 
+    });
+    $("#minPaymentRadio").on("change", function () {
+        document.querySelector('.fixed-payment').classList.toggle('d-none');
+    });
+    $("#fixedPaymentRadio").on("change", function () {
+        document.querySelector('.fixed-payment').classList.toggle('d-none');
+    });
+    $("#fixedPayment").on("change", function () {
+        var fixedPayment = $("#fixedPayment").val();
+        var minPayment = $("#minPayment").text();
+        if (fixedPayment < parseFloat(minPayment)) {
+            $("#fixedPayment").val(minPayment);    
+        }
+    });
+    $("#minTotal").on("change", function () {
+        minPaymentChange();
+    });
+    $("#minCalculated").on("change", function () {
+        minPaymentChange();
+    });
+    //minTotal, fixedPayment, minInterestRate, toggleFixedPayment, minCalculated
+    $("#resetMinPayment").on("click", function () {
+       resetMinPayment(); 
+    });
+    $('#calcMinPayment').on("click", function () {
+        calcMinPayment();
+    });
+    $("#loanTerm").on("change", function () {
+        $("#loanTermResult").text($("#loanTerm").val()); 
+    });
+    $("#calcPersonalLoan").on("click", function () {
+        calcPersonalLoan(); 
+    });
+    $("#resetPersonalLoan").on("click", function () {
+        resetPersonalLoan(); 
     });
 });
 });

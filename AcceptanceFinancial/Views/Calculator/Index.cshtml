@@ -7,6 +7,17 @@
 </div>
 
 <style asp-add-nonce="true">
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
     .schedule .table {
       border-top: 1px solid #b1b7c5;
       border-bottom: 1px solid #b1b7c5;
@@ -183,6 +194,7 @@
       font-weight: bold;
       font-size: 45px;
       padding-bottom: 10px;
+      font-family: Oswald;
     }
     .debt-section.box .savings p {
       padding: 0 15px;
@@ -196,10 +208,16 @@
       margin-bottom: 0.5rem;
       margin-top: 1rem;
       padding: 0;
+      font-family: 18px;
     }
+    .debt-section.box .box-row p span {
+      font-family: Oswald;
+    }
+    
     .debt-section.box .box-row p.jumbo {
       font-size: 28px;
-      padding: 5px 0;
+      font-family: Oswald;
+      padding: 0;
     }
     .debt-section.box-result {
       padding: 15px;
