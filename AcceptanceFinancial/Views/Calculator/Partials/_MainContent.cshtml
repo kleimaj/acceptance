@@ -209,7 +209,7 @@
                                 <h5>In that time, you will pay:</h5>
                                 <h1 class="mb-0 pb-2">$<span id="minInterest">0.00</span></h1>
                                 <h5 class="mb-4">in interest.</h5>
-                                <p class="link text-decoration-underline d-none d-md-block" role="button" id="showPaymentSchedule">Show payment schedule</p>
+                                <p class="link text-decoration-underline d-none d-md-none" role="button" id="showPaymentSchedule">Show payment schedule</p>
                             </div>
                         </div>
                     </div>
@@ -309,7 +309,7 @@
                         <div class="box-row d-flex align-items-end"><p><strong>Estimated payment</strong></p> <p class="jumbo"><strong>$<span id="estimatedPayment">0</span></strong></p></div>
                         <div class="box-row d-flex align-items-end"><p><strong>Loan term (yrs)</strong></p> <p class="jumbo"><strong><span id="loanTermResult">5</span></strong></p></div>
                         <div class="text-center pt-4">
-                        <p role="button" click="showAmortSchedule()" class="link text-center text-decoration-underline d-none d-md-block">Show amortization schedule</p>
+                        <p role="button" click="showAmortSchedule()" class="link text-center text-decoration-underline d-none d-md-none">Show amortization schedule</p>
                     </div>
                     </div>
                 </div>
@@ -421,6 +421,7 @@ function resetPayOff() {
     }
 function calcPayOff() {
     var totalDebt = $("#totalDebt").val()
+    totalDebt = Number(totalDebt.replace(/[^0-9.-]+/g,""));
     console.log(totalDebt);
     if (totalDebt <= 0 && totalDebt < 100000) {
         // this.resetPayOff();
@@ -458,13 +459,13 @@ function calcPayOff() {
         var payOffTotalInterest = totalInterest
         var consolidationTotalInterest = consolTotalInterest;
         var consolidationTotalCost = parseFloat(totalDebt) + consolidationTotalInterest;
-        $('#payoffTotalInterest').text(payOffTotalInterest.toFixed(2));
-        $('#payoffMonthlyPayment').text(payOffMonthly.toFixed(2));
-        $('#payoffTotalCost').text(payOffTotalCost.toFixed(2));
-        $('#consolidationTotalInterest').text(consolTotalInterest.toFixed(2));
-        $('#consolidationMonthlyPayment').text(consolidationMonthly.toFixed(2));
-        $('#consolidationTotalSavings').text(consolidationSavings.toFixed(2));
-        $('#consolidationTotalCost').text(consolidationTotalCost.toFixed(2));
+        $('#payoffTotalInterest').text(payOffTotalInterest.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#payoffMonthlyPayment').text(payOffMonthly.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#payoffTotalCost').text(payOffTotalCost.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#consolidationTotalInterest').text(consolTotalInterest.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#consolidationMonthlyPayment').text(consolidationMonthly.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#consolidationTotalSavings').text(consolidationSavings.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $('#consolidationTotalCost').text(consolidationTotalCost.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         
     }
 }
@@ -494,16 +495,17 @@ function minPaymentChange() {
         else {
             minPayment = Math.max(15,parseFloat(minCalculated) * parseFloat(minTotal))
         }
-        $('#minPayment').text(minPayment.toFixed(2));
+        $('#minPayment').text(minPayment.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
     else {
         this.minPayment = 15
-        $('#minPayment').text(minPayment.toFixed(2));
+        $('#minPayment').text(minPayment.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
-    $("#fixedPayment").val(minPayment.toFixed(2));
+    $("#fixedPayment").val(minPayment.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 }
 function calcMinPayment() {
-    var minTotal = parseFloat($('#minTotal').val());
+    var minTotal = $('#minTotal').val();
+    minTotal = Number(minTotal.replace(/[^0-9.-]+/g,""));
     var minInterestRate = $('#minInterestRate').val();
     var minCalculated = $('#minCalculated').val();
     var toggleFixedPayment = $('#fixedPaymentRadio').is(':checked');
@@ -554,7 +556,7 @@ function calcMinPayment() {
             i++;
         }
         $('#minMonths').text(i);
-        $('#minInterest').text(totalInterestPaid.toFixed(2));
+        $('#minInterest').text(totalInterestPaid.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
 }
 function resetPersonalLoan() {
@@ -569,6 +571,7 @@ function resetPersonalLoan() {
 }
 function calcPersonalLoan() {
     var loanAmount = $('#loanAmount').val();
+    loanAmount = Number(loanAmount.replace(/[^0-9.-]+/g,""));
     var loanTerm = $('#loanTerm').val();
     var loanInterest = $('#loanInterest').val();
     this.AmortItems = [];
@@ -602,9 +605,9 @@ function calcPersonalLoan() {
             this.AmortItems.push(row);
         }
         var loanTotalInterest = totalInterest;
-        $("#principalPaid").text(loanAmount);
-        $("#totalInterestPaid").text(loanTotalInterest.toFixed(2));
-        $("#estimatedPayment").text(loanMonthly.toFixed(0));
+        $("#principalPaid").text(loanAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $("#totalInterestPaid").text(loanTotalInterest.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $("#estimatedPayment").text(loanMonthly.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
 }
 window.addEventListener("load", function () {
@@ -624,6 +627,18 @@ $( document ).ready(function() {
         calcMinPayment();
         calcPersonalLoan();
     });
+        new Cleave('#totalDebt', {
+            numeral: true,
+            prefix: '$'
+        });
+        new Cleave('#minTotal', {
+            numeral: true,
+            prefix: '$'
+        });
+        new Cleave('#loanAmount', {
+            numeral: true,
+            prefix: '$'
+        });
 /*    $("#totalDebt").change(function (e) {
         const formatter = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"});
         $("#totalDebt").val(formatter.format(totalDebt));
