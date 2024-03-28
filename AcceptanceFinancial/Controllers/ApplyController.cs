@@ -31,7 +31,11 @@ public class ApplyController : Controller {
     }
 
     [HttpGet]
-    public IActionResult Index() {
+    public IActionResult Index(string? offercode) {
+        if (!String.IsNullOrEmpty(offercode))
+        {
+            _logger.LogInformation("Offercode submitted from landing page: " + offercode);
+        }
         return View();
     }
 

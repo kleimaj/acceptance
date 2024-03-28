@@ -270,6 +270,14 @@ window.addEventListener("load", function () {
                   
                  }
            });
+         
+         
+         const searchParams = new URLSearchParams(window.location.search);
+         if (searchParams.has("offercode")) {
+            var code = searchParams.get("offercode");
+            $("#Offer").val(code);
+            $("#Offer").trigger("keyup");
+         }
     });
 });
 </script>
