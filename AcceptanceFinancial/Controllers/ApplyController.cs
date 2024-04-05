@@ -50,6 +50,7 @@ public class ApplyController : Controller {
     [FormValidator]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Save(Customer customer) {
+        customer.Id = Guid.NewGuid();
         var response = new HttpResponseMessage();
         
         if (Request != null) {
@@ -58,7 +59,7 @@ public class ApplyController : Controller {
             var ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
             customer.IpAddress = ip;
             var formData = new MultipartFormDataContent();
-            const string SECRET_KEY = "1x0000000000000000000000000000000AA";
+            const string SECRET_KEY = "0x4AAAAAAAVEam0l5bmLovg-d0qt5yyR8eY";
             formData.Add(new StringContent(SECRET_KEY), "secret");
             formData.Add(new StringContent(token), "response");
             formData.Add(new StringContent(ip), "remoteip");
@@ -128,7 +129,7 @@ public class ApplyController : Controller {
         request.AddParameter("city", customer.City);
         request.AddParameter("zip_code", customer.Zip);
         request.AddParameter("home_phone", customer.Phone);
-        request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?"None":customer.Offer);
+        request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?customer.Id.ToString():customer.Offer);
         
         var response = client.Execute(request);
         if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);

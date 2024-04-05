@@ -48,8 +48,8 @@ public class HomeController : Controller {
         customer.IpAddress = ip;
         
         var formData = new MultipartFormDataContent();
-        /*const string SECRET_KEY = "0x4AAAAAAAIUXGJaJKd7EGHsvUK8FToQJk4";*/
-        const string SECRET_KEY = "1x0000000000000000000000000000000AA";
+        const string SECRET_KEY = "0x4AAAAAAAVEam0l5bmLovg-d0qt5yyR8eY";
+        /*const string SECRET_KEY = "1x0000000000000000000000000000000AA";*/
         formData.Add(new StringContent(SECRET_KEY), "secret");
         formData.Add(new StringContent(token), "response");
         formData.Add(new StringContent(ip), "remoteip");
@@ -65,62 +65,31 @@ public class HomeController : Controller {
                 result.AddToModelState(ModelState);
                 return View("Index", customer);
             }
-
-            if (customer.Offer != null) {
-                var directMail = await _martenService.GetDirectMail(customer.Offer);
-                var directMailCustomer = new Customer();
-                if (directMail != null) {
-                    directMailCustomer.Id = customer.Id;
-                    directMailCustomer.Address = directMail.Address;
-                    directMailCustomer.FirstName = directMail.FirstName;
-                    directMailCustomer.LastName = directMail.LastName;
-                    directMailCustomer.City = directMail.City;
-                    directMailCustomer.Zip = directMail.Zip;
-                    directMailCustomer.State = directMail.StateCode;
-                    directMailCustomer.Offer = customer.Offer;
-                    directMailCustomer.Email = customer.Email;
-                    directMailCustomer.Cell = customer.Phone;
-                    directMailCustomer.LoanAmount = customer.LoanAmount;
-                    directMailCustomer.IpAddress = ip;
-                    var controller = this.HttpContext.RequestServices.GetService(typeof(ApplyController));
-                    var applyController = controller as ApplyController;
-                    applyController?.Save(directMailCustomer);
-                    
-                    return FormResult.CreateSuccessResult("Getting your Quote.",
-                        Url.Action("", "Congratulations", new { customerGid = customer.Id }), 500);
-
-                }
+            try {
+                postShortToCRM(customer);
             }
-            else {
-                try {
-                    postShortToCRM(customer);
-                }
-                catch (Exception e) {
-                    _logger.LogError("{HttpContextTraceIdentifier}",
-                        Activity.Current?.Id ?? HttpContext.TraceIdentifier);
-                }
-
-                try {
-                    EmailContact(customer);
-                }
-                catch (Exception e) {
-                    _logger.LogError("{HttpContextTraceIdentifier}",
-                        Activity.Current?.Id ?? HttpContext.TraceIdentifier);
-                }
-
-                try {
-                    await _martenService.CreateShortCustomer(customer);
-
-                    return FormResult.CreateSuccessResult("Getting your Quote.",
-                        Url.Action("", "Congratulations", new { customerGid = customer.Id }), 500);
-                }
-                catch {
-                    return FormResult.CreateErrorResult("An error occurred!");
-                }
+            catch (Exception e) {
+                _logger.LogError("{HttpContextTraceIdentifier}",
+                    Activity.Current?.Id ?? HttpContext.TraceIdentifier);
             }
-        }
-        else {
-                return FormResult.CreateErrorResult("Capatcha result failed!");
+
+            try {
+                EmailContact(customer);
+            }
+            catch (Exception e) {
+                _logger.LogError("{HttpContextTraceIdentifier}",
+                    Activity.Current?.Id ?? HttpContext.TraceIdentifier);
+            }
+
+            try {
+                await _martenService.CreateShortCustomer(customer);
+
+                return FormResult.CreateSuccessResult("Getting your Quote.",
+                    Url.Action("", "Congratulations", new { customerGid = customer.Id }), 500);
+            }
+            catch {
+                return FormResult.CreateErrorResult("An error occurred!");
+            }
         }
         return FormResult.CreateErrorResult("An error occurred!");
     }
@@ -138,7 +107,7 @@ public class HomeController : Controller {
             Method = Method.Post
         };
       
-        request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?"None":customer.Offer);
+        request.AddParameter("offer_code", string.IsNullOrEmpty(customer.Offer)?customer.Id.ToString():customer.Offer);
         request.AddParameter("first_name",customer.FirstName );
         request.AddParameter("last_name", customer.LastName);
         request.AddParameter("email", customer.Email);
