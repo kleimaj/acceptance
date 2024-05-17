@@ -133,7 +133,7 @@ public class ApplyController : Controller {
         
         var response = client.Execute(request);
         if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
-        
+        _logger.LogInformation($"Posted Client to CRM: {response.Content}");
     }
 
     /// <summary>
@@ -185,7 +185,7 @@ public class ApplyController : Controller {
         body += "\nZip Code: " + customerResponse.Zip;
         body += "\nCell Phone: " + customerResponse.Cell;
         body += "\nHome Phone: " + customerResponse.Phone;
-        body += "\nTotal Debt: " + customerResponse.TotalDebt;
+        body += "\nRequested Loan Amount: " + customerResponse.TotalDebt;
         body += "\nOffer: " + (string.IsNullOrEmpty(customerResponse.Offer)?"None":customerResponse.Offer);
         
         body += "\nTime(PDT): " + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");

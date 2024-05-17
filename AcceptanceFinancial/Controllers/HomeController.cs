@@ -116,6 +116,7 @@ public class HomeController : Controller {
         
         var response = client.Execute(request);
         if (response.IsSuccessful == false) throw new InvalidOperationException(response.ErrorMessage);
+        _logger.LogInformation($"Posted Client to CRM: {response.Content}");
     }
     /// <summary>
     ///   Get endpoint url based on loan amount and offer code

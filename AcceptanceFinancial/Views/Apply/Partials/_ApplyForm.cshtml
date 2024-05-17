@@ -63,7 +63,7 @@
 @using AcceptanceFinancial.Models.Const
 @model AcceptanceFinancial.Models.Customer
   <form class="apply-form" id="@formConfig.FormId" asp-formhelper="true" asp-dataType="FormData" asp-controller="Apply" asp-action="Save" enctype="multipart/form-data" formhelper>
-      <div class="offer py-4 my-5">
+      <div class="offer py-4 my-4">
           <div class="container row align-items-center mx-auto">
               <div class="col-md-6 d-flex flex-md-row flex-column align-items-center">
               <h4 class="text-md-start text-center">If you have an Offer Code, please enter it here.</h4>
@@ -177,7 +177,7 @@
                                            <div class="custom-row">
                                                  <div class="custom-row form-group">
                                                     <input asp-for="TotalDebt" type="text" class="form-control" placeholder=" ">
-                                                    <label class="form-label" asp-for="TotalDebt">Total Debt</label>
+                                                    <label class="form-label" asp-for="TotalDebt">Requested Loan Amount</label>
                                                     <span asp-validation-for="TotalDebt" class="text-danger"></span>
                                                   </div>
                                            </div>
@@ -186,9 +186,11 @@
       <div class="custom-row mb-2 center_div">
           @await Html.PartialAsync("Partials/_CloudflareTurnstile") 
       </div>
-      <div class="verify-btn d-flex justify-content-center mb-5">
-                                                  <button id="submit-verify" type="submit" class="comman-btn yellow-btn btn-submit-form">Check My Rate</button>
-                                         </div>
+          <div class="verify-btn d-flex justify-content-center mb-5">
+              <button id="submit-verify" type="submit" class="comman-btn yellow-btn btn-submit-form">Check My Rate</button>
+          </div>
+          <p class="text-center mb-5"><b>Please note:</b> The security of your personal information is very important to us. We employ high levels of encryption to keep your information safe and confidential. Verify your information by completing any empty fields, then click “CHECK MY RATE.”
+                                          <br/><b>This will NOT affect your credit score.</b></p>
           <p class="click-verify">By clicking “CHECK MY RATE,” you authorize — with respect to the telephone number provided above and any other telephone number associated or related to you that may be provided to us in the future — Acceptance Financial® can contact you by phone, text, email, mail, or by artificial or pre-recorded voice, even if you have listed yourself on any Do-Not-Call List. You also agree to our Privacy Policy and Terms of Use, and further agree that any person or entity contacting you pursuant to your consent here may use an automatic telephone dialing system, even if the telephone number you provided above (or any telephone number associated with you) is connected to a mobile phone and even if you might be charged for the call. Your consent to receive automated calls or text messages is not required for any purchase or availability of goods/services from Acceptance Financial®. If you do not consent, you may call us at <a href="tel:(800) 410-5845">(800) 410-5845</a> to continue your inquiry.</p>
       </div>
                                </form>
@@ -241,7 +243,7 @@ window.addEventListener("load", function () {
               if( $(this).val().length > 5) {
                     $(".fetchhide").css("display","flex");
                   $.ajax({
-                          url: "/home/GetPromotion?accessCode="+$(this).val()+"",
+                          url: "/home/GetPromotion?accessCode="+$(this).val().toUpperCase()+"",
                           type: 'GET',
                           dataType: 'json', // added data type
                           success: function(res) {

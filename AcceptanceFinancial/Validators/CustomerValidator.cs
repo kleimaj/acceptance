@@ -26,6 +26,6 @@ public class CustomerValidator : AbstractValidator<Customer> {
         RuleFor(x => x.Offer);
         RuleFor(x => x.Address2);
         RuleFor(x => x.TotalDebt)
-            .NotEmpty().WithMessage("Please enter total debt.");
+            .NotEmpty().WithMessage("Please enter requested loan amount.");
     }
 }

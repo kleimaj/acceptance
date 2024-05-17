@@ -12,7 +12,7 @@
 
                                 <img src="images/apply-bg.png" alt="product" class="img-fluid">
                             </picture>
-                            <picture class="d-md-none d-block text-center">
+                            <picture class="d-md-none d-none text-center">
                                 <source type="image/webp" srcset="images/apply-bg-mobile.webp">
                             
                                 <img src="images/apply-bg-mobile.png" alt="product" class="img-fluid mobile-img w-100">
@@ -41,14 +41,12 @@
 
 <!-- great-news section start -->
 <section class="great-news">
-    <div class="custom-padding">
+    <div class="py-3 py-md-4">
         <div class="">
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="custom-form">
                         <div class="container">
-                            <p class="text-center mb-5"><b>Please note:</b> The security of your personal information is very important to us. We employ high levels of encryption to keep your information safe and confidential. Verify your information by completing any empty fields, then click “CHECK MY RATE.”
-                                <br/><b>This will NOT affect your credit score.</b></p>
                             </div>
                         @await Html.PartialAsync("Partials/_ApplyForm")
                     </div>

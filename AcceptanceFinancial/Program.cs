@@ -153,11 +153,13 @@ app.UseCsp(csp => {
         .From("https://app.jazz.co")
         .From("https://ajax.googleapis.com/")
         .From("https://cdnjs.cloudflare.com")
+        .From("*.teamdms.dev")
         .AllowUnsafeInline();//Fallback for browsers that don't support nonce
         
     csp.AllowImages
         .FromSelf()
         .From("https://app.jazz.co/")
+        .From("*.teamdms.dev")
         .From("data:");
     csp.AllowFonts.FromSelf().From("https://fonts.googleapis.com").From("https://fonts.gstatic.com/s/");
     csp.AllowStyles
