@@ -83,6 +83,7 @@ public class HomeController : Controller {
 
             try {
                 await _martenService.CreateShortCustomer(customer);
+                await _martenService.DeleteAbandoned(customer.Email);
 
                 return FormResult.CreateSuccessResult("Getting your Quote.",
                     Url.Action("", "Congratulations", new { customerGid = customer.Id }), 500);
@@ -193,6 +194,11 @@ public class HomeController : Controller {
         }
     }
 
+    [HttpPost]
+    public async Task CreateAbandoned(Abandoned abandoned)
+    {
+        _martenService.CreateAbandoned(abandoned);
+    }
     [HttpPost]
     [Route("Log")]
     public void JsnLogger([FromBody] JsnLogMessage obj) {

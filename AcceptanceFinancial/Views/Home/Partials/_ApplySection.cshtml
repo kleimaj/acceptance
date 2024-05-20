@@ -300,6 +300,37 @@
             document.getElementById("submit-verify").innerHTML = "Get My Quote";
      };
 window.addEventListener("load", function () {
+$(document).ready(function () {
+        $('#Phone').on('focusout', function () {
+            //$('#email').on('focusout', function () {
+            if ($('#FirstName').val().length > 0 &&
+                $('#LastName').val().length > 0 &&
+                $('#Email').val().length > 0 &&
+                $('#Phone').val().length > 0
+            ) {
+                var data = {
+                    email: $('#Email').val(),
+                    primaryPhone: $('#Phone').val().replace(/\(|\)|-|\s/g, ''),
+                    firstName: $('#FirstName').val(),
+                    lastName: $('#LastName').val(),
+                    accessCode: $('#Offer').val(),
+                    __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/CreateAbandoned",
+                    data: data,
+                    success: function () {
+                        console.log("updated application tracking info");
+                    },
+                    error: function () {
+                        console.error("failed to update application tracking info");
+                    }
+                });
+                
+            }
+    })
+});
     $(document).ready(function(){
        const $form = $('#CustomerForm');
          $('.items').slick({

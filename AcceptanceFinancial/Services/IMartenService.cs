@@ -11,4 +11,6 @@ public interface IMartenService {
     internal Task<bool> CreateDirectMails(List<DirectMail> directMails);
     internal Task<DirectMail?> GetDirectMail(string Promocode);
     internal Task<bool> CreateDirectMail(DirectMail directMail);
+    internal Task<bool> CreateAbandoned(Abandoned abandoned);
+    internal Task<bool> DeleteAbandoned(string email);
 }

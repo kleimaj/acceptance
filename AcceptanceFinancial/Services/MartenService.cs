@@ -132,4 +132,36 @@ public class MartenService : IMartenService {
             return false;
         }
     }
+    public async Task<bool> CreateAbandoned(Abandoned abandoned)
+    {
+        try
+        {
+            await using var session = _store!.LightweightSession();
+            session.Store(abandoned);
+
+            await session.SaveChangesAsync().ConfigureAwait(false);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error("Unable to create abandoned {@ex} {@abandoned}", ex, abandoned);
+            return false;
+        }
+    }
+    public async Task<bool> DeleteAbandoned(string email)
+    {
+        try
+        {
+            await using var session = _store!.LightweightSession();
+            session.Delete<Abandoned>(email);
+
+            await session.SaveChangesAsync().ConfigureAwait(false);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error("Unable to delete abandoned for email {@ex} {@email}", ex, email);
+            return false;
+        }
+    }
 }

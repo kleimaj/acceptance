@@ -212,7 +212,39 @@
             document.getElementById("submit-verify").innerHTML = "Verify";
      };
     
+       
 window.addEventListener("load", function () {
+     $(document).ready(function () {
+                    $('#Email').on('focusout', function () {
+                        //$('#email').on('focusout', function () {
+                        if ($('#FirstName').val().length > 0 &&
+                            $('#LastName').val().length > 0 &&
+                            $('#Email').val().length > 0 &&
+                            $('#Cell').val().length > 0
+                        ) {
+                            var data = {
+                                email: $('#Email').val(),
+                                primaryPhone: $('#Cell').val().replace(/\(|\)|-|\s/g, ''),
+                                firstName: $('#FirstName').val(),
+                                lastName: $('#LastName').val(),
+                                accessCode: $('#Offer').val(),
+                                __RequestVerificationToken: $('input[name=__RequestVerificationToken]').val()
+                            };
+                            $.ajax({
+                                type: "POST",
+                                url: "/Apply/CreateAbandoned",
+                                data: data,
+                                success: function () {
+                                    console.log("updated application tracking info");
+                                },
+                                error: function () {
+                                    console.error("failed to update application tracking info");
+                                }
+                            });
+                            
+                        }
+                })
+            });
     $(document).ready(function(){
        const $form = $('#CustomerForm');
                                            

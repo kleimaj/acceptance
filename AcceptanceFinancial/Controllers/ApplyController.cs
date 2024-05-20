@@ -92,8 +92,10 @@ public class ApplyController : Controller {
             catch (Exception e) {
                 _logger.LogError("{HttpContextTraceIdentifier}", Activity.Current?.Id ?? HttpContext.TraceIdentifier);
             }
-            try {
+            try
+            {
                 await _martenService.CreateCustomer(customer);
+                await _martenService.DeleteAbandoned(customer.Email);
                 
                 return FormResult.CreateSuccessResult("Getting your Quote.",
                     Url.Action("", "Congratulations", new { customerGid = customer.Id }), 500);
@@ -105,6 +107,11 @@ public class ApplyController : Controller {
         else {
             return FormResult.CreateErrorResult("Capatcha result failed!");
         }
+    }
+    [HttpPost]
+    public async Task CreateAbandoned(Abandoned abandoned)
+    {
+        _martenService.CreateAbandoned(abandoned);
     }
     
    /// <summary>
@@ -217,4 +224,5 @@ public class ApplyController : Controller {
             return false;
         }
     }
+    
 }
