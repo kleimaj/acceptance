@@ -68,7 +68,9 @@ public class MartenService : IMartenService {
         }
     }
     public async Task<bool> CreateContactUs(ContactUs contactUs) {
-        try {
+        try
+        {
+            contactUs.Id = Guid.NewGuid();
             await using var session = _store!.LightweightSession();
             session.Store(contactUs);
 
